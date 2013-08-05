@@ -2,7 +2,10 @@ Photoboom::Application.routes.draw do
   get '/dashboard', to: 'dashboard#index', as: :dashboard
   get '/login', :to => 'sessions#new', :as => :login
   get '/logout', :to => 'sessions#destroy', :as => :logout
+  get '/signin', :to => 'sessions#new', :as => :signin
+  get '/signout', :to => 'sessions#destroy', :as => :signout
   get '/auth/:provider/callback', :to => 'sessions#create'
+  post '/auth/:provider/callback', :to => 'sessions#create'
   get '/auth/failure', :to => 'sessions#failure'
 
   get "sessions/create"

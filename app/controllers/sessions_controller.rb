@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_filter :enforce_login, :only => [:new, :create, :destroy, :failure]
+  protect_from_forgery :except => :create
 
   def new
     # Display buttons and form for logging in
@@ -28,5 +29,6 @@ class SessionsController < ApplicationController
   end
 
   def failure
+    redirect_to root_url, alert: "Authentication failed, please try again."
   end
 end

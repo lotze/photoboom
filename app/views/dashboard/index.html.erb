@@ -3,3 +3,5 @@
 <% @user.authorizations.each do |authorization| %>
   <div>You can authenticate with <%= authorization.provider %>.</div>
 <% end %>
+
+<%= link_to "Log out", "/logout" %>
