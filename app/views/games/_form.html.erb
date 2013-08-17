@@ -1,0 +1,39 @@
+<%= form_for(@game) do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  Game name:
+  <%= f.text_field :name %>
+
+  <div class="well">
+    <div id="datetimepicker2" class="input-append">
+      <%= f.text_field :starts_at, 'data-format' => "MM/dd/yyyy HH:mm:ss PP" %>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+        </i>
+      </span>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(function() {
+      $('#datetimepicker2').datetimepicker({
+        language: 'en',
+        pick12HourFormat: true
+      });
+    });
+  </script>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

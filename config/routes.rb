@@ -1,5 +1,7 @@
 Photoboom::Application.routes.draw do
   get '/dashboard', to: 'dashboard#index', as: :dashboard
+
+  # session routes
   get '/login', :to => 'sessions#new', :as => :login
   get '/logout', :to => 'sessions#destroy', :as => :logout
   get '/signin', :to => 'sessions#new', :as => :signin
@@ -7,10 +9,10 @@ Photoboom::Application.routes.draw do
   get '/auth/:provider/callback', :to => 'sessions#create'
   post '/auth/:provider/callback', :to => 'sessions#create'
   get '/auth/failure', :to => 'sessions#failure'
-
   get "sessions/create"
   get "sessions/failure"
 
+  # api routes
   get "api/games"
   get "api/photos"
   get "api/signup"
@@ -20,6 +22,9 @@ Photoboom::Application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
+  resources :games
+  resources :memberships
 
   # You can have the root of your site routed with "root"
   root 'landing#index'

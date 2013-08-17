@@ -1,0 +1,30 @@
+<%= form_for(@membership) do |f| %>
+  <% if @membership.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
+
+      <ul>
+      <% @membership.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :game_id, :value => @membership.game_id %>
+
+  Game: <%= @game.name %>
+
+  <br />Team:
+  <%= f.text_field :team_name %>
+  <script>
+    $('#membership_team_name').typeahead({
+      name: 'membership_team_name',
+      local: <%= @game.team_names.to_json.html_safe %>
+    });
+  </script>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
