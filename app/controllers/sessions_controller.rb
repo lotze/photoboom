@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :enforce_login, :only => [:new, :create, :destroy, :failure]
+  skip_before_action :enforce_login, :only => [:new, :create, :destroy, :failure]
   protect_from_forgery :except => :create
 
   def new

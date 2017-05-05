@@ -1,7 +1,15 @@
 <div>Welcome!  You are <%= @user.name %> with email <%= @user.email %>.</div>
 
+<p>
 <% @user.authorizations.each do |authorization| %>
   <div>You can authenticate with <%= authorization.provider %>.</div>
 <% end %>
+</p>
 
+<p>
+<%= @user.admin ? 'You are an admin' : '' %>
+</p>
+
+<p>
 <%= link_to "Log out", "/logout" %>
+</p>

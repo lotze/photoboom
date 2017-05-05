@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :teams, :through => :memberships
   has_many :games, :through => :teams
 
+  default_scope { order(name: :asc) }
+
   def add_provider(auth_hash)
     # Check if the provider already exists, so we don't add it twice
     unless authorizations.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
@@ -15,5 +17,11 @@ class User < ActiveRecord::Base
 
   def membership_in(game)
     Membership.find_by_user_id_and_game_id(self.id, game.id)
+  end
+
+  def set_team(game, team)
+    current_membership = membership_in(game)
+    current_membership.destroy if current_membership
+    Membership.create!(game: game, team: team, user: self)
   end
 end
