@@ -15,12 +15,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def membership_in(game)
-    Membership.find_by_user_id_and_game_id(self.id, game.id)
+  def team(game=Game.default_game)
+    Membership.find_by_user_id_and_game_id(self.id, game.id).try(:team)
   end
 
-  def set_team(game, team)
-    current_membership = membership_in(game)
+  def set_team(team)
+    current_membership = membership_in(team.game)
     current_membership.destroy if current_membership
     Membership.create!(game: game, team: team, user: self)
   end

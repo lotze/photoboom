@@ -1,8 +1,12 @@
 == Needed ==
-* admin to set tasks for a game
-* admin to create teams, add/remove members
+* user can join a team (or create a new one)
+* user can change teams
+* individuals can enter a team name
+* individuals can add others to their team
+** error if that person is already on another team; otherwise it adds them (creating if needed)
 
 * s3 storage of photos
+** user can upload photo from webpage, have it automatically associated with team
 
 * rake task to check google and import photos
 ** email login info settable by game
@@ -16,10 +20,6 @@
 * interface to list your team's tasks
 ** optional filter to just unaccomplished tasks
 ** can submit/upload photo through interface
-
-* individuals can enter a team name
-* individuals can add others to their team
-** error if that person is already on another team; otherwise it adds them (creating if needed)
 
 * slideshow all photos
 

@@ -11,7 +11,10 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
-    @membership = @user.membership_in(@game)
+    @team = @user.team(@game)
+    if @team
+      redirect_to team_path(@team)
+    end
   end
 
   # GET /games/new

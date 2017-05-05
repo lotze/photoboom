@@ -22,23 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :game_id %>
-    <%= form.text_field :game_id, id: :mission_game_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :points %>
     <%= form.text_field :points, id: :mission_points %>
   </div>
 
   <div class="field">
-    <%= form.label :priority %>
-    <%= form.text_field :priority, id: :mission_priority %>
-  </div>
-
-  <div class="field">
     <%= form.label :avatar %>
-    <%= form.text_field :avatar, id: :mission_avatar %>
+    <%= form.file_field :avatar %>
   </div>
 
   <div class="actions">

@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
   # POST /teams/1/add_member
   def add_member
     @user = User.find(params['user_id'])
-    @user.set_team(Game.default_game, @team)
+    @user.set_team(@team)
     redirect_to action: :show, id: @team.id
   end
 

@@ -20,3 +20,4 @@ RACK_ENV=development PORT=3000 foreman start
 To load up seed data
 rake db:seed
 (or to overwrite the seed data using the current db data, RAILS4=true WITHOUT_PROTECTION=false rake db:seed:dump)
+

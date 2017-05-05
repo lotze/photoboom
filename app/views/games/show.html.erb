@@ -10,8 +10,8 @@
 
 <% if @user.id == @game.organizer_id %>
 <p><%= link_to 'Edit', edit_game_path(@game) %></p>
-<% elsif @membership %>
-<p><%= link_to 'Edit Team Membership', edit_membership_path(@membership) %></p>
+<% elsif @team %>
+<p><%= link_to 'Edit Team Membership', edit_membership_path(@team) %></p>
 <% else %>
 ...really, should just put the form right here -- let them join an existing team via drop-down or create a new team to join, boom
 <p><%= link_to 'Join', new_membership_path(:game_id => @game.id) %></p>

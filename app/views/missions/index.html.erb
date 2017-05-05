@@ -5,12 +5,9 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
-      <th>Description</th>
-      <th>Game</th>
       <th>Points</th>
-      <th>Priority</th>
-      <th>Avatar</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,12 +15,9 @@
   <tbody>
     <% @missions.each do |mission| %>
       <tr>
+        <td><%= image_tag mission.avatar.url(:thumb) %></td>
         <td><%= mission.name %></td>
-        <td><%= mission.description %></td>
-        <td><%= mission.game_id %></td>
         <td><%= mission.points %></td>
-        <td><%= mission.priority %></td>
-        <td><%= mission.avatar %></td>
         <td><%= link_to 'Show', mission %></td>
         <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
         <td><%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
