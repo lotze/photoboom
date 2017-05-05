@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p> <% @team.users.each do |user| %>
+  <br /><%= user.name %>
+  <% if current_user.admin %>
+    <%= link_to 'remove', remove_member_path(id: @team.id, user_id: user.id) %>
+  <% end %>
+<% end %>
+</p>
+
+<% if current_user.admin %>
+<p>
+  <%= form_tag(add_member_path(id: @team.id)) do %>
+    <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name) %>
+    <%= submit_tag 'Add to Team' %>
+  <% end %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @photo.game_id %>
+</p>
+
+<p>
+  <strong>Mission:</strong>
+  <%= @photo.mission_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @photo.user_id %>
+</p>
+
+<p>
+  <strong>Resource location:</strong>
+  <%= @photo.resource_location %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @photo.notes %>
+</p>
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

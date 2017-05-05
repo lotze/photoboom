@@ -1,0 +1,31 @@
+<%= form_with(model: photo, local: true) do |form| %>
+  <% if photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+      <% photo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :game_id, value: Game.default_game_id %>
+
+  <div class="field">
+    <%= form.label :mission_id %>
+    <%= form.collection_select(:mission_id, Mission.all, :id, :name, :prompt => 'Please select mission') %>
+  </div>
+
+  <%= form.file_field :photo %>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes, id: :photo_notes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

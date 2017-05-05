@@ -24,7 +24,13 @@ Photoboom::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :games
+  # TODO: make these sub-routes of games
+  resources :photos
+  resources :missions
+  resources :teams
   resources :memberships
+  match '/teams/:id/add_member', to: 'teams#add_member', via: [:get, :post], as: :add_member
+  match '/teams/:id/remove_member', to: 'teams#remove_member', via: [:get, :post], as: :remove_member
 
   # You can have the root of your site routed with "root"
   root 'landing#index'
