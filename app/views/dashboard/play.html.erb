@@ -1,0 +1,25 @@
+<p>
+  <h1><%= @game.name %></h1>
+  <br /><%= distance_of_time_in_words(Time.now, @game.ends_at) %> remaining.
+</p>
+
+<p>
+<% if @filter_status == 'all' %>
+  Currently showing all missions. <%= link_to 'Show only uncompleted.', play_path(game_id: @game.id) %>
+<% else %>
+  Currently showing only uncompleted missions. <%= link_to 'Show all.', play_path(game_id: @game.id, filter_status: 'all') %>
+<% end %>
+</p>
+
+<p>Click on any mission to upload a photo to complete it. Your missions:<ul>
+  <% @missions.each do |mission| %>
+  <li>
+    <%= mission.name %>: <%= mission.description %>
+    <br /><%= form_with(model: Photo.new, local: true, id: "form_mission_#{mission.id}") do |form| %>
+      <%= form.hidden_field :game_id, value: @game.id %>
+      <%= form.hidden_field :mission_id, value: mission.id %>
+      <%= form.file_field :photo, id: "photo_mission_#{mission.id}", type: "file", accept: "image/*;capture=camera", onchange: "this.form.submit()" %>
+    <% end %>
+  </li>
+  <% end %>
+</ul></p>

@@ -1,28 +1,25 @@
 == Needed ==
-* interface to list your team's tasks
-** optional filter to just unaccomplished tasks
-** can submit/upload photo through interface
-
-* s3 storage of photos
-** user can upload photo from webpage, have it automatically associated with team
-
 * rake task to check google and import photos
 ** email login info settable by game
-** email admin if photos cannot be assigned to a team
+** email submitter with error if the subject line can't be parsed
+** email admin if photos are not from a user with a team for this game (but still create user)
 
-* admin interface to see unassigned users/photos and assign their team
+* admin interface to see unassigned users and assign their team
 
 * admin interface to reject photos
 ** emails sender with rejection note
 
+* turn action links into button styling
+
+* leaderboard: display scores for each team
+
 * slideshow all photos
+* display task title, team with photos in slideshow
 
 == Optional ==
 * enforce maximum team size?
-* display task title, team with photos in slideshow
 * enforce starts-at, don't allow showing missions beforehand
 * enforce ends-at, show time remaining
-* leaderboard: display scores for each team
 * developer auth method for development
 * bonus points by admin
 ** display bonuses in slideshow

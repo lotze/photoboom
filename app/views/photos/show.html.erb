@@ -2,22 +2,21 @@
 
 <p>
   <strong>Game:</strong>
-  <%= @photo.game_id %>
+  <%= @photo.game.name %>
 </p>
 
 <p>
   <strong>Mission:</strong>
-  <%= @photo.mission_id %>
+  <%= @photo.mission.name %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @photo.user_id %>
+  <%= @photo.user.name %>
 </p>
 
 <p>
-  <strong>Resource location:</strong>
-  <%= @photo.resource_location %>
+<%= image_tag @photo.photo.url %>
 </p>
 
 <p>

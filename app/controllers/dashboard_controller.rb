@@ -75,6 +75,17 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def play
+    @game = Game.find(params['game_id'])
+    @team = @current_user.team(@game)
+    # toggling between 'all' and 'only uncompleted'
+    @filter_status = params['filter_status']
+    if @filter_status == 'all'
+      @missions = @game.missions
+    else
+      @team_photos = Photo.where(game: @game, user: @team.users, rejected: false)
+      completed_mission_ids = @team_photos.map {|p| p.mission_id}.uniq
+      @missions = @game.missions.find_all {|m| !completed_mission_ids.include?(m.id)}
+    end
   end
 
   ##################################################################

@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, except: [:create]
 
   # GET /photos
   # GET /photos.json
@@ -24,14 +25,14 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params)
+    @photo = Photo.new(photo_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+        format.html { redirect_to play_path(game_id: @photo.game_id), notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
       else
-        format.html { render :new }
+        format.html { redirect_to play_path(game_id: @photo.game_id), error: 'Error uploading photo!' }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end

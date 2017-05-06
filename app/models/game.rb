@@ -3,6 +3,8 @@ class Game < ActiveRecord::Base
   has_many :teams
   has_many :users, :through => :teams
 
+  has_many :missions
+
   scope :publicly_available, -> { where(is_public: false) }
 
   after_initialize :init
