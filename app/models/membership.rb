@@ -18,7 +18,8 @@ class Membership < ActiveRecord::Base
   end
 
   def team_name=(new_team_name)
-    t = Team.first(conditions: {game_id: game.id, name: new_team_name})
+    normalized_name = Team.normalize_name(new_team_name)
+    t = Team.where(game_id: game.id, normalized_name: normalized_name).first
     if t.nil?
       t = Team.create!(game_id: game.id, name: new_team_name)
     end

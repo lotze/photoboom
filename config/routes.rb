@@ -1,5 +1,13 @@
 Photoboom::Application.routes.draw do
   get '/dashboard', to: 'dashboard#index', as: :dashboard
+  get '/next_game', to: 'dashboard#next_game', as: :next_game
+  get '/show_teams', to: 'dashboard#show_teams', as: :show_teams
+  get '/join_team', to: 'dashboard#join_team', as: :join_team
+  get '/leave_team', to: 'dashboard#leave_team', as: :leave_team
+  get '/manage_team', to: 'dashboard#manage_team', as: :manage_team
+
+  get '/play', to: 'dashboard#play', as: :play
+  get '/leaderboard', to: 'dashboard#leaderboard', as: :leaderboard
 
   # session routes
   get '/login', :to => 'sessions#new', :as => :login
@@ -32,8 +40,10 @@ Photoboom::Application.routes.draw do
   match '/teams/:id/add_member', to: 'teams#add_member', via: [:get, :post], as: :add_member
   match '/teams/:id/remove_member', to: 'teams#remove_member', via: [:get, :post], as: :remove_member
 
-  # You can have the root of your site routed with "root"
-  root 'landing#index'
+  # TODO: eventually, go back to landing#index to let people sign up for or start a game
+  # root 'landing#index'
+  # but for now, automatically go to their next upcoming game
+  root 'dashboard#next_game'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

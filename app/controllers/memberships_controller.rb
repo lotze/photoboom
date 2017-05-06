@@ -21,6 +21,7 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/1/edit
   def edit
+    @game = @membership.game
   end
 
   # POST /memberships

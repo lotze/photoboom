@@ -1,9 +1,7 @@
 == Needed ==
-* user can join a team (or create a new one)
-* user can change teams
-* individuals can enter a team name
-* individuals can add others to their team
-** error if that person is already on another team; otherwise it adds them (creating if needed)
+* interface to list your team's tasks
+** optional filter to just unaccomplished tasks
+** can submit/upload photo through interface
 
 * s3 storage of photos
 ** user can upload photo from webpage, have it automatically associated with team
@@ -17,39 +15,26 @@
 * admin interface to reject photos
 ** emails sender with rejection note
 
-* interface to list your team's tasks
-** optional filter to just unaccomplished tasks
-** can submit/upload photo through interface
-
 * slideshow all photos
 
-Game
-- admin
-Team
-- game
-- name
-Player
-- team
-- email address
-Task
-- Game
-Photo
-- Player
-- Team (optional, for failed assignments)
-- Task (optional, for failed assignments)
-- photo content
-- state
-
 == Optional ==
+* enforce maximum team size?
 * display task title, team with photos in slideshow
+* enforce starts-at, don't allow showing missions beforehand
 * enforce ends-at, show time remaining
-* display scores and fulfilment for each team
+* leaderboard: display scores for each team
 * developer auth method for development
 * bonus points by admin
 ** display bonuses in slideshow
 
 ==Future==
-* Allow any admin to create and manage games
+* Allow any admin to create and manage their own games
 ** when dealing with most things, admin is on game level rather than overall; can't muck with someone else's game
+** set starting location
+* auto svg/pdf of printable mission list
 * Allow downloading of all photos as zipfile
-
+* drag-and-drop reordering mission priorities
+* allow buying tickets to a game via Stripe
+* teams have leaders?
+** rename your team
+** invite others via email to join the game (and your team)

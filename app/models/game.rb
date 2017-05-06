@@ -38,4 +38,16 @@ class Game < ActiveRecord::Base
   def to_s
     return self.name
   end
+
+  def upcoming?
+    Time.now < self.starts_at
+  end
+
+  def in_progress?
+    Time.now >= self.starts_at && Time.now < self.ends_at
+  end
+
+  def over?
+    Time.now >= self.ends_at
+  end
 end

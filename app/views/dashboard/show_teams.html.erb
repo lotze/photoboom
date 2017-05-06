@@ -1,0 +1,24 @@
+<h1><%= @game.name %></h1>
+
+<p><%= @teams.size %> <%= 'team'.pluralize(@teams.size) %>:
+  <ul>
+    <% @teams.sort_by(&:name).each do |team| %>
+    <li><%= team.name %>: <%= link_to 'Join Team', join_team_path(game_id: @game.id, team_id: team.id) %>
+      <br /><ul>
+      <% team.users.each do |user| %>
+      <li><%= user.name %></li>
+      <% end %>
+    </ul></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>Start a new team!
+<%= form_tag(join_team_path, method: :get) do %>
+  <%= hidden_field_tag :game_id, @game.id %>
+  <%= text_field_tag :team_name %>
+  <%= submit_tag 'Create Team' %>
+<% end %>
+</p>
+
+

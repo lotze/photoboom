@@ -16,6 +16,7 @@ class AddFieldsToMissionsAndPhotos < ActiveRecord::Migration[5.1]
     remove_column :photos, :resource_location, :string
     add_attachment :photos, :photo
 
+    # each user should only be on one team per game
     remove_index :memberships, column: [:game_id, :user_id]
     add_index :memberships, [:game_id, :user_id], unique: true
   end
