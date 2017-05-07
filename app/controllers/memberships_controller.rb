@@ -14,7 +14,7 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
-    @game = Game.find(params[:game_id])
+    @game = Game.default_game
     @membership = Membership.new
     @membership.game = @game
   end
