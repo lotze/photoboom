@@ -11,7 +11,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
-    @team = @user.team(@game)
+    @team = current_user.team(@game)
     if @team
       redirect_to team_path(@team)
     end
@@ -31,7 +31,7 @@ class GamesController < ApplicationController
   def create
     gp = game_params
     gp['starts_at'] = Time.parse(gp['starts_at'])
-    gp['organizer_id'] = @user.id
+    gp['organizer_id'] = current_user.id
     @game = Game.new(gp)
 
     respond_to do |format|

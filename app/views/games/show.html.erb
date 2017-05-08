@@ -8,7 +8,7 @@
 
 <br />Starts at: <%= @game.starts_at %>.
 
-<% if @user.id == @game.organizer_id %>
+<% if current_user.id == @game.organizer_id %>
 <p><%= link_to 'Edit', edit_game_path(@game) %></p>
 <% elsif @team %>
 <p><%= link_to 'Edit Team Membership', edit_membership_path(@team) %></p>
