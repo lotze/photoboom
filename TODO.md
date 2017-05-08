@@ -1,10 +1,10 @@
 == Needed ==
 * javascript timer to reload/transition dashboard page when game begins or ends (maybe a partial or template?)
 
-* slideshow all photos
-* display task title, team with photos in slideshow
-
 == Optional ==
+* resize photos to fit a certain screen size, use that in slideshow
+** or maybe just set width and height in the slideshow html?
+* add denormalized team_id to photos? (and update a user's photos when a user gets a new team?)
 * enforce maximum team size?
 * enforce starts-at, don't allow showing missions beforehand
 * enforce ends-at, show time remaining

@@ -6,3 +6,7 @@
   To use Font Awesome sprites instead of Glyphicons, replace with "require twitter-bootstrap-static/fontawesome"
   =require twitter-bootstrap-static/sprites
 */
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}

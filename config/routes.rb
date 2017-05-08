@@ -8,6 +8,7 @@ Photoboom::Application.routes.draw do
 
   get '/play', to: 'dashboard#play', as: :play
   get '/leaderboard', to: 'dashboard#leaderboard', as: :leaderboard
+  get '/slideshow', to: 'dashboard#slideshow', as: :slideshow
 
   # session routes
   get '/login', :to => 'sessions#new', :as => :login

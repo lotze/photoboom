@@ -95,4 +95,8 @@ class DashboardController < ApplicationController
     @missions_by_team = Hash[@photos.group_by{|p| p.user.team(@game)}.map {|team, photos| [team, photos.group_by(&:mission).map{|m, ph| m}.uniq]}]
     @total_by_team = Hash[@missions_by_team.map {|t, m| [t, m.map(&:points).sum]}]
   end
+
+  def slideshow
+    @photos = Photo.where(game: @game, rejected: false).includes(:user).includes(:mission)
+  end
 end
