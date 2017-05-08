@@ -27,6 +27,9 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+# use postmark for sending emails
+gem 'postmark-rails'
+
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 

@@ -1,19 +1,9 @@
-<%= @team.name %>
+<h2>Team '<%= @team.name %>'</h2>
 
-<p><ul>
+<p>Players:<ul>
   <% @team.users.each do |user| %>
   <li><%= user.name %></li>
   <% end %>
 </ul></p>
 
-<p>Invite someone to join your team:
-<%= form_tag(invite_path, method: :get) do %>
-  <%= hidden_field_tag :game_id, @game.id %>
-  Email address: 
-  <%= text_field_tag :email_address %>
-  <%= submit_tag 'Invite' %>
-<% end %>
-
-</p>
-
-<p><%= link_to 'Leave the team', leave_team_path(game_id: @team.game.id) %></p>
+<p><%= link_to 'Leave the team', leave_team_path(game_id: @team.game.id), class: 'btn btn-info' %></p>

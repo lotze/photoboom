@@ -27,8 +27,11 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.json
   def create
-    @membership = Membership.new(membership_params)
-    @membership.user_id = @user.id
+    sanctified_params = membership_params
+    unless current_user.admin
+      sanctified_params = sanctified_params.merge(user_id: current_user.id)
+    end
+    @membership = Membership.new(sanctified_params)
 
     respond_to do |format|
       if @membership.save
@@ -73,6 +76,6 @@ class MembershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.require(:membership).permit(:game_id, :team_name)
+      params.require(:membership).permit(:game_id, :user_id, :team_id)
     end
 end

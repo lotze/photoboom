@@ -75,7 +75,7 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def play
-    @game = Game.find(params['game_id'])
+    @game = Game.find(params['game_id'] || Game.default_game_id)
     @team = @current_user.team(@game)
     # toggling between 'all' and 'only uncompleted'
     @filter_status = params['filter_status']

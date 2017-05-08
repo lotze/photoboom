@@ -1,21 +1,12 @@
 == Needed ==
-* rake task should send emails
-** email submitter with error if the subject line can't be parsed
-** email admin if photos are not from a user with a team for this game (but still create user)
-
-* admin interface to see unassigned users and assign their team
-
-* admin interface to reject photos
-** emails sender with rejection note
-
-* turn action links into button styling
+* javascript timer to reload/transition page when game begins or ends
 
 * leaderboard: display scores for each team
-
 * slideshow all photos
 * display task title, team with photos in slideshow
 
-* admin interface to create new memberships
+* admin interface to reject photos
+** emails sender with rejection note
 
 == Optional ==
 * enforce maximum team size?

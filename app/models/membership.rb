@@ -3,9 +3,8 @@ class Membership < ActiveRecord::Base
   belongs_to :team
   belongs_to :game
 
-  after_initialize :init
-
-  def init
+  after_initialize :empty_admin
+  def empty_admin
     self.is_admin = false if self.is_admin.nil?
   end
 

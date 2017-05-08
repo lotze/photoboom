@@ -15,4 +15,12 @@ class Mission < ActiveRecord::Base
   def set_points
     self['points'] = 10 unless self['points']
   end
+
+  def to_s
+    if priority
+      "#{priority}: #{name}"
+    else
+      name
+    end
+  end
 end

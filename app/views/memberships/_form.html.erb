@@ -1,4 +1,4 @@
-<%= form_for(@membership) do |f| %>
+<%= form_for(@membership) do |form| %>
   <% if @membership.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
@@ -11,20 +11,34 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :game_id, :value => @membership.game_id %>
+  <%= form.hidden_field :game_id, :value => @membership.game_id %>
 
   Game: <%= @game.name %>
 
-  <br />Team:
-  <%= f.text_field :team_name %>
-  <script>
-    $('#membership_team_name').typeahead({
-      name: 'membership_team_name',
-      local: <%= @game.team_names.to_json.html_safe %>
-    });
-  </script>
+  <% if current_user.admin %>
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.collection_select(:user_id, User.all, :id, :name, :prompt => 'Please select user') %>
+  </div>
+  <% end %>
+
+  <% if current_user.admin %>
+    <div class="field">
+      <%= form.label :team_id %>
+      <%= form.collection_select(:team_id, @game.teams, :id, :name, :prompt => 'Please select team') %>
+    </div>
+  <% else %>
+    <br />Team:
+    <%= form.text_field :team_name %>
+    <script>
+      $('#membership_team_name').typeahead({
+        name: 'membership_team_name',
+        local: <%= @game.team_names.to_json.html_safe %>
+      });
+    </script>
+  <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= form.submit %>
   </div>
 <% end %>
