@@ -1,11 +1,14 @@
 class DashboardController < ApplicationController
-  def index
+  before_action :get_game
+  def get_game
+    @game = Game.find(params['game_id'] || Game.default_game_id)
+  end
 
+  def index
   end
 
   def next_game
     # TODO: get next game this player is signed up for, or redirect to list of games
-    @game = Game.default_game
     @team = @current_user.team(@game)
 
     unless @team
@@ -26,20 +29,18 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def show_teams
-    @game = Game.find(params['game_id'])
     @teams = @game.teams
   end
 
   def join_team
-    game = Game.find(params['game_id'])
     if params['team_id']
       team = Team.find(params['team_id'])
     else
       team_name = params['team_name']
       normalized_team_name = Team.normalize_name(params['team_name'])
-      team = Team.find_by(game: game, normalized_name: normalized_team_name)
+      team = Team.find_by(game: @game, normalized_name: normalized_team_name)
       unless team
-        team = Team.create(game: game, name: team_name)
+        team = Team.create(game: @game, name: team_name)
       end
     end
     if team
@@ -56,12 +57,10 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def manage_team
-    @game = Game.find(params['game_id'])
     @team = @current_user.team(@game)
   end
 
   def leave_team
-    @game = Game.find(params['game_id'])
     @team = @current_user.team(@game)
     membership = @current_user.membership
     if membership.team == @team
@@ -75,7 +74,6 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def play
-    @game = Game.find(params['game_id'] || Game.default_game_id)
     @team = @current_user.team(@game)
     # toggling between 'all' and 'only uncompleted'
     @filter_status = params['filter_status']
@@ -93,5 +91,8 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def leaderboard
+    @photos = Photo.where(game: @game, rejected: false).includes(:user).includes(:mission)
+    @missions_by_team = Hash[@photos.group_by{|p| p.user.team(@game)}.map {|team, photos| [team, photos.group_by(&:mission).map{|m, ph| m}.uniq]}]
+    @total_by_team = Hash[@missions_by_team.map {|t, m| [t, m.map(&:points).sum]}]
   end
 end

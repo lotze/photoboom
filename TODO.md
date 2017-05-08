@@ -1,7 +1,6 @@
 == Needed ==
-* javascript timer to reload/transition page when game begins or ends
+* javascript timer to reload/transition dashboard page when game begins or ends (maybe a partial or template?)
 
-* leaderboard: display scores for each team
 * slideshow all photos
 * display task title, team with photos in slideshow
 
