@@ -41,6 +41,16 @@ class Game < ActiveRecord::Base
     return self.name
   end
 
+  def time_remaining
+    if upcoming?
+      return self.starts_at - Time.now
+    elsif in_progress?
+      return self.ends_at - Time.now
+    else
+      return nil
+    end
+  end
+
   def upcoming?
     Time.now < self.starts_at
   end

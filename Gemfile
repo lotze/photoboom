@@ -38,6 +38,7 @@ gem 'jbuilder', '>= 1.2'
 
 group :development do
   gem 'seed_dump'
+  gem 'foreman'
 end
 
 group :doc do

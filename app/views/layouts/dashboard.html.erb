@@ -1,0 +1,24 @@
+<% content_for :content do %>
+  <% @game ||= nil %>
+  <% if @game.try(:time_remaining) %>
+  <div id="countdown">time remaining...</div>
+    <script>
+    function timedRefresh(timeoutPeriod) {
+       var timer = setInterval(function() {
+       if (timeoutPeriod > 0) {
+           timeoutPeriod -= 1;
+           document.getElementById("countdown").innerHTML = humanizeDuration(timeoutPeriod * 1000, { largest: 2 }) + " remaining...";
+       } else {
+           clearInterval(timer);
+                // window.location.href = window.location.href;
+                window.location.href ='/next_game';
+           };
+       }, 1000);
+    };
+    timedRefresh(<%= @game.time_remaining.round %>);
+    </script>
+  <% end %>
+  <%= yield %>
+<% end %>
+
+<%= render template: "layouts/application" %>

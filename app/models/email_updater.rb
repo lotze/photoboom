@@ -15,7 +15,7 @@ class EmailUpdater
       body = message.multipart? ? (message.text_part ? message.text_part.body.decoded : nil) : message.body.decoded
 
       yield email, ts, subject, body, message.attachments
-      
+
       if Rails.env.development?
         # for testing, mark as unseen
         imap.store(message_id, "-FLAGS", [:Seen])
@@ -26,7 +26,7 @@ class EmailUpdater
     end
     begin
       imap.logout()
-      imap.disconnect() 
+      imap.disconnect()
     rescue Exception => e
     end
   end
@@ -64,7 +64,7 @@ class EmailUpdater
 
       # identify mission
       mission_id = subject[/\d+/]
-      mission = Mission.find_by(priority: mission_id)
+      mission = Mission.find_by(game_id: game.id, priority: mission_id)
       # if cannot identify mission, email sender and organizer with error
       if !misson
         begin

@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container-fluid">
-  <%= yield %>
+  <%= content_for?(:content) ? yield(:content) : yield %>
 </div>
 </body>
 </html>
