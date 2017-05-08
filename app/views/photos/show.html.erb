@@ -24,5 +24,13 @@
   <%= @photo.notes %>
 </p>
 
+<p>Reject photo?
+<br /><%= form_tag(reject_photo_path) do %>
+  <%= hidden_field_tag :id, @photo.id %>
+  <%= text_field_tag :notes %>
+  <%= submit_tag 'Reject' %>
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %>

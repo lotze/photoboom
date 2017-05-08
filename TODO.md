@@ -5,9 +5,6 @@
 * slideshow all photos
 * display task title, team with photos in slideshow
 
-* admin interface to reject photos
-** emails sender with rejection note
-
 == Optional ==
 * enforce maximum team size?
 * enforce starts-at, don't allow showing missions beforehand

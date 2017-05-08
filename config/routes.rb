@@ -39,6 +39,7 @@ Photoboom::Application.routes.draw do
   resources :memberships
   match '/teams/:id/add_member', to: 'teams#add_member', via: [:get, :post], as: :add_member
   match '/teams/:id/remove_member', to: 'teams#remove_member', via: [:get, :post], as: :remove_member
+  post '/photos/reject', to: 'photos#reject', as: :reject_photo
 
   # TODO: eventually, go back to landing#index to let people sign up for or start a game
   # root 'landing#index'

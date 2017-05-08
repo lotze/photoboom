@@ -1,11 +1,11 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy, :reject]
   before_action :require_admin, except: [:create]
 
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    @photos = Photo.all.includes(:mission).includes(:user)
   end
 
   # GET /photos/1
@@ -60,6 +60,11 @@ class PhotosController < ApplicationController
       format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def reject
+    @photo.reject!(params['notes'])
+    redirect_to photos_path
   end
 
   private

@@ -27,4 +27,10 @@ class NoticeMailer < ApplicationMailer
          subject: "Missing photos! (was Re: #{subject})")
   end
 
+  def rejected_photo(photo, notes)
+    @photo = photo
+    @notes = notes
+    mail(to: photo.user.email,
+         subject: "Photo for #{photo.mission} was rejected")
+  end
 end
