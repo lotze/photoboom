@@ -35,7 +35,7 @@ class EmailUpdater
     gmail_login = ENV['GMAIL_LOGIN']
     gmail_password = ENV['GMAIL_PASSWORD']
 
-    get_with_imap(gmail_login, gmail_password) do |email, ts, subject, body attachments|
+    get_with_imap(gmail_login, gmail_password) do |email, ts, subject, body, attachments|
       # identify game (just default Game)
       game = Game.default_game
 
