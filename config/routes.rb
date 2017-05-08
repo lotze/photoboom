@@ -1,5 +1,5 @@
 Photoboom::Application.routes.draw do
-  get '/dashboard', to: 'dashboard#index', as: :dashboard
+  get '/dashboard', to: 'dashboard#next_game', as: :dashboard
   get '/next_game', to: 'dashboard#next_game', as: :next_game
   get '/show_teams', to: 'dashboard#show_teams', as: :show_teams
   get '/join_team', to: 'dashboard#join_team', as: :join_team
