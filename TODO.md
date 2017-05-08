@@ -1,5 +1,5 @@
 == Needed ==
-* rake task to check google and import photos
+* rake task should send emails
 ** email submitter with error if the subject line can't be parsed
 ** email admin if photos are not from a user with a team for this game (but still create user)
 

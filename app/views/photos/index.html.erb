@@ -5,10 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Game</th>
       <th>Mission</th>
       <th>User</th>
-      <th>Resource location</th>
       <th>Notes</th>
       <th colspan="3"></th>
     </tr>
@@ -17,10 +17,10 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= photo.game_id %></td>
-        <td><%= photo.mission_id %></td>
-        <td><%= photo.user_id %></td>
-        <td><%= photo.resource_location %></td>
+        <td><%= image_tag photo.photo.url %></td>
+        <td><%= photo.game.name %></td>
+        <td><%= photo.mission.name %></td>
+        <td><%= photo.user.name %></td>
         <td><%= photo.notes %></td>
         <td><%= link_to 'Show', photo %></td>
         <td><%= link_to 'Edit', edit_photo_path(photo) %></td>

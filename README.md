@@ -14,6 +14,10 @@ AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_REGION
 
+To run the rake task to check a gmail account and download emailed photos, you will need to set
+GMAIL_LOGIN
+GMAIL_PASSWORD
+
 To run using the same method as will be run on heroku (including environment settings), run:
 RACK_ENV=development PORT=3000 foreman start
 
