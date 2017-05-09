@@ -35,7 +35,7 @@ Mission.create([
 
 
 Photo.create([
-  { :user_id => nil, :game_id => nil, :mission_id => nil, :resource_location => nil, :rating => nil, :created_at => nil, :updated_at => nil }
+  { :user_id => nil, :game_id => nil, :mission_id => nil, :created_at => nil, :updated_at => nil }
 ])
 
 

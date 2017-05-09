@@ -8,6 +8,12 @@ class Membership < ActiveRecord::Base
     self.is_admin = false if self.is_admin.nil?
   end
 
+  after_create :update_photos
+  def update_photos
+    photos = Photos.where(user: user, game: game)
+    photos.update_all(team: team)
+  end
+
   def team_name
     if team.nil?
       return ''

@@ -2,6 +2,7 @@ class Photo < ActiveRecord::Base
   belongs_to :game
   belongs_to :mission
   belongs_to :user
+  belongs_to :team
 
   has_attached_file :photo, styles: {thumb: "100x100#"}
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -14,10 +15,5 @@ class Photo < ActiveRecord::Base
     rescue => e
       Rails.logger.warn("Could not email for rejecting photo #{self}: #{e}")
     end
-  end
-
-  # shortcut function
-  def team
-    user.team(game)
   end
 end

@@ -1,6 +1,4 @@
 == Desired ==
-* add denormalized team_id to photos? (and update a user's photos when a user gets a new team?)
-** use in slideshow, leaderboard, game.make_zip_file
 
 == Optional ==
 * developer auth method for development
@@ -20,9 +18,10 @@
 * auto svg/pdf of printable mission list
 * allow buying tickets to a game via Stripe
 * teams have leaders?
-* enforce maximum team size?
 ** rename your team
 ** invite others via email to join the game (and your team)
+* enforce maximum team size?
 * write to Google spreadsheet? read from Google spreadsheet? https://github.com/gimite/google-drive-ruby
 * group missions into sections/themes
-* check photo metadata to look for previously-taken photos
+* check photo metadata to look for submitted photos taken before the game
+* ability for players to vote on photos (time after game ends)

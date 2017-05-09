@@ -10,11 +10,12 @@ class EmailUpdater
       msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
       message = Mail.new(msg)
       email = message.from.length > 0 ? message.from.try(:first) : mission.from.to_s
+      display_name = message[:from].try(:display_names).try(:first) || email.sub(/@.*/, '')
       subject = message.subject
       ts = message.date
       body = message.multipart? ? (message.text_part ? message.text_part.body.decoded : nil) : message.body.decoded
 
-      yield email, ts, subject, body, message.attachments
+      yield display_name, email, ts, subject, body, message.attachments
 
       if Rails.env.development?
         # for testing, mark as unseen
@@ -35,7 +36,7 @@ class EmailUpdater
     gmail_login = ENV['GMAIL_LOGIN']
     gmail_password = ENV['GMAIL_PASSWORD']
 
-    get_with_imap(gmail_login, gmail_password) do |email, ts, subject, body, attachments|
+    get_with_imap(gmail_login, gmail_password) do |display_name, email, ts, subject, body, attachments|
       # identify game (just default Game)
       game = Game.default_game
 
@@ -43,7 +44,7 @@ class EmailUpdater
       user = User.find_by(email: email)
       unless user
         # if no user, create
-        user = User.create(email: email, name: email.sub(/@.*/, ''))
+        user = User.create(email: email, name: display_name)
         # email organizer to notify
         begin
           NoticeMailer.new_user(user, game).deliver_now
@@ -85,7 +86,7 @@ class EmailUpdater
             end
             image_file.original_filename = attachment.filename
             image_file.content_type = attachment.content_type
-            Photo.create(user: user, game: game, mission: mission, photo: image_file, notes: body[0..255], submitted_at: ts)
+            Photo.create(user: user, game: game, team: team, mission: mission, photo: image_file, notes: body[0..255], submitted_at: ts)
             # # in case that starts failing, code to write to tmp file and then store
             # random_filename = "photo_#{Time.now.to_i}_#{rand(5000)}"
             # tmp_file = File.new(random_filename, "wb")

@@ -25,7 +25,9 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params.merge(user_id: current_user.id, submitted_at: Time.now))
+    p = photo_params
+    @game = Game.find(p['game_id'])
+    @photo = Photo.new(p.merge(user: current_user, team: current_user.team(@game), submitted_at: Time.now))
 
     respond_to do |format|
       if @photo.save

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509222406) do
+ActiveRecord::Schema.define(version: 20170509230649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,6 @@ ActiveRecord::Schema.define(version: 20170509222406) do
     t.string "name", null: false
     t.datetime "starts_at", null: false
     t.datetime "ends_at", null: false
-    t.datetime "voting_ends_at", null: false
-    t.integer "cost", null: false
-    t.string "currency", null: false
     t.boolean "is_public", null: false
     t.integer "min_team_size", null: false
     t.integer "max_team_size", null: false
@@ -85,7 +82,6 @@ ActiveRecord::Schema.define(version: 20170509222406) do
     t.integer "user_id"
     t.integer "game_id"
     t.integer "mission_id"
-    t.float "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "bonus_points"
@@ -96,10 +92,10 @@ ActiveRecord::Schema.define(version: 20170509222406) do
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
     t.datetime "submitted_at"
-    t.index ["game_id", "rating"], name: "index_photos_on_game_id_and_rating"
+    t.integer "team_id"
     t.index ["game_id", "rejected"], name: "index_photos_on_game_id_and_rejected"
-    t.index ["mission_id", "rating"], name: "index_photos_on_mission_id_and_rating"
-    t.index ["user_id", "rating"], name: "index_photos_on_user_id_and_rating"
+    t.index ["mission_id"], name: "index_photos_on_mission_id"
+    t.index ["team_id", "rejected"], name: "index_photos_on_team_id_and_rejected"
   end
 
   create_table "teams", id: :serial, force: :cascade do |t|
