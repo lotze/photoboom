@@ -1,6 +1,4 @@
 == Needed ==
-* enforce unique mission identifiers per game (priority numbers; rename to id numbers)
-* drag-and-drop reordering mission priorities
 
 == Optional ==
 * add denormalized team_id to photos? (and update a user's photos when a user gets a new team?)
@@ -12,12 +10,14 @@
 * developer auth method for development
 * bonus points by admin
 ** display bonuses in slideshow
+* enforce unique mission identifiers per game (priority numbers; rename to id numbers)
 
 ==Future==
 * Allow any admin to create and manage their own games
 ** when dealing with most things, admin is on game level rather than overall; can't muck with someone else's game
 ** set starting location
 ** email login info settable by game
+** easier mission management
 * auto svg/pdf of printable mission list
 * allow buying tickets to a game via Stripe
 * teams have leaders?

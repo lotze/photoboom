@@ -1,0 +1,21 @@
+<%= form_tag missions_change_order_path do |f| %>
+<%= hidden_field_tag :id, @game.id %>
+<ol class='mission_list'>
+  <% @missions.each do |mission| %>
+    <li data-field="mission_<%= mission.id %>"><%= mission.name %>
+    <%= hidden_field_tag "mission_ids[]", mission.id %>
+    </li>
+  <% end %>
+</ol>
+<%= submit_tag %>
+<% end %>
+<script>
+
+$(function  () {
+  $("ol.mission_list").sortable({'afterMove':
+    function ($placeholder, container, $closestItemOrContainer) {
+
+    }
+  });
+});
+</script>

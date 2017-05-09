@@ -5,7 +5,7 @@ class Game < ActiveRecord::Base
 
   has_many :missions
 
-  scope :publicly_available, -> { where(is_public: false) }
+  scope :publicly_available, -> { where(is_public: true) }
 
   after_initialize :init
 
@@ -75,7 +75,7 @@ class Game < ActiveRecord::Base
     photos.each do |photo|
       mission = photo.mission
       # download the photo into photo_dir
-      filename = "#{photo_dir}/#{photo.team.normalized_name}_#{mission.priority}_#{photo.created_at.strftime('%Y%m%d%H%M%S')}.#{MIME::Types[photo.photo_content_type].first.extensions.first}"
+      filename = "#{photo_dir}/#{photo.team.normalized_name}_#{mission.codenum}_#{photo.created_at.strftime('%Y%m%d%H%M%S')}.#{MIME::Types[photo.photo_content_type].first.extensions.first}"
       if photo.photo.options[:storage] == :filesystem
         FileUtils.copy(photo.photo.path, filename)
       else

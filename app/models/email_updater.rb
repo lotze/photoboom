@@ -64,7 +64,7 @@ class EmailUpdater
 
       # identify mission
       mission_id = subject[/\d+/]
-      mission = Mission.find_by(game_id: game.id, priority: mission_id)
+      mission = Mission.find_by(game_id: game.id, codenum: mission_id)
       # if cannot identify mission, email sender and organizer with error
       if !misson
         begin

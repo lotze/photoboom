@@ -2,6 +2,24 @@ class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy]
   before_action :require_admin
 
+  def order
+    @game = Game.find(params['id'])
+    @missions = @game.missions
+  end
+
+  def change_order
+    # get missions and new codenums
+    @game = Game.find(params['id'])
+    params["mission_ids"].each_with_index do |mission_id, new_codenum|
+      mission = Mission.find(mission_id)
+      if mission.codenum != new_codenum + 1
+        mission.update_attributes!(codenum: new_codenum + 1)
+      end
+    end
+    flash[:notice] = "Successfully reordered!"
+    redirect_to missions_order_path
+  end
+
   # GET /missions
   # GET /missions.json
   def index
@@ -70,6 +88,6 @@ class MissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mission_params
-      params.require(:mission).permit(:name, :description, :game_id, :points, :priority, :avatar)
+      params.require(:mission).permit(:name, :description, :game_id, :points, :codenum, :avatar)
     end
 end

@@ -1,3 +1,20 @@
 // Place all the styles related to the Missions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+ol.mission_list li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.mission_list li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
