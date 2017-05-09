@@ -1,13 +1,14 @@
 == Desired ==
+* Make it pretty
+* bonus points by admin
+** display bonuses in slideshow
+* auto svg/pdf of printable mission list
+** enforce unique mission identifiers per game (priority numbers; rename to id numbers)
 
 == Optional ==
 * developer auth method for development
-* bonus points by admin
-** display bonuses in slideshow
-* enforce unique mission identifiers per game (priority numbers; rename to id numbers)
 
 ==Future==
-* Make it pretty
 * Test coverage
 * Multi-game
 * Allow any admin to create and manage their own games
@@ -15,7 +16,6 @@
 ** set starting location
 ** email login info settable by game
 ** easier mission management
-* auto svg/pdf of printable mission list
 * allow buying tickets to a game via Stripe
 * teams have leaders?
 ** rename your team

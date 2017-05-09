@@ -37,6 +37,10 @@ gem 'rubyzip'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '>= 1.2'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'seed_dump'
   gem 'foreman'
