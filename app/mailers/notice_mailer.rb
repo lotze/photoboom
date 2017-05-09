@@ -8,22 +8,23 @@ class NoticeMailer < ApplicationMailer
   def missing_team(user, game)
     @user = user
     @game = game
-    mail(to: @game.organizer.email,
+    mail(to: game.organizer.email,
          subject: "Missing team for #{user.email}")
   end
 
   def missing_mission(user, game, subject)
-    mail(to: [@user.email, game.organizer.email],
+    @subject = subject
+    mail(to: [user.email, game.organizer.email],
          subject: "Missing mission number! (was Re: #{subject})")
   end
 
   def photos_received(user, game, mission, subject)
-    mail(to: @user.email,
+    mail(to: user.email,
          subject: "Re: #{subject}")
   end
 
   def no_photos_received(user, game, mission, subject)
-    mail(to: [@user.email, game.organizer.email],
+    mail(to: [user.email, game.organizer.email],
          subject: "Missing photos! (was Re: #{subject})")
   end
 

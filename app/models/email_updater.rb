@@ -54,7 +54,7 @@ class EmailUpdater
       end
 
       # identify team
-      team = User.team
+      team = user.team(game)
       unless team
         begin
           NoticeMailer.missing_team(user, game).deliver_now
@@ -67,7 +67,7 @@ class EmailUpdater
       mission_id = subject[/\d+/]
       mission = Mission.find_by(game_id: game.id, codenum: mission_id)
       # if cannot identify mission, email sender and organizer with error
-      if !misson
+      if !mission
         begin
           NoticeMailer.missing_mission(user, game, subject).deliver_now
         rescue => e
@@ -102,7 +102,7 @@ class EmailUpdater
         if photos.length > 0
           # success, email sender :)
           begin
-            NoticeMailer.photo_received(user, game, mission, subject).deliver_now
+            NoticeMailer.photos_received(user, game, mission, subject).deliver_now
             photos.each do |photo|
               if photo.submitted_at > game.ends_at
                 photo.reject!('The game has ended!')

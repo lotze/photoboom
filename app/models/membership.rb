@@ -10,8 +10,8 @@ class Membership < ActiveRecord::Base
 
   after_create :update_photos
   def update_photos
-    photos = Photos.where(user: user, game: game)
-    photos.update_all(team: team)
+    photos = Photo.where(user: user, game: game)
+    photos.update_all(team_id: team.id)
   end
 
   def team_name

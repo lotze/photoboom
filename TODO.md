@@ -1,3 +1,6 @@
+== Test ==
+End-of-game sending (via email and upload)
+
 == Desired ==
 * Make it pretty
 * bonus points by admin
@@ -25,3 +28,4 @@
 * group missions into sections/themes
 * check photo metadata to look for submitted photos taken before the game
 * ability for players to vote on photos (time after game ends)
+* graph of team points positions over time

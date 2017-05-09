@@ -28,9 +28,6 @@ class Game < ActiveRecord::Base
     now_time = Time.now()
     self.starts_at ||= now_time + 1.day - now_time.min.minutes - now_time.sec.seconds
     self.ends_at ||= self.starts_at + 3.hours
-    self.voting_ends_at ||= self.ends_at + 1.hour
-    self.cost ||= 0
-    self.currency ||= 'USD'
     self.is_public = true if self.is_public.nil?
     self.min_team_size ||= 3
     self.max_team_size ||= 6

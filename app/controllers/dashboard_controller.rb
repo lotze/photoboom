@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   before_action :get_game
+  # TODO: get next game this player is signed up for, or redirect to list of games
   def get_game
     @game = Game.find(params['game_id'] || Game.default_game_id)
   end
@@ -8,7 +9,6 @@ class DashboardController < ApplicationController
   end
 
   def next_game
-    # TODO: get next game this player is signed up for, or redirect to list of games
     @team = @current_user.team(@game)
 
     unless @team
@@ -101,7 +101,7 @@ class DashboardController < ApplicationController
       return redirect_to next_game_path
     end
 
-    @photos = Photo.where(game: @game, rejected: false).includes(:user).includes(:mission)
+    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission)
     @missions_by_team = Hash[@photos.group_by{|p| p.team}.map {|team, photos| [team, photos.group_by(&:mission).map{|m, ph| m}.uniq]}]
     @total_by_team = Hash[@missions_by_team.map {|t, m| [t, m.map(&:points).sum]}]
   end
@@ -112,6 +112,6 @@ class DashboardController < ApplicationController
       return redirect_to next_game_path
     end
 
-    @photos = Photo.where(game: @game, rejected: false).includes(:user).includes(:mission)
+    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission)
   end
 end
