@@ -74,6 +74,11 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def play
+    if @game.starts_at > Time.now && !current_user.admin
+      flash[:error] = "Game has not yet started!"
+      return redirect_to next_game_path
+    end
+
     @team = @current_user.team(@game)
     # toggling between 'all' and 'only uncompleted'
     @filter_status = params['filter_status']
@@ -91,12 +96,22 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def leaderboard
+    if @game.ends_at > Time.now && !current_user.admin
+      flash[:error] = "Game has not yet ended!"
+      return redirect_to next_game_path
+    end
+
     @photos = Photo.where(game: @game, rejected: false).includes(:user).includes(:mission)
     @missions_by_team = Hash[@photos.group_by{|p| p.team}.map {|team, photos| [team, photos.group_by(&:mission).map{|m, ph| m}.uniq]}]
     @total_by_team = Hash[@missions_by_team.map {|t, m| [t, m.map(&:points).sum]}]
   end
 
   def slideshow
+    if @game.ends_at > Time.now && !current_user.admin
+      flash[:error] = "Game has not yet ended!"
+      return redirect_to next_game_path
+    end
+
     @photos = Photo.where(game: @game, rejected: false).includes(:user).includes(:mission)
   end
 end

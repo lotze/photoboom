@@ -25,12 +25,18 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params.merge(user_id: current_user.id))
+    @photo = Photo.new(photo_params.merge(user_id: current_user.id, submitted_at: Time.now))
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to play_path(game_id: @photo.game_id), notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
+        if @photo.submitted_at > @photo.game.ends_at
+          @photo.reject!('The game has ended!')
+          format.html { redirect_to play_path(game_id: @photo.game_id), error: 'Error uploading photo! The game has already ended!' }
+          format.json { render json: @photo.errors.merge(error: :game_over), status: :unprocessable_entity }
+        else
+          format.html { redirect_to play_path(game_id: @photo.game_id), notice: 'Photo was successfully created.' }
+          format.json { render :show, status: :created, location: @photo }
+        end
       else
         format.html { redirect_to play_path(game_id: @photo.game_id), error: 'Error uploading photo!' }
         format.json { render json: @photo.errors, status: :unprocessable_entity }

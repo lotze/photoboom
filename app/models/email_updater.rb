@@ -85,13 +85,13 @@ class EmailUpdater
             end
             image_file.original_filename = attachment.filename
             image_file.content_type = attachment.content_type
-            Photo.create(user: user, game: game, mission: mission, photo: image_file, notes: body[0..255])
+            Photo.create(user: user, game: game, mission: mission, photo: image_file, notes: body[0..255], submitted_at: ts)
             # # in case that starts failing, code to write to tmp file and then store
             # random_filename = "photo_#{Time.now.to_i}_#{rand(5000)}"
             # tmp_file = File.new(random_filename, "wb")
             # tmp_file.write(attachment.decoded)
             # tmp_file.close
-            # Photo.create(user: user, game: game, mission: mission, photo: File.open(tmp_file, 'r'), notes: body[0..255])
+            # Photo.create(user: user, game: game, mission: mission, photo: File.open(tmp_file, 'r'), notes: body[0..255], submitted_at: ts)
           end
         rescue => e
           Rails.logger.warn("Error processing photos for #{user}/#{subject}: #{e}")
@@ -102,6 +102,11 @@ class EmailUpdater
           # success, email sender :)
           begin
             NoticeMailer.photo_received(user, game, mission, subject).deliver_now
+            photos.each do |photo|
+              if photo.submitted_at > game.ends_at
+                photo.reject!('The game has ended!')
+              end
+            end
           rescue => e
             Rails.logger.warn("Could not email for successful photo #{user}/#{subject}: #{e}")
           end
