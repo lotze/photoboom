@@ -1,4 +1,9 @@
-<ul>
+<% if @game.zip_file? %>
+<p>
+  <%= link_to 'Download all photos', @game.zip_file.url %>
+</p>
+<% end %>
+<p><ul>
   <% @total_by_team.sort_by {|_team, score| -score}.each do |team, score| %>
   <li><%= team.name %>: <%= score %> points!<ul>
     <% @missions_by_team[team].sort_by(&:priority).each do |mission| %>
@@ -6,4 +11,4 @@
     <% end %>
   </ul></li>
   <% end %>
-</ul>
+</ul></p>

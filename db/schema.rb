@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507222517) do
+ActiveRecord::Schema.define(version: 20170508223916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(version: 20170507222517) do
     t.integer "max_team_size", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "zip_file_file_name"
+    t.string "zip_file_content_type"
+    t.integer "zip_file_file_size"
+    t.datetime "zip_file_updated_at"
     t.index ["is_public", "starts_at"], name: "index_games_on_is_public_and_starts_at"
     t.index ["organizer_id"], name: "index_games_on_organizer_id"
   end

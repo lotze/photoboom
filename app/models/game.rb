@@ -11,6 +11,9 @@ class Game < ActiveRecord::Base
 
   validates :name, :presence => true
 
+  has_attached_file :zip_file
+  validates_attachment_content_type :zip_file, :content_type => ["application/zip", "application/x-zip", "application/x-zip-compressed"]
+
   # default game id to 1
   def Game.default_game_id
     1
@@ -61,5 +64,37 @@ class Game < ActiveRecord::Base
 
   def over?
     Time.now >= self.ends_at
+  end
+
+  def make_zip_file
+    require 'open-uri'
+    photos = Photo.where(game: self, rejected: false).includes(:user).includes(:mission)
+    photo_dir = Dir.mktmpdir('photos')
+
+    files = []
+    photos.each do |photo|
+      mission = photo.mission
+      # download the photo into photo_dir
+      filename = "#{photo_dir}/#{photo.team.normalized_name}_#{mission.priority}_#{photo.created_at.strftime('%Y%m%d%H%M%S')}.#{MIME::Types[photo.photo_content_type].first.extensions.first}"
+      if photo.photo.options[:storage] == :filesystem
+        FileUtils.copy(photo.photo.path, filename)
+      else
+        IO.copy_stream(open(photo.photo.url, 'rb'), filename)
+      end
+      files << filename
+    end
+    # make zip file
+    require 'zip'
+    zip_dir = Dir.mktmpdir('zip')
+    zip_file_name = "#{zip_dir}/game_#{self.id}.zip"
+    Zip::File.open(zip_file_name, Zip::File::CREATE) do |zipfile|
+      files.each do |filename|
+       # Add the file to the zip
+        zipfile.add("game_#{self.id}/#{File.basename(filename)}", filename)
+      end
+    end
+    # upload zip file
+    self.zip_file = File.open(zip_file_name, 'r')
+    save
   end
 end

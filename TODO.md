@@ -3,10 +3,8 @@
 * drag-and-drop reordering mission priorities
 
 == Optional ==
-* Allow downloading of all photos as zipfile
-* resize photos to fit a certain screen size, use that in slideshow
-** or maybe just set width and height in the slideshow html?
 * add denormalized team_id to photos? (and update a user's photos when a user gets a new team?)
+** use in slideshow, leaderboard, game.make_zip_file
 * enforce maximum team size?
 * enforce starts-at, don't allow showing missions or submitting beforehand
 * enforce ends-at, don't allow submitting after ends-at

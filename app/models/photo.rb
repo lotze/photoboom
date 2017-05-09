@@ -15,4 +15,9 @@ class Photo < ActiveRecord::Base
       Rails.logger.warn("Could not email for rejecting photo #{self}: #{e}")
     end
   end
+
+  # shortcut function
+  def team
+    user.team(game)
+  end
 end
