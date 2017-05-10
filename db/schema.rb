@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509230649) do
+ActiveRecord::Schema.define(version: 20170510213044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170509230649) do
     t.datetime "photo_updated_at"
     t.datetime "submitted_at"
     t.integer "team_id"
+    t.index ["game_id", "created_at"], name: "index_photos_on_game_id_and_created_at"
     t.index ["game_id", "rejected"], name: "index_photos_on_game_id_and_rejected"
     t.index ["mission_id"], name: "index_photos_on_mission_id"
     t.index ["team_id", "rejected"], name: "index_photos_on_team_id_and_rejected"

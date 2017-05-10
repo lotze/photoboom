@@ -1,11 +1,16 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_game, only: [:show, :edit, :update, :destroy, :recent_photos]
   before_action :require_admin
+
+  def recent_photos
+    @photos = @game.photos.order(created_at: :desc).includes(:team).includes(:mission).limit(params['n'] || 20)
+    render 'photos/index'
+  end
 
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+    @games = Game.all.includes(:team).includes(:mission)
   end
 
   # GET /games/1

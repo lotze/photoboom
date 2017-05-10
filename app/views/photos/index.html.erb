@@ -7,7 +7,7 @@
     <tr>
       <th></th>
       <th>Mission</th>
-      <th>User</th>
+      <th>Team</th>
       <th>Rejected?</th>
       <th>Notes</th>
       <th colspan="3"></th>
@@ -17,9 +17,9 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= image_tag photo.photo.url %></td>
+        <td><%= image_tag photo.photo.url(:thumb) %></td>
         <td><%= photo.mission.name %></td>
-        <td><%= photo.user.name %></td>
+        <td><%= photo.team.try(:name) %></td>
         <td><%= photo.rejected ? 'X' : '' %></td>
         <td><%= photo.notes %></td>
         <td><%= link_to 'Show', photo %></td>

@@ -1,5 +1,8 @@
 == Test ==
-End-of-game sending (via email and upload)
+
+== Important ==
+* End of game should send people to a "Hurray! Come to Candela!" page instead of leaderboard (there should be a chance for last photos to come in, and for dramatic reveal)
+* /play should automatically redirect players if the game is over
 
 == Desired ==
 * Make it pretty
@@ -7,6 +10,7 @@ End-of-game sending (via email and upload)
 ** display bonuses in slideshow
 * auto svg/pdf of printable mission list
 ** enforce unique mission identifiers per game (priority numbers; rename to id numbers)
+* Email checks every minute (or 30 seconds)?
 
 == Optional ==
 * developer auth method for development

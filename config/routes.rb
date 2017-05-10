@@ -43,6 +43,7 @@ Photoboom::Application.routes.draw do
   post '/photos/reject', to: 'photos#reject', as: :reject_photo
   get '/games/:id/order', to: 'missions#order', as: :missions_order
   post '/games/:id/order', to: 'missions#change_order', as: :missions_change_order
+  get '/games/:id/recent', to: 'games#recent_photos', as: :recent_photos
 
   # TODO: eventually, go back to landing#index to let people sign up for or start a game
   # root 'landing#index'
