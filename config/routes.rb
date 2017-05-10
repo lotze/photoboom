@@ -7,6 +7,7 @@ Photoboom::Application.routes.draw do
   get '/manage_team', to: 'dashboard#manage_team', as: :manage_team
 
   get '/play', to: 'dashboard#play', as: :play
+  get '/review', to: 'dashboard#review', as: :review
   get '/leaderboard', to: 'dashboard#leaderboard', as: :leaderboard
   get '/slideshow', to: 'dashboard#slideshow', as: :slideshow
 

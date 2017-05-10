@@ -63,6 +63,10 @@ class Game < ActiveRecord::Base
     Time.now >= self.ends_at
   end
 
+  def long_over?
+    Time.now >= self.ends_at + 1.hour
+  end
+
   def make_zip_file
     require 'open-uri'
     photos = Photo.where(game: self, rejected: false).includes(:user).includes(:mission)

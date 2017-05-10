@@ -15,12 +15,14 @@ class DashboardController < ApplicationController
       return redirect_to show_teams_path(game_id: @game.id)
     end
 
-    if @game.in_progress?
-      redirect_to play_path(game_id: @game.id)
-    elsif @game.over?
-      redirect_to leaderboard_path(game_id: @game.id)
-    elsif @game.upcoming?
+    if @game.upcoming?
       redirect_to manage_team_path(game_id: @game.id)
+    elsif @game.long_over?
+      redirect_to leaderboard_path(game_id: @game.id)
+    elsif @game.over?
+      redirect_to review_path(game_id: @game.id)
+    else
+      redirect_to play_path(game_id: @game.id)
     end
   end
 
@@ -73,9 +75,15 @@ class DashboardController < ApplicationController
   # during-game: show missions and enable upload
   ##################################################################
 
+  def review
+    @team = @current_user.team(@game)
+    @team_photos = Photo.where(game: @game, team: @team, rejected: false).includes(:mission)
+    @missions = @team_photos.map {|p| p.mission}.uniq
+  end
+
   def play
-    if @game.starts_at > Time.now && !current_user.admin
-      flash[:error] = "Game has not yet started!"
+    if !@game.in_progress? && !current_user.admin
+      flash[:error] = "Game is not in progress!"
       return redirect_to next_game_path
     end
 
@@ -85,8 +93,8 @@ class DashboardController < ApplicationController
     if @filter_status == 'all'
       @missions = @game.missions
     else
-      @team_photos = Photo.where(game: @game, user: @team.users, rejected: false)
-      completed_mission_ids = @team_photos.map {|p| p.mission_id}.uniq
+      team_photos = Photo.where(game: @game, team: @team, rejected: false)
+      completed_mission_ids = team_photos.map {|p| p.mission_id}.uniq
       @missions = @game.missions.find_all {|m| !completed_mission_ids.include?(m.id)}
     end
   end

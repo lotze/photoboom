@@ -1,0 +1,20 @@
+<p>
+  <h1><%= @game.name %></h1>
+</p>
+
+<% if @game.over? %>
+<p>
+The game has ended! Please head to the end location to see everyone's photos and declare the winners!
+</p>
+<% end %>
+
+<p>Your missions:<ul>
+  <% @missions.each do |mission| %>
+  <li>
+    <%= mission.name %>: <%= mission.description %>
+    <% @team_photos.find_all {|p| p.mission_id == mission.id}.each do |photo| %>
+      <br /><%= link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url) %>
+    <% end %>
+  </li>
+  <% end %>
+</ul></p>
