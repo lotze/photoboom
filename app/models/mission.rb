@@ -16,7 +16,7 @@ class Mission < ActiveRecord::Base
   before_validation :set_codenum
   def set_codenum
     unless self['codenum'] && self['codenum'] > 0
-      self['codenum'] = self.game.missions.map(&:codenum).max + 1
+      self['codenum'] = (self.game.missions.map(&:codenum).max || 0) + 1
     end
   end
 
