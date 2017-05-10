@@ -4,9 +4,9 @@
 
 <p>
 <% if @filter_status == 'all' %>
-  Currently showing all missions. <%= link_to 'Show only uncompleted.', play_path(game_id: @game.id), class: 'btn btn-info' %>
+  Currently showing all missions. <%= link_to 'Show only uncompleted.', play_path(game_id: @game.id), class: 'btn btn-default' %>
 <% else %>
-  Currently showing only uncompleted missions. <%= link_to 'Show all.', play_path(game_id: @game.id, filter_status: 'all'), class: 'btn btn-info' %>
+  Currently showing only uncompleted missions. <%= link_to 'Show all.', play_path(game_id: @game.id, filter_status: 'all'), class: 'btn btn-default' %>
 <% end %>
 </p>
 
