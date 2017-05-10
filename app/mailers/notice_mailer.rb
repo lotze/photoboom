@@ -19,6 +19,7 @@ class NoticeMailer < ApplicationMailer
   end
 
   def photos_received(user, game, mission, subject)
+    @mission = mission
     mail(to: user.email,
          subject: "Re: #{subject}")
   end
