@@ -29,3 +29,4 @@ End-of-game sending (via email and upload)
 * check photo metadata to look for submitted photos taken before the game
 * ability for players to vote on photos (time after game ends)
 * graph of team points positions over time
+* better slideshow image resizing (not hardcoded to 500px)
