@@ -3,12 +3,13 @@
 == Important ==
 
 == Desired ==
+* Admin view of recent photos
 * Make it pretty
 * bonus points by admin
 ** display bonuses in slideshow
 * Email checks every minute (or 30 seconds)?
 * auto svg/pdf of printable mission list
-** before creating, enforce unique mission codenums per game
+** when generating, enforce unique mission identifiers per game
 
 == Optional ==
 * developer auth method for development
