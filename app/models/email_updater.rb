@@ -33,6 +33,8 @@ class EmailUpdater
   end
 
   def update
+    photos = []
+
     gmail_login = ENV['GMAIL_LOGIN']
     gmail_password = ENV['GMAIL_PASSWORD']
 
@@ -64,8 +66,13 @@ class EmailUpdater
       end
 
       # identify mission
+      # try to find mission by codenum
       mission_id = subject[/\d+/]
       mission = Mission.find_by(game_id: game.id, codenum: mission_id)
+      # try to find mission by normalized name
+      if !mission
+        mission = Mission.find_by(game_id: game.id, normalized_name: Team.normalize_name(subject))
+      end
       # if cannot identify mission, email sender and organizer with error
       if !mission
         begin
@@ -76,7 +83,6 @@ class EmailUpdater
       else
         # extract photos
         images = attachments.find_all {|a| a.content_type =~ /^image\//i}
-        photos = []
         begin
           photos = images.map do |attachment|
             # create new photo for this user/mission
@@ -86,7 +92,7 @@ class EmailUpdater
             end
             image_file.original_filename = attachment.filename
             image_file.content_type = attachment.content_type
-            phoro = Photo.create(user: user, game: game, team: team, mission: mission, photo: image_file, notes: body[0..255], submitted_at: ts)
+            photo = Photo.create(user: user, game: game, team: team, mission: mission, photo: image_file, notes: body[0..255], submitted_at: ts)
             Rails.logger.info("Created photo: #{photo.id}/#{photo.mission.try(:name)} from #{email}/#{team}")
             # # in case that starts failing, code to write to tmp file and then store
             # random_filename = "photo_#{Time.now.to_i}_#{rand(5000)}"

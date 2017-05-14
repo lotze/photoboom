@@ -7,6 +7,11 @@ class Mission < ActiveRecord::Base
   has_attached_file :avatar, styles: {thumb: "100x100#"}, preserve_files: false
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+  before_validation :set_normalized_name
+  def set_normalized_name
+    self['normalized_name'] = Team.normalize_name(self['name'])
+  end
+
   # hack for single-game
   before_validation :set_game
   def set_game

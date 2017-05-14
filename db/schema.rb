@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510213044) do
+ActiveRecord::Schema.define(version: 20170514215346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,9 @@ ActiveRecord::Schema.define(version: 20170510213044) do
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer "codenum", default: 0, null: false
+    t.string "normalized_name"
     t.index ["game_id", "codenum"], name: "index_missions_on_game_id_and_codenum"
+    t.index ["game_id", "normalized_name"], name: "index_missions_on_game_id_and_normalized_name"
   end
 
   create_table "photos", id: :serial, force: :cascade do |t|
