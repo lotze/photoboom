@@ -14,6 +14,9 @@
   <% @missions.each do |mission| %>
   <li>
     <%= mission.name %>: <%= mission.description %>
+    <% (@photos_by_mission[mission.id] || []).each do |photo| %>
+    <br /><%= link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url) %>
+    <% end %>
     <br /><%= form_with(model: Photo.new, local: true, id: "form_mission_#{mission.id}") do |form| %>
       <%= form.hidden_field :game_id, value: @game.id %>
       <%= form.hidden_field :mission_id, value: mission.id %>

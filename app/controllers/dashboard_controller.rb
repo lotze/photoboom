@@ -90,10 +90,12 @@ class DashboardController < ApplicationController
     @team = @current_user.team(@game)
     # toggling between 'all' and 'only uncompleted'
     @filter_status = params['filter_status']
+    team_photos = Photo.where(game: @game, team: @team, rejected: false)
+    @photos_by_mission = {}
     if @filter_status == 'all'
+      @photos_by_mission = team_photos.group_by(&:mission_id)
       @missions = @game.missions
     else
-      team_photos = Photo.where(game: @game, team: @team, rejected: false)
       completed_mission_ids = team_photos.map {|p| p.mission_id}.uniq
       @missions = @game.missions.find_all {|m| !completed_mission_ids.include?(m.id)}
     end
