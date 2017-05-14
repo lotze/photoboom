@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all.includes(:team).includes(:mission)
+    @games = Game.all
   end
 
   # GET /games/1
@@ -80,8 +80,17 @@ class GamesController < ApplicationController
       @game = Game.find(params[:id])
     end
 
+    def parse_datetime(datetime, tz='US/Pacific')
+      # hack for dealing with slashes :s
+      datetime = "#{$3}-#{$1}-#{$2}#{$4}" if /^(\d{2})\/(\d{2})\/(\d{4})(.*)/ =~ datetime
+      ActiveSupport::TimeZone.new(tz).parse(datetime)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name, :starts_at, :ends_at, :min_team_size, :max_team_size)
+      p = params.require(:game).permit(:name, :starts_at, :ends_at, :min_team_size, :max_team_size)
+      p['starts_at'] = parse_datetime(p['starts_at'])
+      p['ends_at'] = parse_datetime(p['ends_at'])
+      return p
     end
 end

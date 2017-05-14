@@ -16,20 +16,36 @@
   <%= f.text_field :name %>
 
   <div class="well">
-    <div id="datetimepicker2" class="input-append">
-      <%= f.text_field :starts_at, 'data-format' => "MM/dd/yyyy HH:mm:ss PP" %>
-      <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-        </i>
-      </span>
+    Starts at:
+    <div class='input-group date' id='datetimepicker_starts_at'>
+        <%= f.text_field :starts_at, 'data-format': "MM/dd/yyyy HH:mm:ss PP", class: 'form-control' %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
     </div>
   </div>
+
+  <div class="well">
+    Ends at:
+    <div class='input-group date' id='datetimepicker_ends_at'>
+        <%= f.text_field :ends_at, 'data-format': "MM/dd/yyyy HH:mm:ss PP", class: 'form-control' %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+  </div>
+
   <script type="text/javascript">
     $(function() {
-      $('#datetimepicker2').datetimepicker({
-        language: 'en',
-        pick12HourFormat: true
+      value="2017-05-14 21:45:00 UTC"
+      $('#datetimepicker_starts_at').datetimepicker({
+        'sideBySide': true
       });
+      $('#datetimepicker_starts_at').data("DateTimePicker").defaultDate(moment($($('#datetimepicker_starts_at').children('input')[0]).attr('value')));
+      $('#datetimepicker_ends_at').datetimepicker({
+        'sideBySide': true
+      });
+      $('#datetimepicker_ends_at').data("DateTimePicker").defaultDate(moment($($('#datetimepicker_ends_at').children('input')[0]).attr('value')));
     });
   </script>
 

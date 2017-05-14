@@ -10,6 +10,11 @@
 * Email checks every minute (or 30 seconds)?
 * auto svg/pdf of printable mission list
 ** when generating, enforce unique mission identifiers per game
+* admin can send questions rather than rejecting photos
+** team sees those questions at the top of /play
+** team gets emailed this
+** email responses are automatically picked up
+** admin can resolve comments
 
 == Optional ==
 * developer auth method for development
