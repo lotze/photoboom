@@ -11,6 +11,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<section id="flash" class="noprint">
+    <% flash.each do |key, value| %>
+        <div class="flash <%= key %> round"><%= value %></div>
+    <% end %>
+</section>
 <div class="container-fluid">
   <%= content_for?(:content) ? yield(:content) : yield %>
 </div>
