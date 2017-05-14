@@ -4,7 +4,7 @@ class Photo < ActiveRecord::Base
   belongs_to :user
   belongs_to :team
 
-  has_attached_file :photo, styles: {thumb: "100x100#"}
+  has_attached_file :photo, styles: {thumb: "100x100#"}, preserve_files: false
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   def reject!(notes)

@@ -1,8 +1,8 @@
 class Game < ActiveRecord::Base
   belongs_to :organizer, :class_name => 'User'
-  has_many :teams
+  has_many :teams, dependent: :destroy
   has_many :users, :through => :teams
-  has_many :missions
+  has_many :missions, dependent: :destroy
   has_many :photos
 
   scope :publicly_available, -> { where(is_public: true) }

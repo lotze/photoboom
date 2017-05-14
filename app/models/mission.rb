@@ -1,9 +1,10 @@
 class Mission < ActiveRecord::Base
   belongs_to :game
+  has_many :photos, dependent: :destroy
 
   default_scope { order(codenum: :asc) }
 
-  has_attached_file :avatar, styles: {thumb: "100x100#"}
+  has_attached_file :avatar, styles: {thumb: "100x100#"}, preserve_files: false
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   # hack for single-game
