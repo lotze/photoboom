@@ -25,7 +25,7 @@
 
 <p>
   <strong>Avatar:</strong>
-  <%= image_tag @mission.avatar.url %>
+  <%= @mission.avatar.present? ? image_tag(@mission.avatar.url) : ''  %>
 </p>
 
 <%= link_to 'Edit', edit_mission_path(@mission) %> |
