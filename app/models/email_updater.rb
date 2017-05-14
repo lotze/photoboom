@@ -10,7 +10,10 @@ class EmailUpdater
       msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
       message = Mail.new(msg)
       email = message.from.length > 0 ? message.from.try(:first) : mission.from.to_s
-      display_name = message[:from].try(:display_names).try(:first) || email.sub(/@.*/, '')
+      display_name = message[:from].try(:display_names).try(:first)
+      if !display_name || display_name == email
+        display_name = email.sub(/@.*/, '')
+      end
       subject = message.subject
       ts = message.date
       body = message.multipart? ? (message.text_part ? message.text_part.body.decoded : nil) : message.body.decoded

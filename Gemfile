@@ -20,6 +20,9 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'therubyracer'
 gem 'font-awesome-rails'
 
+# use the slick jquery carousel
+gem 'jquery-slick-rails'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

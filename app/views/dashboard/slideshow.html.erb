@@ -1,21 +1,31 @@
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval=<%= Rails.env.development? ? 3000 : 5000 %>>
-  <div class="carousel-inner">
-    <% @photos.each_with_index do |photo, i| %>
-    <div class="item<%= i==0 ? ' active' : '' %>">
-      <img src="<%= photo.photo.url %>" alt="Photo <%= photo.id %>" />
-      <div class="carousel-caption">
-        <h3><%= photo.team.name %></h3>
-        <p><%= photo.mission.name %></p>
-      </div>
+<div class="slideshow">
+  <% @photos.each_with_index do |photo, i| %>
+    <div>
+      <center>
+      <% if i == 0 %>
+        <img src="<%= photo.photo.url(:slideshow) %>" alt="Photo <%= photo.id %>" />
+      <% else %>
+        <img data-lazy="<%= photo.photo.url %>" alt="Photo <%= photo.id %>" />
+      <% end %>
+      <h3><%= photo.team.name %></h3>
+      <br /><%= photo.mission.name %>
+      </center>
     </div>
-    <% end %>
-  </div>
-  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+  <% end %>
 </div>
+<script>
+$(document).ready(function(){
+  $('.slideshow').slick({
+    dots: false,
+    infinite: true,
+    fade: true,
+    cssEase: 'linear',
+    lazyLoad: 'progressive',
+    slidesToShow: 1,
+    autoplay: true,
+    autoplaySpeed: <%= Rails.env.development? ? 3000 : 5000 %>
+  });
+});
+
+
+</script>

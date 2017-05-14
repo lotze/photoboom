@@ -3,11 +3,11 @@
 == Important ==
 
 == Desired ==
-* Admin view of recent photos
+* list of users missing teams, easy assignment
+* Email checks every minute (or 30 seconds)?
 * Make it pretty
 * bonus points by admin
 ** display bonuses in slideshow
-* Email checks every minute (or 30 seconds)?
 * auto svg/pdf of printable mission list
 ** when generating, enforce unique mission identifiers per game
 * admin can send questions rather than rejecting photos
