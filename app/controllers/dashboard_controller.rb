@@ -78,7 +78,7 @@ class DashboardController < ApplicationController
   def review
     @team = @current_user.team(@game)
     @team_photos = Photo.where(game: @game, team: @team, rejected: false).includes(:mission)
-    @missions = @team_photos.map {|p| p.mission}.uniq
+    @missions = @team_photos.map {|p| p.mission}.uniq.sort_by(&:codenum)
   end
 
   def play
@@ -122,6 +122,6 @@ class DashboardController < ApplicationController
       return redirect_to next_game_path
     end
 
-    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission)
+    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission).shuffle
   end
 end
