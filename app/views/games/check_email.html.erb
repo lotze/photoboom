@@ -1,0 +1,32 @@
+<p>Checked email at <%= @time_checked %>.</p>
+
+<p>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Mission</th>
+      <th>Team</th>
+      <th>Rejected?</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @photos.each do |photo| %>
+      <tr>
+        <td><%= image_tag photo.photo.url(:thumb) %></td>
+        <td><%= photo.mission.name %></td>
+        <td><%= photo.team.try(:name) %></td>
+        <td><%= photo.rejected ? 'X' : '' %></td>
+        <td><%= photo.notes %></td>
+        <td><%= link_to 'Show', photo %></td>
+        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
+        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</p>
