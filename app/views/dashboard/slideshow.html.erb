@@ -5,7 +5,7 @@
       <% if i == 0 %>
         <img src="<%= photo.photo.url(:slideshow) %>" alt="Photo <%= photo.id %>" />
       <% else %>
-        <img data-lazy="<%= photo.photo.url %>" alt="Photo <%= photo.id %>" />
+        <img data-lazy="<%= photo.photo.url(:slideshow) %>" alt="Photo <%= photo.id %>" />
       <% end %>
       <h3><%= photo.team.name %></h3>
       <br /><%= photo.mission.name %>
