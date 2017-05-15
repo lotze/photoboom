@@ -8,7 +8,11 @@ class Authorization < ActiveRecord::Base
         user = User.find_by(email: auth_hash["info"]["email"])
       end
       unless user
-        user = User.create :name => auth_hash["info"]["name"] || auth_hash["info"]["email"],
+        name = auth_hash["info"]["name"] || auth_hash["info"]["email"]
+        if name == auth_hash["info"]["email"]
+          name = name.sub(/@.*/, '')
+        end
+        user = User.create :name => name,
                            :email => auth_hash["info"]["email"]
       end
       auth = create :user => user,
