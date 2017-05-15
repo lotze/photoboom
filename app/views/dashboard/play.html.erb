@@ -10,18 +10,17 @@
 <% end %>
 </p>
 
-<p>Click on any mission to upload a photo to complete it. Your missions:<ul>
+<p>Click on any mission to upload a photo to complete it. Your missions:
   <% @missions.each do |mission| %>
-  <li>
+  <br /><br />
     <%= mission.codenum %>. <%= mission.name %> (<%= mission.points %>): <%= mission.description %>
-    <% (@photos_by_mission[mission.id] || []).each do |photo| %>
-    <br /><%= link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url) %>
-    <% end %>
-    <br /><%= form_with(model: Photo.new, local: true, id: "form_mission_#{mission.id}") do |form| %>
+    <%= form_with(model: Photo.new, local: true, id: "form_mission_#{mission.id}") do |form| %>
       <%= form.hidden_field :game_id, value: @game.id %>
       <%= form.hidden_field :mission_id, value: mission.id %>
       <%= form.file_field :photo, id: "photo_mission_#{mission.id}", type: "file", accept: "image/*;capture=camera", onchange: "this.form.submit()" %>
     <% end %>
-  </li>
+    <% (@photos_by_mission[mission.id] || []).each do |photo| %>
+    <br /><%= link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url) %>
+    <% end %>
   <% end %>
-</ul></p>
+</p>
