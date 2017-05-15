@@ -32,6 +32,7 @@ class DashboardController < ApplicationController
 
   def show_teams
     @teams = @game.teams
+    @no_team_users = User.without_team
   end
 
   def join_team

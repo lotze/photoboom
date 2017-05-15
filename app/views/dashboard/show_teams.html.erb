@@ -21,4 +21,10 @@
 <% end %>
 </p>
 
+<p>Signups without teams:
+  <% @no_team_users.sort_by(&:name).each do |user| %>
+  <br /><%= user.name %>
+  <% end %>
+</p>
+
 
