@@ -2,7 +2,7 @@
 <%= hidden_field_tag :id, @game.id %>
 <ol class='mission_list'>
   <% @missions.each do |mission| %>
-    <li data-field="mission_<%= mission.id %>"><%= mission.name %>
+    <li data-field="mission_<%= mission.id %>"><%= mission.name %> (<%= mission.points %>): <%= mission.description %>
     <%= hidden_field_tag "mission_ids[]", mission.id %>
     </li>
   <% end %>
