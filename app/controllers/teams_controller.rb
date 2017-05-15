@@ -2,6 +2,11 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy, :add_member, :remove_member]
   before_action :require_admin
 
+  def missing
+    @game = Game.default_game
+    @missing = User.without_team
+  end
+
   # GET /teams
   # GET /teams.json
   def index

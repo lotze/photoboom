@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 
   default_scope { order(name: :asc) }
 
+  def User.without_team
+    User.includes(:memberships).where(memberships: { user_id: nil })
+  end
+
   def add_provider(auth_hash)
     # Check if the provider already exists, so we don't add it twice
     unless authorizations.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])

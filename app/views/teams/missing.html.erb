@@ -1,0 +1,9 @@
+<% @missing.each do |user| %>
+  <%= form_tag(memberships_path) do %>
+  <br /><%= user.name %> / <%= user.email %>: 
+  <%= hidden_field_tag 'membership[game_id]', @game.id %>
+  <%= hidden_field_tag 'membership[user_id]', user.id %>
+  <%= collection_select(:membership, :team_id, @game.teams, :id, :name) %>
+  <%= submit_tag 'Add to Team' %>
+  <% end %>
+<% end %>
