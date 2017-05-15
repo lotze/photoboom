@@ -13,7 +13,7 @@
 <p>Click on any mission to upload a photo to complete it. Your missions:<ul>
   <% @missions.each do |mission| %>
   <li>
-    <%= mission.name %>: <%= mission.description %>
+    <%= mission.codenum %>. <%= mission.name %> (<%= mission.points %>): <%= mission.description %>
     <% (@photos_by_mission[mission.id] || []).each do |photo| %>
     <br /><%= link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url) %>
     <% end %>
