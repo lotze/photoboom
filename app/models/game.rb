@@ -76,7 +76,7 @@ class Game < ActiveRecord::Base
     photos.each do |photo|
       mission = photo.mission
       # download the photo into photo_dir
-      filename = "#{photo_dir}/#{photo.team.normalized_name}_#{mission.codenum}_#{photo.created_at.strftime('%Y%m%d%H%M%S')}.#{MIME::Types[photo.photo_content_type].first.extensions.first}"
+      filename = "#{photo_dir}/#{photo.team.normalized_name}_#{mission.codenum}_#{mission.normalized_name}_#{photo.created_at.strftime('%Y%m%d%H%M%S')}_#{photo.id}.#{MIME::Types[photo.photo_content_type].first.extensions.first}"
       if photo.photo.options[:storage] == :filesystem
         FileUtils.copy(photo.photo.path, filename)
       else
