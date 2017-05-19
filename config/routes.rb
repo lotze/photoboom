@@ -41,6 +41,7 @@ Photoboom::Application.routes.draw do
   resources :memberships
   match '/teams/:id/add_member', to: 'teams#add_member', via: [:get, :post], as: :add_member
   match '/teams/:id/remove_member', to: 'teams#remove_member', via: [:get, :post], as: :remove_member
+  match '/teams/:id/rename', to: 'teams#rename', via: [:get, :post], as: :rename_team
   post '/photos/reject', to: 'photos#reject', as: :reject_photo
   get '/games/:id/order', to: 'missions#order', as: :missions_order
   post '/games/:id/order', to: 'missions#change_order', as: :missions_change_order

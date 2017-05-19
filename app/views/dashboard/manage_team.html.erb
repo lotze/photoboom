@@ -1,4 +1,9 @@
-<h2>Team '<%= @team.name %>'</h2>
+<h2><%= @team.formatted_name %></h2>
+<%= form_tag(rename_team_path(id: @team.id), method: :post) do %>
+  <%= text_field_tag :team_name %>
+  <%= submit_tag 'Rename Team' %>
+<% end %>
+
 
 <p>Players:<ul>
   <% @team.users.each do |user| %>

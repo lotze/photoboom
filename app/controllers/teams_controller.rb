@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy, :add_member, :remove_member]
-  before_action :require_admin
+  before_action :set_team, only: [:show, :edit, :update, :destroy, :add_member, :remove_member, :rename]
+  before_action :require_admin, except: [:rename]
 
   def missing
     @game = Game.default_game
@@ -16,6 +16,17 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+  end
+
+  # POST /teams/1/rename
+  def rename
+    if params['team_name']
+      @team.name = params['team_name']
+      if !@team.save
+        flash[:error] = @team.errors.full_messages
+      end
+    end
+    redirect_to manage_team_path
   end
 
   # POST /teams/1/add_member

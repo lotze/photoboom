@@ -2,10 +2,19 @@ class Team < ActiveRecord::Base
   belongs_to :game
   has_many :memberships
   has_many :users, :through => :memberships
+  validates :normalized_name, uniqueness: true
 
   before_validation :set_normalized_name
   def set_normalized_name
     self['normalized_name'] = Team.normalize_name(self['name'])
+  end
+
+  def formatted_name
+    if name =~ /team/i
+      return name
+    else
+      return "Team '#{name}'"
+    end
   end
 
   def self.normalize_name(name)
