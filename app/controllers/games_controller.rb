@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy, :recent_photos]
+  before_action :set_game, only: [:show, :edit, :update, :destroy, :recent_photos, :check_email, :mission_sheet, :mission_page]
   before_action :require_admin
 
   def recent_photos
@@ -11,6 +11,47 @@ class GamesController < ApplicationController
     @time_checked = Time.now
     email_updater = EmailUpdater.new
     @photos = email_updater.update
+  end
+
+  # TODO: convert to pdf and link to pdf
+  # TODO: fix svg text display (probably assume single-line, use ruby to split descriptions)
+  def mission_page
+    page = (params['page'] || '1').to_i
+    num_per_page = 14
+    title_num = 2
+    if page == 1
+      template_basename = 'title_mission_template.svg'
+      mission_codenums =(1..(num_per_page - title_num)).to_a
+    else
+      template_basename = 'mission_template.svg'
+      start_num = (num_per_page - title_num) + (page - 2) * num_per_page + 1
+      end_num = start_num + num_per_page - 1
+      mission_codenums =(start_num..end_num).to_a
+    end
+    # open template; make substitutions; render as svg
+    template_file = Rails.root.join('data', template_basename)
+    # error if no template exists
+    unless File.exists?(template_file)
+      flash[:error] = "No sheet template."
+      return redirect_to root_path
+    end
+    sheet_template = IO.read(template_file)
+    sheet_template.sub!('game.name', @game.name)
+    sheet_template.sub!('game.date', @game.starts_at.strftime('%Y-%m-%d'))
+
+    missions = @game.missions.where(codenum: mission_codenums)
+    missions.each do |mission|
+      sheet_template.sub!('mission.codenum', mission.codenum.to_s)
+      sheet_template.sub!('mission.name', mission.name)
+      sheet_template.sub!('mission.points', mission.points.to_s)
+      sheet_template.sub!('mission.description', mission.description)
+    end
+    # replace any extra mission text fields
+    sheet_template.gsub!('mission.codenum: mission.name', '')
+    sheet_template.gsub!('Points: mission.points', '')
+    sheet_template.gsub!('mission.points points', '')
+    sheet_template.gsub!('mission.description', '')
+    render inline: sheet_template, mime_type: Mime::Type.lookup("image/svg+xml")
   end
 
   # GET /games

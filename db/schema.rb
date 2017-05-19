@@ -10,19 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514215346) do
+ActiveRecord::Schema.define(version: 20170518205733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "authorizations", id: :serial, force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
+    t.string "provider", limit: 255
+    t.string "uid", limit: 255
     t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["provider", "uid"], name: "index_authorizations_on_provider_and_uid"
-    t.index ["user_id"], name: "index_authorizations_on_user_id"
   end
 
   create_table "games", id: :serial, force: :cascade do |t|
@@ -39,16 +37,19 @@ ActiveRecord::Schema.define(version: 20170514215346) do
     t.string "zip_file_content_type"
     t.integer "zip_file_file_size"
     t.datetime "zip_file_updated_at"
+    t.string "mission_pdf_file_name"
+    t.string "mission_pdf_content_type"
+    t.integer "mission_pdf_file_size"
+    t.datetime "mission_pdf_updated_at"
     t.index ["is_public", "starts_at"], name: "index_games_on_is_public_and_starts_at"
     t.index ["organizer_id"], name: "index_games_on_organizer_id"
   end
 
   create_table "identities", id: :serial, force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
+    t.string "email", limit: 255
+    t.string "password_digest", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["email"], name: "index_identities_on_email"
   end
 
   create_table "memberships", id: :serial, force: :cascade do |t|
@@ -111,8 +112,8 @@ ActiveRecord::Schema.define(version: 20170514215346) do
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", limit: 255
+    t.string "email", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "admin", default: false

@@ -18,6 +18,9 @@
 
 == Optional ==
 * developer auth method for development
+* export csv of missions
+* import csv of missions
+* make pdf of missions, for printing
 
 ==Future==
 * Test coverage

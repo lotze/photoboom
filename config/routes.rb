@@ -48,6 +48,7 @@ Photoboom::Application.routes.draw do
   get '/recent', to: 'games#recent_photos'
   get '/check_email', to: 'games#check_email', as: :check_email
   get '/missing', to: 'teams#missing', as: :missing
+  get '/mission_page.svg', to: 'games#mission_page', as: :mission_page
 
   # TODO: eventually, go back to landing#index to let people sign up for or start a game
   # root 'landing#index'

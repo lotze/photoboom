@@ -39,6 +39,9 @@ gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 gem 'rubyzip'
 
+gem 'prawn-svg'
+gem 'combine_pdf'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '>= 1.2'
 
