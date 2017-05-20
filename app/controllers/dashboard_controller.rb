@@ -125,4 +125,14 @@ class DashboardController < ApplicationController
 
     @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission).shuffle
   end
+
+  def ordered_slideshow
+    if @game.ends_at > Time.now && !current_user.admin
+      flash[:error] = "Game has not yet ended!"
+      return redirect_to next_game_path
+    end
+
+    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission).sort_by{|p| [p.team_id, p.mission.codenum]}
+    render :slideshow
+  end
 end

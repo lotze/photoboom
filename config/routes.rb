@@ -10,6 +10,7 @@ Photoboom::Application.routes.draw do
   get '/review', to: 'dashboard#review', as: :review
   get '/leaderboard', to: 'dashboard#leaderboard', as: :leaderboard
   get '/slideshow', to: 'dashboard#slideshow', as: :slideshow
+  get '/ordered_slideshow', to: 'dashboard#ordered_slideshow', as: :ordered_slideshow
 
   # session routes
   get '/login', :to => 'sessions#new', :as => :login
