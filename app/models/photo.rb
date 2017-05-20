@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
   has_attached_file :photo, preserve_files: false,
   styles: {
     thumb: "100x100#",
-    slideshow: "500x600>"
+    slideshow: "500x500>"
   },
   convert_options: {
     thumb: "-quality 75 -strip",

@@ -132,7 +132,7 @@ class DashboardController < ApplicationController
       return redirect_to next_game_path
     end
 
-    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission).sort_by{|p| [p.team_id, p.mission.codenum]}
+    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission).sort_by{|p| [p.mission.codenum, p.team_id]}
     render :slideshow
   end
 end
