@@ -3,14 +3,15 @@
 == Important ==
 
 == Desired ==
-* list of users missing teams, easy assignment
 * Email checks every minute (or 30 seconds)?
 * Make it pretty
 * bonus points by admin
 ** display bonuses in slideshow
 * auto svg/pdf of printable mission list
 ** when generating, enforce unique mission identifiers per game
-* admin can send questions rather than rejecting photos
+* Review queue: photos not yet reviewed (approved or not)
+** admin can deny points (marked as such in slideshow) without rejecting
+** admin can send questions rather than rejecting photos
 ** team sees those questions at the top of /play
 ** team gets emailed this
 ** email responses are automatically picked up
@@ -18,6 +19,7 @@
 
 == Optional ==
 * developer auth method for development
+* eventual archiving of games (only store the zip file, redirect people looking for that game)
 
 ==Future==
 * Test coverage
