@@ -123,16 +123,15 @@ class DashboardController < ApplicationController
       return redirect_to next_game_path
     end
 
-    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission).shuffle
-  end
-
-  def ordered_slideshow
-    if @game.ends_at > Time.now && !current_user.admin
-      flash[:error] = "Game has not yet ended!"
-      return redirect_to next_game_path
+    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission)
+    if params['order'] == 'random'
+      @photos = @photos.shuffle
+    elsif params['order'] == 'time'
+      @photos = @photos.sort_by{|p| [p.submitted_at, p.team_id]}
+    else
+      # default is by mission, then team
+      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team.name]}
     end
-
-    @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission).sort_by{|p| [p.mission.codenum, p.team_id]}
-    render :slideshow
   end
+
 end

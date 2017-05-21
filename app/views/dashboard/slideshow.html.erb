@@ -7,8 +7,8 @@
       <% else %>
         <img data-lazy="<%= photo.photo.url(:slideshow) %>" alt="Photo <%= photo.id %>" />
       <% end %>
-      <h3><%= photo.team.name %></h3>
-      <br /><%= photo.mission.name %>
+      <h3><%= photo.mission.codenum %>: <%= photo.mission.name %></h3>
+      <br /><%= photo.team.name %>
       </center>
     </div>
   <% end %>
