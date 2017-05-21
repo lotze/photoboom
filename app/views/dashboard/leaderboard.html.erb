@@ -3,12 +3,12 @@
   <%= link_to 'Download all photos', @game.zip_file.url %>
 </p>
 <% end %>
-<p><ul>
+<p><ol>
   <% @total_by_team.sort_by {|_team, score| -score}.each do |team, score| %>
-  <li><%= team.try(:name) %>: <%= score %> points!<ul>
+  <li><%= team.try(:name) %>: <%= score %> points (<%= @missions_by_team[team].length %> missions)!<ul>
     <% @missions_by_team[team].sort_by(&:codenum).each do |mission| %>
       <li><%= mission.name %></li>
     <% end %>
   </ul></li>
   <% end %>
-</ul></p>
+</ol></p>
