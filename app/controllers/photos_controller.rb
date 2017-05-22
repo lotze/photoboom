@@ -6,6 +6,16 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = Photo.all.includes(:mission).includes(:user)
+    if params['order'] == 'random'
+      @photos = @photos.shuffle
+    elsif params['order'] == 'time'
+      @photos = @photos.sort_by{|p| [p.submitted_at, p.team_id]}
+    elsif params['order'] == 'team'
+      @photos = @photos.sort_by{|p| [p.team.name, p.mission.codenum]}
+    else
+      # default is by mission, then team
+      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team.name]}
+    end
   end
 
   # GET /photos/1
