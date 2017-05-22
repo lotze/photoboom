@@ -1,6 +1,8 @@
 == Test ==
 
 == Important ==
+* 'uploading' spinner while uploading, until successful/failed
+* display better upload confirmation
 
 == Desired ==
 * Email checks every minute (or 30 seconds)?
