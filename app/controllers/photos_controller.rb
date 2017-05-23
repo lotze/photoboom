@@ -13,8 +13,8 @@ class PhotosController < ApplicationController
     elsif params['order'] == 'team'
       @photos = @photos.sort_by{|p| [p.team.name, p.mission.codenum]}
     else
-      # default is by mission, then team
-      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team.name]}
+      # default is by mission, then team, then submission time
+      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team.name, p.submitted_at]}
     end
   end
 
