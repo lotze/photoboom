@@ -80,7 +80,11 @@ class Game < ActiveRecord::Base
       if photo.photo.options[:storage] == :filesystem
         FileUtils.copy(photo.photo.path, filename)
       else
-        IO.copy_stream(open(photo.photo.url, 'rb'), filename)
+        url = photo.photo.url
+        unless url =~ /^http/
+          url = "http:#{url}"
+        end
+        IO.copy_stream(open(url, 'rb'), filename)
       end
       files << filename
     end
