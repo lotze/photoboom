@@ -10,19 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514215346) do
+ActiveRecord::Schema.define(version: 20170727193412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "authorizations", id: :serial, force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
+    t.string "provider", limit: 255
+    t.string "uid", limit: 255
     t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["provider", "uid"], name: "index_authorizations_on_provider_and_uid"
-    t.index ["user_id"], name: "index_authorizations_on_user_id"
   end
 
   create_table "games", id: :serial, force: :cascade do |t|
@@ -44,11 +42,10 @@ ActiveRecord::Schema.define(version: 20170514215346) do
   end
 
   create_table "identities", id: :serial, force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
+    t.string "email", limit: 255
+    t.string "password_digest", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["email"], name: "index_identities_on_email"
   end
 
   create_table "memberships", id: :serial, force: :cascade do |t|
@@ -95,6 +92,8 @@ ActiveRecord::Schema.define(version: 20170514215346) do
     t.datetime "photo_updated_at"
     t.datetime "submitted_at"
     t.integer "team_id"
+    t.integer "width"
+    t.integer "height"
     t.index ["game_id", "created_at"], name: "index_photos_on_game_id_and_created_at"
     t.index ["game_id", "rejected"], name: "index_photos_on_game_id_and_rejected"
     t.index ["mission_id"], name: "index_photos_on_mission_id"
@@ -111,8 +110,8 @@ ActiveRecord::Schema.define(version: 20170514215346) do
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", limit: 255
+    t.string "email", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "admin", default: false

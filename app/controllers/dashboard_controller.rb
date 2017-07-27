@@ -3,6 +3,9 @@ class DashboardController < ApplicationController
   # TODO: get next game this player is signed up for, or redirect to list of games
   def get_game
     @game = Game.find(params['game_id'] || Game.default_game_id)
+    if !@game
+      redirect_to games_path
+    end
   end
 
   def index
@@ -123,6 +126,9 @@ class DashboardController < ApplicationController
       return redirect_to next_game_path
     end
 
+    @max_width = params[:max_width].present? ? params[:max_width].to_i : 640
+    @max_height = params[:max_height].present? ? params[:max_height].to_i : 480
+
     @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission)
     if params['order'] == 'random'
       @photos = @photos.shuffle
@@ -132,7 +138,7 @@ class DashboardController < ApplicationController
       @photos = @photos.sort_by{|p| [p.team.name, p.mission.codenum]}
     else
       # default is by mission, then team, then submission time
-      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team.name, p.submitted_at]}
+      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team.try(:name), p.submitted_at]}
     end
   end
 

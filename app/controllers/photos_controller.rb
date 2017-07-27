@@ -41,7 +41,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        if @photo.submitted_at > @photo.game.ends_at + 2.minutes # 2 minute grace period
+        if !Rails.env.development? && @photo.submitted_at > @photo.game.ends_at + 2.minutes # 2 minute grace period
           @photo.reject!('The game has ended!')
           format.html { redirect_to play_path(game_id: @photo.game_id), error: 'Error uploading photo! The game has already ended!' }
           format.json { render json: @photo.errors.merge(error: :game_over), status: :unprocessable_entity }

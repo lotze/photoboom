@@ -69,7 +69,7 @@ class Game < ActiveRecord::Base
 
   def make_zip_file
     require 'open-uri'
-    photos = Photo.where(game: self, rejected: false).includes(:user).includes(:mission)
+    photos = Photo.where(game: self, rejected: false).includes(:user).includes(:mission).includes(:team)
     photo_dir = Dir.mktmpdir('photos')
 
     files = []

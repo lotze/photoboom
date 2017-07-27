@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy, :recent_photos]
-  before_action :require_admin
+  before_action :set_game, except: [:index, :new, :create]
+  before_action :require_admin, except: [:index, :signup]
 
   def recent_photos
     @photos = @game.photos.order(created_at: :desc).includes(:team).includes(:mission).limit(params['n'] || 20)
@@ -17,6 +17,9 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     @games = Game.all
+  end
+
+  def signup
   end
 
   # GET /games/1

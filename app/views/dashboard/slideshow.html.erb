@@ -2,13 +2,11 @@
   <% @photos.each_with_index do |photo, i| %>
     <div>
       <center>
-      <% if i == 0 %>
-        <img src="<%= photo.photo.url(:slideshow) %>" alt="Photo <%= photo.id %>" />
-      <% else %>
-        <img data-lazy="<%= photo.photo.url(:slideshow) %>" alt="Photo <%= photo.id %>" />
-      <% end %>
+      <a href='<%= photo.photo.url %>'>
+        <img <%= i==0 ? "src" : "data-lazy" %>="<%= photo.photo.url(:slideshow) %>" width="<%= photo.slideshow_width(@max_width, @max_height) %>" height="<%= photo.slideshow_height(@max_width, @max_height) %>" alt="Photo <%= photo.id %>" />
+      </a>
       <h3><%= photo.mission.codenum %>: <%= photo.mission.name %></h3>
-      <br /><%= photo.team.name %>
+      <br /><%= photo.team.try(:name) %>
       </center>
     </div>
   <% end %>
@@ -23,7 +21,7 @@ $(document).ready(function(){
     lazyLoad: 'progressive',
     slidesToShow: 1,
     autoplay: true,
-    autoplaySpeed: <%= Rails.env.development? ? 3000 : 5000 %>
+    autoplaySpeed: <%= Rails.env.development? ? 1000 : 5000 %>
   });
 });
 
