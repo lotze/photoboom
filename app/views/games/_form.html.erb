@@ -11,9 +11,26 @@
     </div>
   <% end %>
 
+  <div class="well">
+    Game name:
+    <div class='input-group'>
+      <%= f.text_field :name, size: 60 %>
+    </div>
+  </div>
 
-  Game name:
-  <%= f.text_field :name %>
+  <div class="well">
+    Time zone:
+    <div class='input-group'>
+      <%= f.select :timezone, options_for_select(ActiveSupport::TimeZone.us_zones.map(&:name).sort, @game.timezone) %>
+    </div>
+  </div>
+
+  <div class="well">
+    Starting location:
+    <div class='input-group'>
+      <%= f.text_area :start_location, rows: 3, cols: 60 %>
+    </div>
+  </div>
 
   <div class="well">
     Starts at:

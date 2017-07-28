@@ -1,42 +1,46 @@
 == Test ==
 
 == Important ==
-* Allow any admin to create and manage their own games
-** when dealing with most things, admin is on game level rather than overall; can't muck with someone else's game
-** set starting location
-** email login info settable by game
+* more game management
 ** easier mission management
-* allow buying tickets to a game via Stripe
+** price: allow buying tickets to a game via Stripe
+
 * teams have leaders?
 ** rename your team
-** invite others via email to join the game (and your team)
-* enforce maximum team size?
-* Multi-game
-* 'uploading' spinner while uploading, until successful/failed
-* background task to process photos (convert, etc.)
-* display better upload confirmation
+** invite others via email, facebook to join the game (and your team)
 
-== Desired ==
-* Email checks every minute (or 30 seconds)?
-* Make it pretty
-* bonus points by admin
-** display bonuses in slideshow
+* Uploading UI improvements
+** 'uploading' spinner while uploading, until successful/failed
+** background task to process photos (convert, etc.)
+** display better upload confirmation
+
 * Review queue: photos not yet reviewed (approved or not)
 ** admin can deny points (marked as such in slideshow) without rejecting
 ** admin can send questions rather than rejecting photos
+** admin can un-reject rejected photos
 ** team sees those questions at the top of /play
 ** team gets emailed this
 ** email responses are automatically picked up
 ** admin can resolve comments
 
+* Test coverage
+
+== Desired ==
+* Allow test photo uploads before the game begins
+* Email checks every minute (or 30 seconds)?
+* Automatically increase capacity during a game, decrease after it ends
+* Make it pretty
+
 == Optional ==
+* bonus points by admin
+** display bonuses in slideshow
 * auto svg/pdf of printable mission list
 ** when generating, enforce unique mission identifiers per game
 * developer auth method for development
 * eventual archiving of games (only store the zip file, redirect people looking for that game)
 
 ==Future==
-* Test coverage
+* enforce maximum team size?
 * write to Google spreadsheet? read from Google spreadsheet? https://github.com/gimite/google-drive-ruby
 * group missions into sections/themes
 * check photo metadata to look for submitted photos taken before the game

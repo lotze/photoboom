@@ -20,7 +20,9 @@ class SessionsController < ApplicationController
       session[:user_id] = auth.user.id
     end
 
-    redirect_to :dashboard
+    flash.delete(:error) if flash[:error] == 'You need to sign in before accessing this page!'
+    redirect_destination = session.delete(:redirect_to)
+    redirect_to redirect_destination || root_path
   end
 
   def destroy

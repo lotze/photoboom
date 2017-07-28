@@ -1,14 +1,15 @@
 class DashboardController < ApplicationController
   before_action :get_game
-  # TODO: get next game this player is signed up for, or redirect to list of games
+  # get next game this player is signed up for, or redirect to list of games
   def get_game
-    @game = Game.find(params['game_id'] || Game.default_game_id)
+    if params['game_id']
+      @game = Game.find_by(id: params['game_id'])
+    elsif current_user.next_game
+      @game = current_user.next_game
+    end
     if !@game
       redirect_to games_path
     end
-  end
-
-  def index
   end
 
   def next_game
@@ -35,7 +36,7 @@ class DashboardController < ApplicationController
 
   def show_teams
     @teams = @game.teams
-    @no_team_users = User.without_team
+    @no_team_users = @game.without_team.map(&:user)
   end
 
   def join_team
@@ -68,9 +69,9 @@ class DashboardController < ApplicationController
 
   def leave_team
     @team = @current_user.team(@game)
-    membership = @current_user.membership
+    membership = @current_user.registrations.find_by(game_id: @game.id)
     if membership.team == @team
-      membership.destroy
+      membership.update_attributes!(team_id: nil)
     end
     redirect_to next_game_path
   end
@@ -110,7 +111,7 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def leaderboard
-    if @game.ends_at > Time.now && !current_user.admin
+    if @game.ends_at > Time.now && !@game.is_admin?(current_user)
       flash[:error] = "Game has not yet ended!"
       return redirect_to next_game_path
     end
@@ -121,7 +122,7 @@ class DashboardController < ApplicationController
   end
 
   def slideshow
-    if @game.ends_at > Time.now && !current_user.admin
+    if @game.ends_at > Time.now && !@game.is_admin?(current_user)
       flash[:error] = "Game has not yet ended!"
       return redirect_to next_game_path
     end

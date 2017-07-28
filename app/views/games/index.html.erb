@@ -1,5 +1,7 @@
-<h1>Listing games</h1>
 
+<% if @games.empty? %>
+<p>We are afraid there are no upcoming games. Please email spidere [at] spidere [dot] com to ask about the next available game.</p>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -12,8 +14,8 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
-        <td><%= link_to game.name, game %></td>
-        <% if current_user.admin %>
+        <td><%= link_to game.name, dashboard_path(game_id: game.id) %>: <%= game.start_time_in_zone.strftime("%A, %B %e") %></td>
+        <% if game.is_admin?(current_user) || current_user.admin %>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -21,7 +23,4 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Game', new_game_path %>
+<% end %>

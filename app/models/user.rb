@@ -2,14 +2,14 @@ class User < ActiveRecord::Base
   has_many :authorizations
   validates :name, :email, :presence => true
 
-  has_many :memberships
-  has_many :teams, :through => :memberships
-  has_many :games, :through => :teams
+  has_many :registrations
+  has_many :teams, :through => :registrations
+  has_many :games, :through => :registrations
 
   default_scope { order(name: :asc) }
 
-  def User.without_team
-    User.includes(:memberships).where(memberships: { user_id: nil })
+  def next_game
+    games.where('ends_at > ?', Time.now).order(:starts_at).first
   end
 
   def add_provider(auth_hash)
@@ -19,18 +19,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  def team(game=Game.default_game)
+  def team(game=next_game)
     membership(game).try(:team)
   end
 
-  def membership(game=Game.default_game)
-    Membership.find_by_user_id_and_game_id(self.id, game.id)
+  def membership(game=next_game)
+    Registration.find_by_user_id_and_game_id(self.id, game.id)
   end
 
   def set_team(team)
     game = team.game
     current_membership = membership(game)
     current_membership.destroy if current_membership
-    Membership.create!(game: game, team: team, user: self)
+    Registration.create!(game: game, team: team, user: self)
   end
 end

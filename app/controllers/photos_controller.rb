@@ -1,11 +1,12 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy, :reject]
-  before_action :require_admin, except: [:create]
+  before_action :set_game
+  before_action :require_game_admin, except: [:create]
 
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all.includes(:mission).includes(:user)
+    @photos = @game.photos.includes(:mission).includes(:user)
     if params['order'] == 'random'
       @photos = @photos.shuffle
     elsif params['order'] == 'time'

@@ -38,7 +38,7 @@ Photoboom::Application.routes.draw do
   resources :photos
   resources :missions
   resources :teams
-  resources :memberships
+  resources :registrations
   match '/teams/:id/add_member', to: 'teams#add_member', via: [:get, :post], as: :add_member
   match '/teams/:id/remove_member', to: 'teams#remove_member', via: [:get, :post], as: :remove_member
   match '/teams/:id/rename', to: 'teams#rename', via: [:get, :post], as: :rename_team
@@ -50,9 +50,7 @@ Photoboom::Application.routes.draw do
   get '/check_email', to: 'games#check_email', as: :check_email
   get '/missing', to: 'teams#missing', as: :missing
 
-  # TODO: eventually, go back to landing#index to let people sign up for or start a game
-  # root 'landing#index'
-  # but for now, automatically go to their next upcoming game
+  # automatically go to their next upcoming game; if they don't have one, will redirect to list of games
   root 'dashboard#next_game'
 
   # Example of regular route:

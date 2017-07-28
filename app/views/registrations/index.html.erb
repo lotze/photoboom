@@ -13,13 +13,13 @@
   </thead>
 
   <tbody>
-    <% @memberships.each do |membership| %>
+    <% @registrations.each do |membership| %>
       <tr>
         <td><%= membership.user.name %></td>
         <td><%= membership.user.email %></td>
         <td><%= membership.team.name %></td>
         <td><%= link_to 'Show', membership %></td>
-        <td><%= link_to 'Edit', edit_membership_path(membership) %></td>
+        <td><%= link_to 'Edit', edit_registration_path(membership) %></td>
         <td><%= link_to 'Destroy', membership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Membership', new_membership_path %>
+<%= link_to 'New Membership', new_registration_path %>

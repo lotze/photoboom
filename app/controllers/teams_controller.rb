@@ -1,10 +1,11 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy, :add_member, :remove_member, :rename]
+  before_action :set_game
   before_action :require_admin, except: [:rename]
 
   def missing
     @game = Game.default_game
-    @missing = User.without_team
+    @missing = @game.without_team
   end
 
   # GET /teams

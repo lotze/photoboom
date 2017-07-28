@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
 
   def enforce_login
     if !@current_user
+      session[:redirect_to] = request.original_url unless request.original_url.include?('signout') || request.original_url.include?('logout')
       redirect_to :login
     end
   end
@@ -28,6 +29,27 @@ class ApplicationController < ActionController::Base
     if !@current_user.admin
       flash[:error] = "Requires admin! Logging you out. Please log in as admin."
       redirect_to :logout
+    end
+  end
+
+  def set_game
+    if @registration
+      @game = @registration.game
+    elsif @photo
+      @game = @photo.game
+    elsif @mission
+      @game = @mission.game
+    elsif @team
+      @game = @team.game
+    elsif params[:game_id]
+      @game = Game.find(params[:game_id])
+    end
+  end
+
+  def require_game_admin
+    unless @game.is_admin?(@current_user)
+      flash[:error] = "Only the game organizer can do that."
+      return redirect_to root_path
     end
   end
 end

@@ -1,28 +1,28 @@
-<%= form_for(@membership) do |form| %>
-  <% if @membership.errors.any? %>
+<%= form_for(@registration) do |form| %>
+  <% if @registration.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
+      <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this membership from being saved:</h2>
 
       <ul>
-      <% @membership.errors.full_messages.each do |msg| %>
+      <% @registration.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <%= form.hidden_field :game_id, :value => @membership.game_id %>
+  <%= form.hidden_field :game_id, :value => @registration.game_id %>
 
   Game: <%= @game.name %>
 
-  <% if current_user.admin %>
+  <% if @game.is_admin?(current_user) %>
   <div class="field">
     <%= form.label :user_id %>
     <%= form.collection_select(:user_id, User.all, :id, :name, :prompt => 'Please select user') %>
   </div>
   <% end %>
 
-  <% if current_user.admin %>
+  <% if @game.is_admin?(current_user) %>
     <div class="field">
       <%= form.label :team_id %>
       <%= form.collection_select(:team_id, @game.teams, :id, :name, :prompt => 'Please select team') %>

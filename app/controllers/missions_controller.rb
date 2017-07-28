@@ -1,9 +1,9 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin
+  before_action :set_game
+  before_action :require_game_admin
 
   def order
-    @game = Game.find(params['id'])
     @missions = @game.missions
   end
 
@@ -23,7 +23,7 @@ class MissionsController < ApplicationController
   # GET /missions
   # GET /missions.json
   def index
-    @missions = Mission.all
+    @missions = @game.missions
   end
 
   # GET /missions/1
@@ -33,7 +33,7 @@ class MissionsController < ApplicationController
 
   # GET /missions/new
   def new
-    @mission = Mission.new
+    @mission = Mission.new(game: @game)
   end
 
   # GET /missions/1/edit

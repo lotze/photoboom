@@ -27,4 +27,6 @@
   <% end %>
 </p>
 
-
+<% if @game.is_admin?(current_user) %>
+<p><%= link_to 'Edit game', edit_game_path(@game) %></p>
+<% end %>

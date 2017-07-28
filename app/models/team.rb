@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
   belongs_to :game
-  has_many :memberships
-  has_many :users, :through => :memberships
+  has_many :registrations
+  has_many :users, :through => :registrations
   validates :normalized_name, uniqueness: true
 
   before_validation :set_normalized_name

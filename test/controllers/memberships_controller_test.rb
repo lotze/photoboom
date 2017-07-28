@@ -2,13 +2,13 @@ require 'test_helper'
 
 class MembershipsControllerTest < ActionController::TestCase
   setup do
-    @membership = memberships(:one)
+    @registration = memberships(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:memberships)
+    assert_not_nil assigns(:registrations)
   end
 
   test "should get new" do
@@ -18,32 +18,32 @@ class MembershipsControllerTest < ActionController::TestCase
 
   test "should create membership" do
     assert_difference('Membership.count') do
-      post :create, membership: {  }
+      post :create, registration: {  }
     end
 
-    assert_redirected_to membership_path(assigns(:membership))
+    assert_redirected_to registration_path(assigns(:registration))
   end
 
   test "should show membership" do
-    get :show, id: @membership
+    get :show, id: @registration
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @membership
+    get :edit, id: @registration
     assert_response :success
   end
 
   test "should update membership" do
-    patch :update, id: @membership, membership: {  }
-    assert_redirected_to membership_path(assigns(:membership))
+    patch :update, id: @registration, registration: {  }
+    assert_redirected_to registration_path(assigns(:registration))
   end
 
   test "should destroy membership" do
     assert_difference('Membership.count', -1) do
-      delete :destroy, id: @membership
+      delete :destroy, id: @registration
     end
 
-    assert_redirected_to memberships_path
+    assert_redirected_to registrations_path
   end
 end

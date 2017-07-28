@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727193412) do
+ActiveRecord::Schema.define(version: 20170729030119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "authorizations", id: :serial, force: :cascade do |t|
-    t.string "provider", limit: 255
-    t.string "uid", limit: 255
+    t.string "provider"
+    t.string "uid"
     t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["provider", "uid"], name: "index_authorizations_on_provider_and_uid"
+    t.index ["user_id"], name: "index_authorizations_on_user_id"
   end
 
   create_table "games", id: :serial, force: :cascade do |t|
@@ -37,27 +39,18 @@ ActiveRecord::Schema.define(version: 20170727193412) do
     t.string "zip_file_content_type"
     t.integer "zip_file_file_size"
     t.datetime "zip_file_updated_at"
+    t.string "timezone"
+    t.string "start_location"
     t.index ["is_public", "starts_at"], name: "index_games_on_is_public_and_starts_at"
     t.index ["organizer_id"], name: "index_games_on_organizer_id"
   end
 
   create_table "identities", id: :serial, force: :cascade do |t|
-    t.string "email", limit: 255
-    t.string "password_digest", limit: 255
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "memberships", id: :serial, force: :cascade do |t|
-    t.integer "team_id", null: false
-    t.integer "game_id", null: false
-    t.integer "user_id", null: false
-    t.boolean "is_admin", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["game_id", "user_id"], name: "index_memberships_on_game_id_and_user_id", unique: true
-    t.index ["team_id"], name: "index_memberships_on_team_id"
-    t.index ["user_id"], name: "index_memberships_on_user_id"
+    t.index ["email"], name: "index_identities_on_email"
   end
 
   create_table "missions", id: :serial, force: :cascade do |t|
@@ -100,6 +93,19 @@ ActiveRecord::Schema.define(version: 20170727193412) do
     t.index ["team_id", "rejected"], name: "index_photos_on_team_id_and_rejected"
   end
 
+  create_table "registrations", id: :serial, force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "is_admin", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "payment_token"
+    t.index ["game_id", "user_id"], name: "index_registrations_on_game_id_and_user_id", unique: true
+    t.index ["team_id"], name: "index_registrations_on_team_id"
+    t.index ["user_id"], name: "index_registrations_on_user_id"
+  end
+
   create_table "teams", id: :serial, force: :cascade do |t|
     t.integer "game_id"
     t.string "name"
@@ -110,8 +116,8 @@ ActiveRecord::Schema.define(version: 20170727193412) do
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "email", limit: 255
+    t.string "name"
+    t.string "email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "admin", default: false

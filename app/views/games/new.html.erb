@@ -1,5 +1,17 @@
-<h1>New game</h1>
+<% unless @game.timezone %>
+<p>Trying to obtain geolocation for time zone (please allow geolocation or choose time zone manually).</p>
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(sendPosition);
+    }
+}
+function sendPosition(position) {
+  window.location.href = window.location.href + "?latitude=" + position.coords.latitude + 
+    "&longitude=" + position.coords.longitude; 
+}
+getLocation();
+</script>
+<% end %>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', games_path %>

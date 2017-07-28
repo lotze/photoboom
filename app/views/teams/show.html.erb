@@ -11,7 +11,7 @@
 <% end %>
 </p>
 
-<% if current_user.admin %>
+<% if @game.is_admin?(current_user) %>
 <p>
   <%= form_tag(add_member_path(id: @team.id)) do %>
     <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name) %>

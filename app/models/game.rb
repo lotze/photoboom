@@ -1,11 +1,13 @@
 class Game < ActiveRecord::Base
   belongs_to :organizer, :class_name => 'User'
   has_many :teams, dependent: :destroy
-  has_many :users, :through => :teams
+  has_many :registrations
+  has_many :users, :through => :registrations
   has_many :missions, dependent: :destroy
   has_many :photos
 
   scope :publicly_available, -> { where(is_public: true) }
+  scope :upcoming, -> { where('starts_at > ?', Time.now) }
 
   after_initialize :init
 
@@ -14,13 +16,8 @@ class Game < ActiveRecord::Base
   has_attached_file :zip_file
   validates_attachment_content_type :zip_file, :content_type => ["application/zip", "application/x-zip", "application/x-zip-compressed"]
 
-  # default game id to 1
-  def Game.default_game_id
-    1
-  end
-
-  def Game.default_game
-    Game.find(Game.default_game_id)
+  def is_admin?(user)
+    user == organizer
   end
 
   def init
@@ -31,6 +28,10 @@ class Game < ActiveRecord::Base
     self.is_public = true if self.is_public.nil?
     self.min_team_size ||= 3
     self.max_team_size ||= 6
+  end
+
+  def without_team
+    registrations.where(team_id: nil)
   end
 
   def team_names
@@ -49,6 +50,10 @@ class Game < ActiveRecord::Base
     else
       return nil
     end
+  end
+
+  def start_time_in_zone
+    ActiveSupport::TimeZone.new(timezone).parse(starts_at.to_s)
   end
 
   def upcoming?

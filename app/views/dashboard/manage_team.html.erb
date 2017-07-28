@@ -1,9 +1,11 @@
+<p>The game is on <%= @game.start_time_in_zone.strftime("%A, %B %e") %>! Please arrive by <%= (@game.start_time_in_zone - 15.minutes).strftime('%l:%M %P') %> to receive your materials.
+  <br />Start location: <br /><%= sanitize @game.start_location.gsub("\n", "<br />") %></p>
+
 <h2><%= @team.formatted_name %></h2>
 <%= form_tag(rename_team_path(id: @team.id), method: :post) do %>
   <%= text_field_tag :team_name %>
   <%= submit_tag 'Rename Team' %>
 <% end %>
-
 
 <p>Players:<ul>
   <% @team.users.each do |user| %>

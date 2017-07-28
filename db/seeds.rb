@@ -22,7 +22,7 @@ Identity.create([
 
 
 
-Membership.create([
+Registration.create([
   { :team_id => 1, :game_id => 1, :user_id => 2, :is_admin => false, :created_at => "2013-08-17 23:39:32", :updated_at => "2013-08-17 23:39:32" }
 ])
 
