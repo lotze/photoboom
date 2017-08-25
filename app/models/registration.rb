@@ -9,7 +9,9 @@ class Registration < ActiveRecord::Base
   end
 
   after_create :update_photos
+  before_save :update_photos, if: :team_id_changed?
   def update_photos
+    Rails.logger.info("Updating photos for #{user.name} in #{game.name} to #{team.name}!")
     photos = Photo.where(user: user, game: game)
     photos.update_all(team_id: team.id)
   end

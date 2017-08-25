@@ -1,5 +1,6 @@
 class Mission < ActiveRecord::Base
   belongs_to :game
+  validates :game_id, presence: true
   has_many :photos, dependent: :destroy
 
   default_scope { order(codenum: :asc) }
@@ -10,12 +11,6 @@ class Mission < ActiveRecord::Base
   before_validation :set_normalized_name
   def set_normalized_name
     self['normalized_name'] = Team.normalize_name(self['name'])
-  end
-
-  # hack for single-game
-  before_validation :set_game
-  def set_game
-    self['game_id'] = Game.default_game_id
   end
 
   # make sure we have a unique codenum

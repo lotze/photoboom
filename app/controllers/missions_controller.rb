@@ -9,7 +9,6 @@ class MissionsController < ApplicationController
 
   def change_order
     # get missions and new codenums
-    @game = Game.find(params['id'])
     params["mission_ids"].each_with_index do |mission_id, new_codenum|
       mission = Mission.find(mission_id)
       if mission.codenum != new_codenum + 1
@@ -17,7 +16,7 @@ class MissionsController < ApplicationController
       end
     end
     flash[:notice] = "Successfully reordered!"
-    redirect_to missions_path
+    redirect_to missions_path(game_id: @game.id)
   end
 
   # GET /missions
@@ -47,7 +46,7 @@ class MissionsController < ApplicationController
 
     respond_to do |format|
       if @mission.save
-        format.html { redirect_to missions_path, notice: 'Mission was successfully created.' }
+        format.html { redirect_to missions_path(game_id: @game.id), notice: 'Mission was successfully created.' }
         format.json { render :show, status: :created, location: @mission }
       else
         format.html { render :new }

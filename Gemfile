@@ -39,6 +39,10 @@ gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 gem 'rubyzip'
 gem 'timezone' # Google Geocoding timezone lookup for getting default timezone for new games
+gem 'resque'
+gem 'resque-scheduler'
+gem 'resque-heroku-signals'
+gem 'activejob-retry'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '>= 1.2'

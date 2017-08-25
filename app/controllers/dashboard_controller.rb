@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+  before_action :set_team, only: [:join_team]
   before_action :get_game
   # get next game this player is signed up for, or redirect to list of games
   def get_game
@@ -39,19 +40,23 @@ class DashboardController < ApplicationController
     @no_team_users = @game.without_team.map(&:user)
   end
 
-  def join_team
+  def set_team
     if params['team_id']
-      team = Team.find(params['team_id'])
-    else
+      @team = Team.find(params['team_id'])
+    end
+  end
+
+  def join_team
+    if !@team && params['team_name']
       team_name = params['team_name']
-      normalized_team_name = Team.normalize_name(params['team_name'])
-      team = Team.find_by(game: @game, normalized_name: normalized_team_name)
-      unless team
-        team = Team.create(game: @game, name: team_name)
+      normalized_team_name = Team.normalize_name(team_name)
+      @team = Team.find_by(game: @game, normalized_name: normalized_team_name)
+      unless @team
+        @team = Team.create(game: @game, name: team_name)
       end
     end
-    if team
-      current_user.set_team(team)
+    if @team
+      current_user.set_team(@team)
       redirect_to next_game_path
     else
       flash[:error] = "Error; no such team."

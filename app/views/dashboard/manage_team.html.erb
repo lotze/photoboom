@@ -11,6 +11,29 @@
   <% @team.users.each do |user| %>
   <li><%= user.name %></li>
   <% end %>
-</ul></p>
+</ul>
+</p>
 
-<p><%= link_to 'Leave the team', leave_team_path(game_id: @team.game.id), class: 'btn btn-default' %></p>
+<p>
+  Invite a friend to join:
+  
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your send button code -->
+<div class="fb-send" 
+  data-href=<%= join_team_url(team_id: @team.id) %>
+  data-layout="button_count">
+</div>
+<br /><br /><%= link_to 'Email', "mailto:?subject=Join my team!&body=Hi! I'm playing in a photo scavenger hunt (#{@game.name}, on #{@game.start_time_in_zone.strftime("%A, %B %e")}) and want you to join my team, '#{@team.name}'! You can sign up and join my team at #{join_team_url(team_id: @team.id)}", class: 'btn btn-default' %>
+</p>
+
+<p>Leave the team:
+  <br /><br /><%= link_to 'Leave', leave_team_path(game_id: @team.game.id), class: 'btn btn-default', data: { confirm: 'Are you sure?' } %></p>

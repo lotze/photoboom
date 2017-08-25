@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :game_id, value: @game.id %>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, id: :mission_name %>

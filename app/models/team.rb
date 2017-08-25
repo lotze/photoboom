@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
   belongs_to :game
   has_many :registrations
   has_many :users, :through => :registrations
-  validates :normalized_name, uniqueness: true
+  validates_uniqueness_of :normalized_name, scope: :game_id
 
   before_validation :set_normalized_name
   def set_normalized_name

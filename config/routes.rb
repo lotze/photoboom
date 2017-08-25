@@ -43,8 +43,8 @@ Photoboom::Application.routes.draw do
   match '/teams/:id/remove_member', to: 'teams#remove_member', via: [:get, :post], as: :remove_member
   match '/teams/:id/rename', to: 'teams#rename', via: [:get, :post], as: :rename_team
   post '/photos/reject', to: 'photos#reject', as: :reject_photo
-  get '/games/:id/order', to: 'missions#order', as: :missions_order
-  post '/games/:id/order', to: 'missions#change_order', as: :missions_change_order
+  get '/games/:game_id/order', to: 'missions#order', as: :missions_order
+  post '/games/:game_id/order', to: 'missions#change_order', as: :missions_change_order
   get '/games/:id/recent', to: 'games#recent_photos', as: :recent_photos
   get '/recent', to: 'games#recent_photos'
   get '/check_email', to: 'games#check_email', as: :check_email

@@ -16,7 +16,7 @@
     <%= form.text_field :name, id: :team_name %>
   </div>
 
-  <%= form.hidden_field :game_id, value: Game.default_game_id %>
+  <%= form.hidden_field :game_id, value: @game.id %>
 
   <div class="actions">
     <%= form.submit %>

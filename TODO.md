@@ -4,14 +4,12 @@
 * more game management
 ** easier mission management
 ** price: allow buying tickets to a game via Stripe
+** participants need to affirm a waiver
 
-* teams have leaders?
-** rename your team
-** invite others via email, facebook to join the game (and your team)
+* Email checks every 20 seconds
 
 * Uploading UI improvements
 ** 'uploading' spinner while uploading, until successful/failed
-** background task to process photos (convert, etc.)
 ** display better upload confirmation
 
 * Review queue: photos not yet reviewed (approved or not)
@@ -27,11 +25,16 @@
 
 == Desired ==
 * Allow test photo uploads before the game begins
-* Email checks every minute (or 30 seconds)?
-* Automatically increase capacity during a game, decrease after it ends
+* Automatically increase server capacity during a game, decrease after it ends
 * Make it pretty
+* Make it responsive
 
 == Optional ==
+* teams have leaders?
+** can set whether team needs approval to join
+** emailed when someone requests to join
+** approve people to join team, remove people from team
+
 * bonus points by admin
 ** display bonuses in slideshow
 * auto svg/pdf of printable mission list
@@ -40,7 +43,6 @@
 * eventual archiving of games (only store the zip file, redirect people looking for that game)
 
 ==Future==
-* enforce maximum team size?
 * write to Google spreadsheet? read from Google spreadsheet? https://github.com/gimite/google-drive-ruby
 * group missions into sections/themes
 * check photo metadata to look for submitted photos taken before the game

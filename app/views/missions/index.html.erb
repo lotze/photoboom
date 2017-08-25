@@ -1,6 +1,6 @@
-<h1>Missions</h1>
+<h1>Missions for <%= link_to @game.name, edit_game_path(@game.id) %></h1>
 
-<p><%= link_to 'Change order', missions_order_path(id: Game.default_game_id) %></p>
+<p><%= link_to 'Change order', missions_order_path(game_id: @game.id) %></p>
 
 <table>
   <thead>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Mission', new_mission_path %>
+<%= link_to 'New Mission', new_mission_path(game_id: @game.id) %>

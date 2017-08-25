@@ -88,9 +88,8 @@ class GamesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_game
-      @game = Game.find(params[:id] || Game.default_game_id)
+      @game = Game.find(params[:id])
     end
 
     def parse_datetime(datetime, timezone)

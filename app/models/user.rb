@@ -30,7 +30,10 @@ class User < ActiveRecord::Base
   def set_team(team)
     game = team.game
     current_membership = membership(game)
-    current_membership.destroy if current_membership
-    Registration.create!(game: game, team: team, user: self)
+    if current_membership
+      current_membership.update_attributes!(team_id: team.id)
+    else
+      current_membership = Registration.create!(game: game, team: team, user: self)
+    end
   end
 end
