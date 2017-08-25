@@ -1,0 +1,6 @@
+Oh no! There was an error processing your photo for <%= @mission.to_s %>:
+<ul>
+  <% @photo.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>

@@ -2,14 +2,16 @@
 
 == Important ==
 * more game management
-** easier mission management
+** easier mission management (including mission import from templates or other games)
+
+* registration restrictions
 ** price: allow buying tickets to a game via Stripe
 ** participants need to affirm a waiver
 
 * Email checks every 20 seconds
 
 * Uploading UI improvements
-** 'uploading' spinner while uploading, until successful/failed
+** javascript: 'uploading' spinner while uploading, until successful/failed
 ** display better upload confirmation
 
 * Review queue: photos not yet reviewed (approved or not)
@@ -23,9 +25,13 @@
 
 * Test coverage
 
+* Change domain/email (configurable, use help@domain and photos@domain by default)
+
 == Desired ==
 * Allow test photo uploads before the game begins
 * Automatically increase server capacity during a game, decrease after it ends
+* Redo routes to be nested
+* Emails sent using ActiveJob/Resque
 * Make it pretty
 * Make it responsive
 

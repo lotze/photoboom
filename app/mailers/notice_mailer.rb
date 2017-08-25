@@ -18,10 +18,17 @@ class NoticeMailer < ApplicationMailer
          subject: "Missing mission number! (was Re: #{subject})")
   end
 
+  def photo_error(photo)
+    @photo = photo
+    @mission = @photo.mission
+    mail(to: @photo.user.email,
+         subject: "Error with uploaded photo for #{@mission.name}")
+  end
+
   def photos_received(user, game, mission, subject)
     @mission = mission
     mail(to: user.email,
-         subject: "Re: #{subject}")
+         subject: subject)
   end
 
   def no_photos_received(user, game, mission, subject)

@@ -44,7 +44,7 @@ class Photo < ActiveRecord::Base
     self.update_attributes!(rejected: true)
     # email user to notify
     begin
-      NoticeMailer.rejected_photo(self, notes).deliver_now
+      NoticeMailer.rejected_photo(self, notes).deliver_later
     rescue => e
       Rails.logger.warn("Could not email for rejecting photo #{self}: #{e}")
     end

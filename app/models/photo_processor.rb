@@ -20,7 +20,7 @@ class PhotoProcessor< ActiveJob::Base
       end
     else
       Rails.logger.error("Error uploading photo: #{@photo.errors}")
-      # TODO: send email to uploader
+      NoticeMailer.photo_error(@photo).deliver_later
     end
   end
 end

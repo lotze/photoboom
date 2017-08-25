@@ -47,7 +47,7 @@ class EmailUpdater
       user = User.create(email: email, name: display_name)
       # email organizer to notify
       begin
-        NoticeMailer.new_user(user, game).deliver_now
+        NoticeMailer.new_user(user, game).deliver_later
       rescue => e
         Rails.logger.warn("Could not email for new user #{user}/#{subject}: #{e}")
       end
@@ -57,7 +57,7 @@ class EmailUpdater
     team = user.team(game)
     unless team
       begin
-        NoticeMailer.missing_team(user, game).deliver_now
+        NoticeMailer.missing_team(user, game).deliver_later
       rescue => e
         Rails.logger.warn("Could not email for missing team #{user}/#{subject}: #{e}")
       end
@@ -74,7 +74,7 @@ class EmailUpdater
     # if cannot identify mission, email sender and organizer with error
     if !mission
       begin
-        NoticeMailer.missing_mission(user, game, subject).deliver_now
+        NoticeMailer.missing_mission(user, game, subject).deliver_later
       rescue => e
         Rails.logger.warn("Could not email for missing mission #{user}/#{subject}: #{e}")
       end
@@ -109,7 +109,7 @@ class EmailUpdater
         if photos.length > 0
           # success, email sender :)
           begin
-            NoticeMailer.photos_received(user, game, mission, subject).deliver_now
+            NoticeMailer.photos_received(user, game, mission, "Re: #{subject}").deliver_later
             photos.each do |photo|
               if photo.submitted_at > game.ends_at + 2.minutes # 2 minute grace period
                 photo.reject!('The game has ended!')
@@ -121,7 +121,7 @@ class EmailUpdater
         else
           # if no photo, email sender and organizer with error
           begin
-            NoticeMailer.no_photos_received(user, game, mission, subject).deliver_now
+            NoticeMailer.no_photos_received(user, game, mission, subject).deliver_later
           rescue => e
             Rails.logger.warn("Could not email for missing photos #{user}/#{subject}: #{e}")
           end
