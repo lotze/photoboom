@@ -16,6 +16,11 @@ class RegistrationsController < ApplicationController
 
   # GET /registrations/new
   def new
+    if !@game.upcoming?
+      flash[:notice] = "That game is over."
+      return redirect_to games_path
+    end
+    
     @registration = Registration.new
     @registration.game = @game
     @event_name = "the photo scavenger hunt \"#{@game.name}\""
@@ -29,6 +34,11 @@ class RegistrationsController < ApplicationController
   # POST /registrations
   # POST /registrations.json
   def create
+    if !@game.upcoming?
+      flash[:notice] = "That game is over."
+      return redirect_to games_path
+    end
+    
     sanctified_params = registration_params
     sanctified_params = sanctified_params.merge(user_id: current_user.id)
     @registration = Registration.new(sanctified_params)

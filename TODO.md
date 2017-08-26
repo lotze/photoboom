@@ -2,11 +2,7 @@
 
 == Important ==
 * easier mission creation/management (including mission import from templates or other games)
-
-* registration restrictions
-** participants need to affirm a waiver and photo release
-
-* shortname stubs for game links
+** template categories: standard, risque, geeky, sporty
 
 * Review queue: photos not yet reviewed (approved or not)
 ** admin can deny points (marked as such in slideshow) without rejecting
@@ -32,9 +28,12 @@
 * Select icons for missions from the noun project
 ** https://github.com/TailorBrands/noun-project-api
 
+* shortname stubs for game and team (specifically for invite links)
+
 * Automatically increase server capacity during a game, decrease after it ends
 ** http://blog.leshill.org/blog/2011/04/03/using-resque-and-resque-scheduler-on-heroku.html
 ** rake task, run every 10m using heroku: check if game has started/ended since last check, if so, update scheduler on/off and scale other workers up/down
+** also automatically make zip file and post-game email for participants
 * Make it pretty
 * Make it responsive
 
