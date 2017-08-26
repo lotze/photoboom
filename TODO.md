@@ -7,11 +7,9 @@
 * registration restrictions
 ** price: allow buying tickets to a game via Stripe
 ** participants need to affirm a waiver
+** shortname stubs for game links
 
 * Email checks every 20 seconds
-
-* Uploading UI improvements
-** javascript: 'uploading' spinner while uploading, until successful/failed
 
 * Review queue: photos not yet reviewed (approved or not)
 ** admin can deny points (marked as such in slideshow) without rejecting

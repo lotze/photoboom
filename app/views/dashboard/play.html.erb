@@ -10,6 +10,13 @@
 <% end %>
 </p>
 
+<script>
+function showUploading(mission_id) {
+  source = $("#photo_mission_" + mission_id);
+  source.replaceWith("<img src='https://i0.wp.com/cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif' /> Uploading...");
+}
+</script>
+
 <p>Click on any mission to upload a photo to complete it. Your missions:
   <% @missions.each do |mission| %>
   <br /><br />
@@ -17,9 +24,10 @@
     <%= form_with(model: Photo.new, local: true, id: "form_mission_#{mission.id}") do |form| %>
       <%= form.hidden_field :game_id, value: @game.id %>
       <%= form.hidden_field :mission_id, value: mission.id %>
-      <%= form.file_field :photo, id: "photo_mission_#{mission.id}", type: "file", accept: "image/*;capture=camera", onchange: "this.form.submit()" %>
+      <%= form.file_field :photo, id: "photo_mission_#{mission.id}", type: "file", accept: "image/*;capture=camera", onchange: "this.form.submit(); showUploading(#{mission.id});" %>
     <% end %>
     <% (@photos_by_mission[mission.id] || []).each do |photo| %>
+
     <br /><%= link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url) %>
     <% end %>
   <% end %>
