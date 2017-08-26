@@ -37,23 +37,23 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     p = photo_params
-    game = Game.find(p['game_id'])
-
-    job_params = {
-      user_id: current_user.id,
-      team_id: current_user.team(game).try(:id),
-      game_id: p[:game_id],
-      mission_id: p[:mission_id],
-      submitted_at: Time.now.to_s,
-      tmp_file: File.absolute_path(p[:photo].tempfile.path),
-      original_filename: p[:photo].original_filename,
-      content_type: p[:photo].content_type
-    }
-    PhotoProcessor.perform_later job_params
+    @game = Game.find(p['game_id'])
+    @photo = Photo.new(p.merge(user: current_user, team: current_user.team(@game), submitted_at: Time.now))
 
     respond_to do |format|
-      format.html { redirect_to play_path(game_id: game.id), notice: 'Thanks! Your photo is being processed.' }
-      format.json { render :show, status: :processing }
+      if @photo.save
+        if !Rails.env.development? && @photo.submitted_at > @photo.game.ends_at + 2.minutes # 2 minute grace period
+          @photo.reject!('The game has ended!')
+          format.html { redirect_to play_path(game_id: @photo.game_id), error: 'Error uploading photo! The game has already ended!' }
+          format.json { render json: @photo.errors.merge(error: :game_over), status: :unprocessable_entity }
+        else
+          format.html { redirect_to play_path(game_id: @photo.game_id), notice: 'Your photo was successfully uploaded.' }
+          format.json { render :show, status: :created, location: @photo }
+        end
+      else
+        format.html { redirect_to play_path(game_id: @photo.game_id), error: 'Error uploading photo!' }
+        format.json { render json: @photo.errors, status: :unprocessable_entity }
+      end
     end
   end
 

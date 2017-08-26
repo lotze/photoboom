@@ -43,6 +43,7 @@ gem 'resque'
 gem 'resque-scheduler'
 gem 'resque-heroku-signals'
 gem 'activejob-retry'
+gem 'delayed_paperclip'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '>= 1.2'

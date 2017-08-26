@@ -12,7 +12,6 @@
 
 * Uploading UI improvements
 ** javascript: 'uploading' spinner while uploading, until successful/failed
-** display better upload confirmation
 
 * Review queue: photos not yet reviewed (approved or not)
 ** admin can deny points (marked as such in slideshow) without rejecting

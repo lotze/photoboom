@@ -69,6 +69,9 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
     daemons (1.2.4)
+    delayed_paperclip (3.0.1)
+      activejob (>= 4.2)
+      paperclip (>= 3.3)
     erubi (1.6.1)
     et-orbi (1.0.5)
       tzinfo
@@ -281,6 +284,7 @@ DEPENDENCIES
   bcrypt-ruby (>= 3.0.0)
   bootstrap3-datetimepicker-rails
   coffee-rails (>= 4.0.0)
+  delayed_paperclip
   font-awesome-rails
   foreman
   jbuilder (>= 1.2)

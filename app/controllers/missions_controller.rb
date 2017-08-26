@@ -32,7 +32,7 @@ class MissionsController < ApplicationController
 
   # GET /missions/new
   def new
-    @mission = Mission.new(game: @game)
+    @mission = Mission.new(game: @game, points: 10)
   end
 
   # GET /missions/1/edit

@@ -13,6 +13,7 @@ class Photo < ActiveRecord::Base
     thumb: "-quality 75",
     all: "-auto-orient -strip"
   }
+  process_in_background :photo, processing_image_url: "/images/:style/processing.jpg"
 
   before_save :extract_dimensions
   def extract_dimensions
