@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th></th>
       <th>Codenum</th>
       <th>Name</th>
       <th>Points</th>
@@ -16,7 +15,6 @@
   <tbody>
     <% @missions.each do |mission| %>
       <tr>
-        <td><%= mission.avatar.present? ? image_tag(mission.avatar.url(:thumb)) : '' %></td>
         <td><%= mission.codenum %></td>
         <td><%= mission.name %></td>
         <td><%= mission.points %></td>

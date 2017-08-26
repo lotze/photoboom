@@ -4,7 +4,6 @@
 * easier mission creation/management (including mission import from templates or other games)
 
 * registration restrictions
-** price: allow buying tickets to a game via Stripe
 ** participants need to affirm a waiver and photo release
 
 * shortname stubs for game links
@@ -14,17 +13,32 @@
 ** admin can un-reject rejected photos
 
 * Test coverage
+** create game
+** add missions
+** reorder missions
+** register
+** view game
+** submit photos
+** email photos
+** review photos
+** slideshow
+** zip file
 
 == Desired ==
-* Generate printable pdf of rules/missions
-* Select icons for missions from the noun project
+* Generate printable pdf of rules/missions (include waiver)
 * Allow test photo uploads before the game begins
+* Price: allow buying tickets to a game via Stripe
+
+* Select icons for missions from the noun project
+** https://github.com/TailorBrands/noun-project-api
 
 * Automatically increase server capacity during a game, decrease after it ends
 ** http://blog.leshill.org/blog/2011/04/03/using-resque-and-resque-scheduler-on-heroku.html
 ** rake task, run every 10m using heroku: check if game has started/ended since last check, if so, update scheduler on/off and scale other workers up/down
 * Make it pretty
 * Make it responsive
+
+* eventbrite registration and confirmation rather than google
 
 == Optional ==
 * teams have leaders?

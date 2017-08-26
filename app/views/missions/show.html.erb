@@ -23,10 +23,5 @@
   <%= @mission.codenum %>
 </p>
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @mission.avatar.present? ? image_tag(@mission.avatar.url) : ''  %>
-</p>
-
 <%= link_to 'Edit', edit_mission_path(@mission) %> |
 <%= link_to 'Back', missions_path(game_id: @game.id) %>

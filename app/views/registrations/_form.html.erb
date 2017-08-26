@@ -18,7 +18,7 @@
   <% if @game.is_admin?(current_user) %>
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.collection_select(:user_id, User.all, :id, :name, :prompt => 'Please select user') %>
+    <%= form.collection_select(:user_id, @game.users, :id, :name, :prompt => 'Please select user') %>
   </div>
   <% end %>
 

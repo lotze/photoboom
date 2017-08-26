@@ -3,6 +3,10 @@ class Registration < ActiveRecord::Base
   belongs_to :team
   belongs_to :game
 
+  validates :agree_waiver, acceptance: true
+  validates :agree_photo, acceptance: true
+  validates :legal_name, presence: true
+
   after_initialize :empty_admin
   def empty_admin
     self.is_admin = false if self.is_admin.nil?
@@ -11,6 +15,7 @@ class Registration < ActiveRecord::Base
   after_create :update_photos
   before_save :update_photos, if: :team_id_changed?
   def update_photos
+    return unless team
     Rails.logger.info("Updating photos for #{user.name} in #{game.name} to #{team.name}!")
     photos = Photo.where(user: user, game: game)
     photos.update_all(team_id: team.id)

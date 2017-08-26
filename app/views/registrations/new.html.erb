@@ -1,5 +1,68 @@
-<h1>New membership</h1>
+<%= form_for(@registration) do |form| %>
+  <% if @registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this membership from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @registration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', registrations_path %>
+  <%= form.hidden_field :game_id, :value => @registration.game_id %>
+
+<div class="waiver">
+<h2>WAIVER, RELEASE, COVENANT NOT TO SUE AND INDEMNITY AGREEMENT</h2>
+
+<p><b>NOTICE:</b> THIS IS A LEGALLY BINDING AGREEMENT.</p>
+
+<p><b>Released Persons:</b> <%= @grantee %></p>
+
+<p>By signing this agreement, you, the UNDERSIGNED (hereinafter “Participant”), give up your right to bring a court action to recover compensation or obtain any other remedy for any injury to you or to your property or for your death however caused arising out of your participation in <%= @event_name %>.</p>
+
+<p>ASSUMPTION OF RISK.<br>
+The Participant acknowledges and fully understands that as a participant in <%= @event_name %>, the Participant will be engaging in activities that involve risk of serious injury, including permanent disability and death, property loss and severe social and economic losses. These risks include, but are not limited to, those caused by: (a) the actions, inactions or negligence of the Released Persons, spectators, event officials, and organizers; (b) conditions of the premises or equipment used; (c) rules of play; (d) temperature; (e) weather; (f) condition of participants; and, (g) vehicular traffic.  The Participant further acknowledges and fully understands that there may also be other risks that are not known or foreseeable at this time. The Released Persons cannot control these risks, nor has the Released Persons judged the Participant’s skill level or ability prior to allowing the Participant to participate and consequently is not in a position to guarantee the Participant’s personal health or safety during the programs, events or activities. THE PARTICIPANT KNOWINGLY AND VOLUNTARILY ASSUMES ALL SUCH RISKS, BOTH KNOWN AND UNKNOWN, ANTICIPATED AND UNANTICIPATED, EVEN IF ARISING FROM THE NEGLIGENCE OF THE RELEASED PERSONS OR OTHERS, AND THE PARTICIPANT ASSUMES FULL RESPONSIBILITY AND LIABILITY FOR THE PARTICIPANT’S PARTICIPATION.</p>
+
+<p>RESPONSIBILITY FOR EMERGENCY CARE.<br>
+In consideration of the possibility of an accident, the Participant hereby consents to emergency transportation and treatment necessary in the event of injury or illness. Participant hereby accepts responsibility for the payment of any emergency transportation and treatment expenses and any subsequent medical bills. </p>
+
+<p>RELEASE OF ALL CLAIMS AND COVENANT NOT TO SUE.<br>
+In consideration of permission and as a requirement of participation in <%= @event_name %>, the Participant hereby covenants and agrees not to sue the Released Persons and further agrees to fully release, indemnify and hold harmless the Released Persons from any and all actions, causes of action, demands, claims, costs, loss of services, expenses, compensation, loss of injury to person or property or damages, of any nature whatsoever, including, but not limited to, transportation accidents arising during <%= @event_name %> and any claim for negligence, which the Participant may ever have, now have, or which the Participant’s heirs, representatives, executors, administrators, and assigns may now have, or have in the future against the Released Persons (including attorneys’ fees incurred by the Released Persons, in connection with defense of any claim made by or on behalf of, or arising out of any injury to the Participant) on account of personal injury, property damage, death, or accident of any kind, arising out of or in any way related to Participant’s participation in <%= @event_name %>, whether the participation is supervised, unsupervised, however the injury is caused, including, but not limited to the negligence of the Released Persons. </p>
+
+<p>THE CONSIDERATION FOR THIS WAIVER, RELEASE, COVENANT NOT TO SUE AND INDEMNITY AGREEMENT is the permission to be given the Participant to participate in <%= @event_name %> and it is agreed that such participation by Participant would be strictly forbidden absent the signing of this document by the Participant.</p>
+
+<p><span>THE PARTICIPANT REPRESENTS AND PROMISES that he/she (1) has full authority to execute this document; (2) has fully read this document; and (3) would not have signed this document unless he/she fully understood its intent to bar any future claims against the Released Persons and to protect the Released Persons from any future loss or liability arising out of or resulting from participation in <%= @event_name %>.</span></p>
+</div>
+
+<div class="photo_release">
+<h2>Photo Release</h2>
+
+<p>I hereby grant <%= @grantee %> permission to use my likeness in a photograph, video, or other digital media taken and submitted during <%= @event_name %> (“photo”) in any and all of its publications, including web-based publications, without payment or other consideration.</p>
+
+<p>I hereby irrevocably authorize <%= @grantee %> to edit, alter, copy, exhibit, publish, or distribute photos  for any lawful purpose. In addition, I waive any right to inspect or approve the finished product wherein my likeness appears. Additionally, I waive any right to royalties, payment, or other compensation arising or related to the use of the photo.</p>
+
+<p>I hereby hold harmless, release, and forever discharge <%= @grantee %> from all claims, demands, and causes of action which I, my heirs, representatives, executors, administrators, or any other persons acting on my behalf or on behalf of my estate have or may have by reason of this authorization.</p>
+</div>
+
+<p>
+<%= form.check_box :agree_waiver %>
+I have read and agree to the WAIVER, RELEASE, COVENANT NOT TO SUE AND INDEMNITY AGREEMENT.
+</p>
+<p>
+<%= form.check_box :agree_photo %>
+I have read and agree to the Photo Release.
+</p>
+
+  <p>These agreements are authorized and recorded as using Google account <strong><%= current_user.email %></strong>strong>.</p>
+
+  <div class="field">
+    <%= form.label 'Legal Name' %>
+    <%= form.text_field :legal_name, id: :legal_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

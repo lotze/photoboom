@@ -5,9 +5,6 @@ class Mission < ActiveRecord::Base
 
   default_scope { order(codenum: :asc) }
 
-  has_attached_file :avatar, styles: {thumb: "100x100#"}, preserve_files: false
-  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-
   before_validation :set_normalized_name
   def set_normalized_name
     self['normalized_name'] = Team.normalize_name(self['name'])

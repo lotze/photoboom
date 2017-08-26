@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     if current_membership
       current_membership.update_attributes!(team_id: team.id)
     else
-      current_membership = Registration.create!(game: game, team: team, user: self)
+      raise "User #{self.name} must first register for #{game.name}"
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825211344) do
+ActiveRecord::Schema.define(version: 20170826223927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,10 +60,6 @@ ActiveRecord::Schema.define(version: 20170825211344) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "name"
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.integer "codenum", default: 0, null: false
     t.string "normalized_name"
     t.index ["game_id", "codenum"], name: "index_missions_on_game_id_and_codenum"
@@ -102,6 +98,9 @@ ActiveRecord::Schema.define(version: 20170825211344) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "payment_token"
+    t.string "legal_name"
+    t.boolean "agree_waiver"
+    t.boolean "agree_photo"
     t.index ["game_id", "user_id"], name: "index_registrations_on_game_id_and_user_id", unique: true
     t.index ["team_id"], name: "index_registrations_on_team_id"
     t.index ["user_id"], name: "index_registrations_on_user_id"

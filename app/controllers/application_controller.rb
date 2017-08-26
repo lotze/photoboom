@@ -20,8 +20,15 @@ class ApplicationController < ActionController::Base
 
   def enforce_login
     if !current_user
-      session[:redirect_to] = request.original_url unless request.original_url.include?('signout') || request.original_url.include?('logout')
+      session[:redirect_to] ||= request.original_url unless request.original_url.include?('signout') || request.original_url.include?('logout')
       redirect_to :login
+    end
+  end
+
+  def require_registration
+    unless Registration.where(game_id: @game.id, user_id: current_user.id).count > 0
+      session[:redirect_to] ||= request.original_url unless request.original_url.include?('signout') || request.original_url.include?('logout')
+      redirect_to new_registration_path(game_id: @game.id)
     end
   end
 
