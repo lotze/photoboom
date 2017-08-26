@@ -6,29 +6,25 @@
 
 * registration restrictions
 ** price: allow buying tickets to a game via Stripe
-** participants need to affirm a waiver
-** shortname stubs for game links
+** participants need to affirm a waiver and photo release
+
+* shortname stubs for game links
 
 * Email checks every 20 seconds
 
 * Review queue: photos not yet reviewed (approved or not)
 ** admin can deny points (marked as such in slideshow) without rejecting
-** admin can send questions rather than rejecting photos
 ** admin can un-reject rejected photos
-** team sees those questions at the top of /play
-** team gets emailed this
-** email responses are automatically picked up
-** admin can resolve comments
 
 * Test coverage
 
 * Change domain/email (configurable, use help@domain and photos@domain by default)
 
 == Desired ==
+* Generate printable pdf of rules/missions
+* Select icons for missions from the noun project
 * Allow test photo uploads before the game begins
 * Automatically increase server capacity during a game, decrease after it ends
-* Redo routes to be nested
-* Emails sent using ActiveJob/Resque
 * Make it pretty
 * Make it responsive
 
@@ -37,6 +33,13 @@
 ** can set whether team needs approval to join
 ** emailed when someone requests to join
 ** approve people to join team, remove people from team
+
+* Review discussion
+** admin can send questions rather than rejecting photos
+** team sees those questions at the top of /play
+** team gets emailed this
+** email responses are automatically picked up
+** admin can resolve comments
 
 * bonus points by admin
 ** display bonuses in slideshow
