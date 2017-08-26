@@ -1,7 +1,9 @@
 require 'net/imap'
 require 'mail'
 
-class EmailUpdater
+class EmailUpdater < ActiveJob::Base
+  queue_as :email_checker
+
   def get_with_imap(gmail_login, gmail_password)
     imap = Net::IMAP.new("imap.gmail.com",993,true)
     imap.login(gmail_login, gmail_password)
@@ -131,7 +133,7 @@ class EmailUpdater
     return photos
   end
 
-  def update
+  def perform
     photos = []
 
     gmail_login = ENV['GMAIL_LOGIN']

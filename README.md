@@ -18,6 +18,11 @@ To run the rake task to check a gmail account and download emailed photos, you w
 GMAIL_LOGIN
 GMAIL_PASSWORD
 
+To specify the email game players should send their photos to, you should set
+PHOTO_SUBMIT_EMAIL
+and to specify the email for admin issues, set
+ADMIN_EMAIL
+
 To run using the same method as will be run on heroku (including environment settings), run:
 RACK_ENV=development PORT=3000 foreman start
 

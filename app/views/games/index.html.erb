@@ -1,6 +1,6 @@
 
 <% if @games.empty? %>
-<p>We are afraid there are no upcoming games. Please email spidere [at] spidere [dot] com to ask about the next available game.</p>
+<p>We are afraid there are no upcoming games. Please email <%= (ENV["ADMIN_EMAIL"] || '').gsub('@',' [at] ').gsub('.', ' [dot] ') %> to ask about the next available game.</p>
 <% else %>
 <table>
   <thead>

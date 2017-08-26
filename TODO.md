@@ -1,8 +1,7 @@
 == Test ==
 
 == Important ==
-* more game management
-** easier mission management (including mission import from templates or other games)
+* easier mission creation/management (including mission import from templates or other games)
 
 * registration restrictions
 ** price: allow buying tickets to a game via Stripe
@@ -10,21 +9,20 @@
 
 * shortname stubs for game links
 
-* Email checks every 20 seconds
-
 * Review queue: photos not yet reviewed (approved or not)
 ** admin can deny points (marked as such in slideshow) without rejecting
 ** admin can un-reject rejected photos
 
 * Test coverage
 
-* Change domain/email (configurable, use help@domain and photos@domain by default)
-
 == Desired ==
 * Generate printable pdf of rules/missions
 * Select icons for missions from the noun project
 * Allow test photo uploads before the game begins
+
 * Automatically increase server capacity during a game, decrease after it ends
+** http://blog.leshill.org/blog/2011/04/03/using-resque-and-resque-scheduler-on-heroku.html
+** rake task, run every 10m using heroku: check if game has started/ended since last check, if so, update scheduler on/off and scale other workers up/down
 * Make it pretty
 * Make it responsive
 

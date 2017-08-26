@@ -52,6 +52,6 @@ class Photo < ActiveRecord::Base
   end
 
   def accept!(notes)
-    self.update_attributes!(reviewed: true)
+    self.update_attributes!(rejected: false, reviewed: true)
   end
 end
