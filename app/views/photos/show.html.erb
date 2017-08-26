@@ -30,5 +30,13 @@
 <% end %>
 </p>
 
+<p>Accept photo?
+<br /><%= form_tag(accept_photo_path) do %>
+  <%= hidden_field_tag :id, @photo.id %>
+  <%= text_field_tag :notes %>
+  <%= submit_tag 'Accept' %>
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %>

@@ -41,12 +41,16 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   def reject!(notes)
-    self.update_attributes!(rejected: true)
+    self.update_attributes!(rejected: true, reviewed: true)
     # email user to notify
     begin
       NoticeMailer.rejected_photo(self, notes).deliver_later
     rescue => e
       Rails.logger.warn("Could not email for rejecting photo #{self}: #{e}")
     end
+  end
+
+  def accept!(notes)
+    self.update_attributes!(reviewed: true)
   end
 end

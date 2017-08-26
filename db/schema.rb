@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170729030119) do
+ActiveRecord::Schema.define(version: 20170825211344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170729030119) do
     t.integer "team_id"
     t.integer "width"
     t.integer "height"
+    t.boolean "reviewed", default: false, null: false
     t.index ["game_id", "created_at"], name: "index_photos_on_game_id_and_created_at"
     t.index ["game_id", "rejected"], name: "index_photos_on_game_id_and_rejected"
     t.index ["mission_id"], name: "index_photos_on_mission_id"

@@ -5,6 +5,9 @@ Photoboom::Application.routes.draw do
   get '/join_team', to: 'dashboard#join_team', as: :join_team
   get '/leave_team', to: 'dashboard#leave_team', as: :leave_team
   get '/manage_team', to: 'dashboard#manage_team', as: :manage_team
+  match '/teams/:id/add_member', to: 'teams#add_member', via: [:get, :post], as: :add_member
+  match '/teams/:id/remove_member', to: 'teams#remove_member', via: [:get, :post], as: :remove_member
+  match '/teams/:id/rename', to: 'teams#rename', via: [:get, :post], as: :rename_team
 
   get '/play', to: 'dashboard#play', as: :play
   get '/review', to: 'dashboard#review', as: :review
@@ -30,25 +33,24 @@ Photoboom::Application.routes.draw do
   get "api/submit"
   get "api/delete"
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
   resources :games
-  # TODO: make these sub-routes of games
   resources :photos
   resources :missions
   resources :teams
   resources :registrations
-  match '/teams/:id/add_member', to: 'teams#add_member', via: [:get, :post], as: :add_member
-  match '/teams/:id/remove_member', to: 'teams#remove_member', via: [:get, :post], as: :remove_member
-  match '/teams/:id/rename', to: 'teams#rename', via: [:get, :post], as: :rename_team
-  post '/photos/reject', to: 'photos#reject', as: :reject_photo
+
+  # game and photo management
   get '/games/:game_id/order', to: 'missions#order', as: :missions_order
   post '/games/:game_id/order', to: 'missions#change_order', as: :missions_change_order
   get '/games/:id/recent', to: 'games#recent_photos', as: :recent_photos
+  get '/games/:id/admin_review', to: 'games#admin_review', as: :admin_review
+  post '/photos/reject', to: 'photos#reject', as: :reject_photo
+  post '/photos/accept', to: 'photos#accept', as: :accept_photo
   get '/recent', to: 'games#recent_photos'
-  get '/check_email', to: 'games#check_email', as: :check_email
   get '/missing', to: 'teams#missing', as: :missing
+
+  get '/check_email', to: 'games#check_email', as: :check_email
 
   # automatically go to their next upcoming game; if they don't have one, will redirect to list of games
   root 'dashboard#next_game'

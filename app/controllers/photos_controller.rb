@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy, :reject]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy, :reject, :accept]
   before_action :set_game
   before_action :require_game_admin, except: [:create]
 
@@ -83,7 +83,12 @@ class PhotosController < ApplicationController
 
   def reject
     @photo.reject!(params['notes'])
-    redirect_to photos_path
+    redirect_to admin_review_path(id: @game.id)
+  end
+
+  def accept
+    @photo.accept!(params['notes'])
+    redirect_to admin_review_path(id: @game.id)
   end
 
   private

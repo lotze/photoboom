@@ -7,6 +7,11 @@ class GamesController < ApplicationController
     render 'photos/index'
   end
 
+  def admin_review
+    @photos = @game.photos.where(reviewed: false).order(created_at: :desc).includes(:team).includes(:mission).limit(params['n'] || 40)
+    render 'photos/index'
+  end
+
   def check_email
     @time_checked = Time.now
     email_updater = EmailUpdater.new
