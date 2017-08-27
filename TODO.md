@@ -2,7 +2,7 @@
 
 == Important ==
 * easier mission creation/management (including mission import from templates or other games)
-** template categories: standard, risque, geeky, sporty
+** template categories: standard, risque, geeky, sporty, science, non-players, boston, san francisco, etc.
 
 * Review queue: photos not yet reviewed (approved or not)
 ** admin can deny points (marked as such in slideshow) without rejecting
@@ -19,6 +19,8 @@
 ** review photos
 ** slideshow
 ** zip file
+
+* calendar event with 1-day and 1-hour email reminder
 
 == Desired ==
 * Generate printable pdf of rules/missions (include waiver)
