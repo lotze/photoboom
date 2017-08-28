@@ -1,5 +1,6 @@
 <h1>Editing game</h1>
 
 <%= link_to 'Edit Missions', missions_path(game_id: @game.id) %>
+<%= link_to 'Print Rules', rules_path(game_id: @game.id) %>
 
 <%= render 'form' %>

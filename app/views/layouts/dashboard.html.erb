@@ -21,4 +21,8 @@
   <%= yield %>
 <% end %>
 
+<% if @game.is_admin?(current_user) %>
+<p><%= link_to 'Edit Game', edit_game_path(@game.id) %></p>
+<% end %>
+
 <%= render template: "layouts/application" %>

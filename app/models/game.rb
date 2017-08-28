@@ -30,6 +30,14 @@ class Game < ActiveRecord::Base
     self.max_team_size ||= 6
   end
 
+  def end_location
+    "the end location"
+  end
+
+  def contact
+    organizer.email
+  end
+
   def without_team
     registrations.where(team_id: nil)
   end
@@ -54,6 +62,10 @@ class Game < ActiveRecord::Base
 
   def start_time_in_zone
     ActiveSupport::TimeZone.new(timezone).parse(starts_at.to_s)
+  end
+
+  def end_time_in_zone
+    ActiveSupport::TimeZone.new(timezone).parse(ends_at.to_s)
   end
 
   def upcoming?

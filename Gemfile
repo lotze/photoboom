@@ -44,12 +44,16 @@ gem 'resque-scheduler'
 gem 'resque-heroku-signals'
 gem 'activejob-retry'
 gem 'delayed_paperclip'
+# gem for making pdf from html
+gem 'wicked_pdf'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '>= 1.2'
 
 group :production do
   gem 'rails_12factor'
+  # gem for making pdf from html
+  gem 'wkhtmltopdf-heroku'
 end
 
 group :development do

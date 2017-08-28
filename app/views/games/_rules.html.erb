@@ -1,0 +1,51 @@
+<div class="rules">
+<div class="header">
+<h2><%= game.name %></h2>
+<%= game.start_time_in_zone.strftime("%A, %B %e %Y") %>
+<br /><%= game.start_time_in_zone.strftime("%l:%M") %> - <%= game.end_time_in_zone.strftime("%l:%M") %>
+</div>
+
+<p>Your official goal is for your team to score as many points as possible, by completing photo missions from the following pages. But your <em>secret mission</em> is to have fun. If you are not having fun, it may help to not worry so much about getting points.</p>
+
+<p>You should stay together as a team. This is critical to your secret mission, even though it might hinder your official goal.</p>
+
+<p>Take a moment to compose and frame your photos. Turn a "good enough" photo into a cool photo. Remember, this is for posterity.</p>
+
+<p>To submit a photo, you can either 
+  <ul><li>upload it to <span class="attention"><%= hostname %></span></li></ul>
+<br />or
+  <ul><li>email it to <span class="attention"><%= photo_email %></span> (with the number or name in the subject)</li></ul>
+</p>
+
+<p>Notes:
+<ul>
+<li>Any team member can upload or email photos. You are playing as a <strong>team</strong>.</li>
+<li>It may take a few seconds for the photo to upload. It may take a few minutes for your email to be processed. This is okay.</li>
+<li>You can only receive points once for each mission. Each photo can only be used to complete one mission.</li>
+<li>All photos must be submitted by <%= game.end_time_in_zone.strftime("%l:%M %P") %>. Any photos not received by then will not count. You are welcome to finish early if you like. When you finish, you should head to <%= game.end_location %>.</li>
+<li>Some photos need a team member. Some need a member of a different team. Some need a non-player (someone not on any team).</li>
+<li>If you have any questions or trouble, please contact the organizer at <%= game.contact %>.</li>
+</ul>
+</p>
+
+<p>Reminder: If things start to feel too complicated, or stressful, or annoying, don't worry and just have fun. :) Thanks for playing!</p>
+
+</div>
+
+<div class="missions">
+  <table>
+  <% game.missions.each_with_index do |mission, i| %>
+    <% if i % 2 == 0 %>
+    <tr>
+    <% end %>
+    <td>
+    <div class="mission_name"><%= mission.codenum %>: <%= mission.name %></div>
+    <div class="points"><%= mission.points %> <%= 'point'.pluralize(mission.points) %></div>
+    <div class="mission_description"><%= mission.description %></div>
+    </td>
+    <% if i % 2 == 1 || i == game.missions.count - 1 %>
+    </tr>
+    <% end %>
+  <% end %>
+  </table>
+</div>

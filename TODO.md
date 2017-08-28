@@ -22,8 +22,9 @@
 
 * calendar event with 1-day and 1-hour email reminder
 
+* add contact information and end location fields to games
+
 == Desired ==
-* Generate printable pdf of rules/missions (include waiver)
 * Allow test photo uploads before the game begins
 * Price: allow buying tickets to a game via Stripe
 
@@ -67,3 +68,4 @@
 * check photo metadata to look for submitted photos taken before the game
 * ability for players to vote on photos (time after game ends)
 * graph of team points positions over time
+* rules provided as actual pdf

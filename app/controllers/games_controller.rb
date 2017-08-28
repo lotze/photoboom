@@ -1,6 +1,35 @@
 class GamesController < ApplicationController
   before_action :set_game, except: [:index, :new, :create]
   before_action :require_game_admin, except: [:index, :new, :create, :signup]
+  layout 'print', only: [:rules]
+
+  def rules
+    # TODO: force unique mission numbers before displaying for printing
+  end
+
+  def rules_pdf
+    filename = "./tmp/game_#{@game.id}.pdf"
+    namespace = OpenStruct.new(
+      :game => @game,
+      :hostname => request.base_url,
+      :photo_email => ENV['PHOTO_SUBMIT_EMAIL']
+    )
+    layout = ERB.new(File.open(Rails.root.join('app','views','layouts','print.html.erb')).read.gsub!('<%= content_for?(:content) ? yield(:content) : yield %>', '<%= content %>'))
+    template = layout.result(OpenStruct.new(
+      :content => File.open(Rails.root.join('app','views','games','rules.html.erb')).read
+    ).instance_eval { binding })
+
+    template = ERB.new(File.open(Rails.root.join('app','views','games','_rules.html.erb')).read)
+    filled_rules = template.result(namespace.instance_eval { binding })
+    pdf = WickedPdf.new.pdf_from_string(filled_rules, :margin => {:top                => 0.5,
+                         :bottom             => 0,
+                         :left               => 0.5,
+                         :right              => 0.5})
+    File.open(filename, 'wb') do |file|
+      file << pdf
+    end
+    send_file(filename, filename: 'rules.pdf', type: 'application/pdf', disposition: :inline)
+  end
 
   def recent_photos
     @photos = @game.photos.order(created_at: :desc).includes(:team).includes(:mission).limit(params['n'] || 20)
