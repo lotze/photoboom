@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826223927) do
+ActiveRecord::Schema.define(version: 20170829012138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170826223927) do
     t.datetime "zip_file_updated_at"
     t.string "timezone"
     t.string "start_location"
+    t.string "contact"
+    t.string "end_location"
     t.index ["is_public", "starts_at"], name: "index_games_on_is_public_and_starts_at"
     t.index ["organizer_id"], name: "index_games_on_organizer_id"
   end

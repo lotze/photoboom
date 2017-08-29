@@ -139,7 +139,7 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      p = params.require(:game).permit(:name, :starts_at, :ends_at, :min_team_size, :max_team_size, :timezone, :start_location)
+      p = params.require(:game).permit(:name, :starts_at, :ends_at, :min_team_size, :max_team_size, :timezone, :start_location, :contact, :end_location)
       p['starts_at'] = parse_datetime(p['starts_at'], p['timezone'])
       p['ends_at'] = parse_datetime(p['ends_at'], p['timezone'])
       return p

@@ -18,8 +18,6 @@
 
 * calendar event with 1-day and 1-hour email reminder
 
-* add contact information and end location fields to games
-
 == Desired ==
 * Allow test photo uploads before the game begins
 * Price: allow buying tickets to a game via Stripe

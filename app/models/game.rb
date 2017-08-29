@@ -30,12 +30,12 @@ class Game < ActiveRecord::Base
     self.max_team_size ||= 6
   end
 
-  def end_location
-    "the end location"
+  def end_location_string
+    end_location || "the end location"
   end
 
-  def contact
-    organizer.email
+  def contact_string
+    contact || organizer.email
   end
 
   def without_team

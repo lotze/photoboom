@@ -33,6 +33,20 @@
   </div>
 
   <div class="well">
+    End location:
+    <div class='input-group'>
+      <%= f.text_area :end_location, rows: 3, cols: 60 %>
+    </div>
+  </div>
+
+  <div class="well">
+    Contact number or email (optional, for contact during the game):
+    <div class='input-group'>
+      <%= f.text_field :contact %>
+    </div>
+  </div>
+
+  <div class="well">
     Starts at:
     <div class='input-group date' id='datetimepicker_starts_at'>
         <%= f.text_field :starts_at, 'data-format': "MM/dd/yyyy HH:mm:ss PP", class: 'form-control' %>
