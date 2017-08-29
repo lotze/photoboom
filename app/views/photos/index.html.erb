@@ -1,5 +1,13 @@
 <h1>Photos</h1>
 
+<% if @game.is_admin?(current_user) %>
+<p><ul>
+<li><%= link_to 'Review', admin_review_path(id: @game.id) %></li>
+<li><%= link_to 'Rejected', rejected_path(id: @game.id) %></li>
+<li><%= link_to 'Recent', recent_path(id: @game.id) %></li>
+</p></ul>
+<% end %>
+
 <table>
   <thead>
     <tr>

@@ -40,6 +40,15 @@ class NoticeMailer < ApplicationMailer
     @photo = photo
     @notes = notes
     mail(to: photo.user.email,
+         from: ENV['ADMIN_EMAIL'],
          subject: "Photo for #{photo.mission} was rejected")
+  end
+
+  def unrejected_photo(photo, notes)
+    @photo = photo
+    @notes = notes
+    mail(to: photo.user.email,
+         from: ENV['ADMIN_EMAIL'],
+         subject: "Photo for #{photo.mission} was accepted")
   end
 end

@@ -4,10 +4,6 @@
 * easier mission creation/management (including mission import from templates or other games)
 ** template categories: standard, risque, geeky, sporty, science, non-players, boston, san francisco, etc.
 
-* Review queue: photos not yet reviewed (approved or not)
-** admin can deny points (marked as such in slideshow) without rejecting
-** admin can un-reject rejected photos
-
 * Test coverage
 ** create game
 ** add missions
@@ -37,10 +33,14 @@
 ** http://blog.leshill.org/blog/2011/04/03/using-resque-and-resque-scheduler-on-heroku.html
 ** rake task, run every 10m using heroku: check if game has started/ended since last check, if so, update scheduler on/off and scale other workers up/down
 ** also automatically make zip file and post-game email for participants
+
 * Make it pretty
+
 * Make it responsive
 
 * eventbrite registration and confirmation rather than google
+
+* timezone from lat/long happens via ajax
 
 == Optional ==
 * teams have leaders?
@@ -54,6 +54,7 @@
 ** team gets emailed this
 ** email responses are automatically picked up
 ** admin can resolve comments
+** admin can deny points (marked as such in slideshow) without rejecting
 
 * bonus points by admin
 ** display bonuses in slideshow

@@ -52,6 +52,15 @@ class Photo < ActiveRecord::Base
   end
 
   def accept!(notes)
+    if rejected
+      # email user to notify
+      begin
+        NoticeMailer.unrejected_photo(self, notes).deliver_later
+      rescue => e
+        Rails.logger.warn("Could not email for unrejecting photo #{self}: #{e}")
+      end
+    end
+
     self.update_attributes!(rejected: false, reviewed: true)
   end
 end

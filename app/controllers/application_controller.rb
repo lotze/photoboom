@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_registration
-    unless Registration.where(game_id: @game.id, user_id: current_user.id).count > 0
+    unless Registration.where(game_id: @game.id, user_id: current_user.id).count > 0 || @game.is_admin?(current_user)
       session[:redirect_to] ||= request.original_url unless request.original_url.include?('signout') || request.original_url.include?('logout')
       redirect_to new_registration_path(game_id: @game.id)
     end

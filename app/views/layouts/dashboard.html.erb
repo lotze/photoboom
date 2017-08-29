@@ -23,6 +23,7 @@
 
 <% if @game.is_admin?(current_user) %>
 <p><%= link_to 'Edit Game', edit_game_path(@game.id) %></p>
+<p><%= link_to "Review Photos", admin_review_path(@game.id) %></p>
 <% end %>
 
 <%= render template: "layouts/application" %>

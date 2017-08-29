@@ -15,14 +15,15 @@ class DashboardController < ApplicationController
     end
   end
 
+  # TODO: rename this 'direct_game' or something
   def next_game
-    @team = @current_user.team(@game)
+    @team = current_user.team(@game)
 
     unless @team
       if @game.upcoming?
         return redirect_to show_teams_path(game_id: @game.id)
-      else
-        flash[:notice] = "That game is over."
+      elsif !@game.is_admin?(current_user)
+        flash[:notice] = "Registration for that game is over."
         return redirect_to games_path
       end
     end

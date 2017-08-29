@@ -1,0 +1,7 @@
+<p>
+<% if @notes.present? %>
+Your photo for mission <%= @photo.mission %> was accepted, with the following notes: '<%= @notes %>'. Thank you!
+<% else %>
+Your photo for mission <%= @photo.mission %> was accepted. Thank you!
+<% end %>
+</p>

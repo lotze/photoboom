@@ -1,3 +1,10 @@
-<p>Your photo for mission <%= @photo.mission %> was rejected with the following notes: '<%= @notes %>'. Please try again!</p>
+<p>
+<% if @notes.present? %>
+Your photo for mission <%= @photo.mission %> was rejected with the following notes: '<%= @notes %>'.
+<% else %>
+Your photo for mission <%= @photo.mission %> was rejected.
+<% end %>
+Please try again!
+</p>
 
-<p>(You may email the organizer, <%= @photo.game.organizer.email %>, if you wish to contest this rejection.)</p>
+<p>(You may email the organizer, <%= @photo.game.organizer.email %>, to ask about this rejection.)</p>
