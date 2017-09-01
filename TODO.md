@@ -1,9 +1,4 @@
-== Test ==
-
 == Important ==
-* easier mission creation/management (including mission import from templates or other games)
-** template categories: standard, risque, geeky, sporty, science, non-players, boston, san francisco, etc.
-
 * Test coverage
 ** create game
 ** add missions
@@ -16,11 +11,18 @@
 ** slideshow
 ** zip file
 
-* calendar event with 1-day and 1-hour email reminder
+* error monitoring and notification
 
 == Desired ==
+* get rid of min/max team size
+
+* calendar event with 1-day and 1-hour email reminder
+
 * Allow test photo uploads before the game begins
 * Price: allow buying tickets to a game via Stripe
+
+* easier mission creation/management (including mission import from templates or other games)
+** template categories: standard, risque, geeky, sporty, science, non-players, boston, san francisco, etc.
 
 * Select icons for missions from the noun project
 ** https://github.com/TailorBrands/noun-project-api
@@ -38,7 +40,11 @@
 
 * eventbrite registration and confirmation rather than google
 
-* timezone from lat/long happens via ajax
+* timezone from lat/long happens via ajax to json ednpoint and setting selector, rather than reload
+
+* amplitude logging
+
+* server health monitoring
 
 == Optional ==
 * teams have leaders?

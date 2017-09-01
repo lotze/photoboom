@@ -61,6 +61,21 @@ group :development do
   gem 'foreman'
 end
 
+group :test do
+  gem 'webmock'
+  gem 'database_cleaner'
+  gem 'rspec-core'
+  gem 'rspec-rails'
+  gem 'simplecov'
+  gem 'fdoc'
+  gem 'capybara'
+  gem 'poltergeist'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails', require: false
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
