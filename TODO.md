@@ -52,6 +52,8 @@
 ** emailed when someone requests to join
 ** approve people to join team, remove people from team
 
+* check normalized team name on input for similarity to others, suggest "did you mean?"
+
 * Review discussion
 ** admin can send questions rather than rejecting photos
 ** team sees those questions at the top of /play

@@ -4,6 +4,13 @@ FactoryGirl.define do
     sequence(:name) { |n| "User #{n}" }
 
     factory :registered_user do
+      transient do
+        game FactoryGirl.create(:game)
+      end
+
+      after(:create) do |user, factory|
+        FactoryGirl.create(:registration, user: user, game: factory.game)
+      end
     end
   end
 end

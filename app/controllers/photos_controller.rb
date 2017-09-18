@@ -10,12 +10,12 @@ class PhotosController < ApplicationController
     if params['order'] == 'random'
       @photos = @photos.shuffle
     elsif params['order'] == 'time'
-      @photos = @photos.sort_by{|p| [p.submitted_at, p.team_id]}
+      @photos = @photos.sort_by{|p| [p.submitted_at, p.team_id || 0]}
     elsif params['order'] == 'team'
-      @photos = @photos.sort_by{|p| [p.team.name, p.mission.codenum]}
+      @photos = @photos.sort_by{|p| [p.team_id || 0, p.mission.codenum]}
     else
       # default is by mission, then team, then submission time
-      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team.name, p.submitted_at]}
+      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team_id || 0, p.submitted_at]}
     end
   end
 

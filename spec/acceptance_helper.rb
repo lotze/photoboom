@@ -39,3 +39,22 @@ RSpec.configure do |config|
     visit '/'
   end
 end
+
+def log_in_as_oauth_user(user = FactoryGirl.create(:user))
+    # mock omniauth responses from SSO server
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new
+    OmniAuth.config.add_mock(:google_oauth2, {
+        provider: :google_oauth2,
+        info: {
+            email: user.email,
+            name: user.name
+        },
+        credentials: {
+            token: 'fake_token',
+            refresh_token: 'fake_refresh_token'
+        }
+    })
+    visit('/auth/google_oauth2')
+    return user
+  end

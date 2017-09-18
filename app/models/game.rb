@@ -12,6 +12,7 @@ class Game < ActiveRecord::Base
   after_initialize :init
 
   validates :name, :presence => true
+  validates :start_location, :presence => true
 
   has_attached_file :zip_file
   validates_attachment_content_type :zip_file, :content_type => ["application/zip", "application/x-zip", "application/x-zip-compressed"]
