@@ -6,7 +6,7 @@ RSpec.describe 'creating a game' do
     log_in_as_oauth_user(@user) # defined in aceptance_helper
   end
 
-  it 'allows creating a game which apepars on the list of games' do
+  it 'allows creating a game which apepars on the list of games, and adding missions' do
     visit '/games/new'
     game_name = 'Some Test Game Name'
     fill_in 'game_start_location', with: 'some location'
@@ -17,5 +17,15 @@ RSpec.describe 'creating a game' do
     expect(page.body).to include(game_name)
     visit '/games'
     expect(page.body).to include(game_name)
+    click_on game_name
+    click_on 'Edit Game'
+    click_on 'Edit Missions'
+    click_on 'New Mission'
+    mission_name = 'Such mission. Wow.'
+    fill_in 'mission_name', with: mission_name
+    mission_description = 'Make it the best ever.'
+    fill_in 'mission_description', with: mission_description
+    find('input[value="Create Mission"]').click
+    expect(page.body).to include(mission_name)
   end
 end

@@ -1,22 +1,14 @@
 == Important ==
 * Test coverage
-** create game
-** add missions
 ** reorder missions
 ** register
-** view game
 ** submit photos
 ** email photos
-** review photos
-** slideshow
-** zip file
-
-* error monitoring and notification
 
 == Desired ==
 * get rid of min/max team size
 
-* calendar event with 1-day and 1-hour email reminder
+* google calendar event with 1-day and 1-hour email reminder
 
 * Allow test photo uploads before the game begins
 * Price: allow buying tickets to a game via Stripe

@@ -17,3 +17,4 @@ rerun.txt
 pickle-email-*.html
 latest.dump
 .idea
+.DS_Store
