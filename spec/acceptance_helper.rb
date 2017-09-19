@@ -5,14 +5,19 @@ require 'rails_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
 require 'database_cleaner'
 
 require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true, allow: [
+    'localhost',
+    '127.0.0.1:3001'
+])
 
 SimpleCov.command_name 'spec:acceptance' if RUBY_PLATFORM != 'java'
 
 Capybara.server_port = 3001
-
 Capybara.default_max_wait_time = 5
 Capybara.javascript_driver = :poltergeist
 
@@ -36,7 +41,6 @@ RSpec.configure do |config|
   end
 
   def init_capybara
-    visit '/'
   end
 end
 

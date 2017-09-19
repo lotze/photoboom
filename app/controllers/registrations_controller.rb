@@ -38,7 +38,7 @@ class RegistrationsController < ApplicationController
       flash[:notice] = "That game is over."
       return redirect_to games_path
     end
-    
+
     sanctified_params = registration_params
     sanctified_params = sanctified_params.merge(user_id: current_user.id)
     @registration = Registration.new(sanctified_params)

@@ -13,7 +13,10 @@
 # it.
 #
 require 'webmock/rspec'
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true, allow: [
+    'localhost',
+    '127.0.0.1:3001'
+])
 WebMock.stub_request(:any, /.*twilio.com.*/).to_return(:status => 200, :body => "", :headers => {})
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

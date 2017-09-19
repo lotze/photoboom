@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
     if params['game_id']
       @game = Game.find_by(id: params['game_id'])
     elsif current_user.next_game
-      @game = current_user.next_game
+      @game ||= current_user.next_game
     end
     if !@game
       redirect_to games_path
@@ -49,11 +49,6 @@ class DashboardController < ApplicationController
   end
 
   def set_team
-    if !@game.upcoming?
-      flash[:notice] = "That game is over."
-      return redirect_to games_path
-    end
-
     if params['team_id']
       @team = Team.find(params['team_id'])
     end

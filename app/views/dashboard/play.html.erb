@@ -25,6 +25,7 @@ function showUploading(mission_id) {
       <%= form.hidden_field :game_id, value: @game.id %>
       <%= form.hidden_field :mission_id, value: mission.id %>
       <%= form.file_field :photo, id: "photo_mission_#{mission.id}", type: "file", accept: "image/*;capture=camera", onchange: "this.form.submit(); showUploading(#{mission.id});" %>
+      <%= form.submit "Upload Photo #{mission.codenum}", id: "submit_mission_#{mission.id}", style: "display:none" %>
     <% end %>
     <% (@photos_by_mission[mission.id] || []).each do |photo| %>
 

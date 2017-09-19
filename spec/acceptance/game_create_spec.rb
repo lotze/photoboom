@@ -3,10 +3,10 @@ require 'acceptance_helper'
 RSpec.describe 'creating a game' do
   before do
     @user = FactoryGirl.create(:user)
-    log_in_as_oauth_user(@user) # defined in aceptance_helper
   end
 
   it 'allows creating a game which apepars on the list of games, and adding missions' do
+    log_in_as_oauth_user(@user) # defined in aceptance_helper
     visit '/games/new'
     game_name = 'Some Test Game Name'
     fill_in 'game_start_location', with: 'some location'

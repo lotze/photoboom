@@ -1,12 +1,15 @@
 == Important ==
 * Test coverage
-** reorder missions
 ** register
-** submit photos
-** email photos
 
 == Desired ==
 * get rid of min/max team size
+
+* Add spec for uploading photo (form still doesn't submit in spec)
+
+* Add spec for emailed photos
+
+* Add spec for reordering missions
 
 * google calendar event with 1-day and 1-hour email reminder
 

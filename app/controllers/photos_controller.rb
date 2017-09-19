@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
   def create
     p = photo_params
     @game = Game.find(p['game_id'])
-    @photo = Photo.new(p.merge(user: current_user, team: current_user.team(@game), submitted_at: Time.now))
+    @photo = Photo.new(p.merge(user: current_user, team: current_user.team(@game), submitted_at: Time.now, game: @game))
 
     respond_to do |format|
       if @photo.save

@@ -52,6 +52,8 @@ class ApplicationController < ActionController::Base
       @game = Game.find(params[:game_id])
     elsif params['mission'] && params['mission']['game_id']
       @game = Game.find(params['mission']['game_id'])
+    elsif params['registration'] && params['registration']['game_id']
+      @game = Game.find(params['registration']['game_id'])
     end
   end
 
