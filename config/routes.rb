@@ -9,6 +9,10 @@ Photoboom::Application.routes.draw do
   match '/teams/:id/remove_member', to: 'teams#remove_member', via: [:get, :post], as: :remove_member
   match '/teams/:id/rename', to: 'teams#rename', via: [:get, :post], as: :rename_team
 
+  # hardcoded HRSFANS link until I make shortlinks
+  get '/hrsfans' => 'games#hrsfans'
+  get '/hrsfa' => 'games#hrsfans'
+
   get '/play', to: 'dashboard#play', as: :play
   get '/review', to: 'dashboard#review', as: :review
   get '/leaderboard', to: 'dashboard#leaderboard', as: :leaderboard

@@ -1,7 +1,12 @@
 class GamesController < ApplicationController
-  before_action :set_game, except: [:index, :new, :create]
-  before_action :require_game_admin, except: [:index, :new, :create, :signup]
+  before_action :set_game, except: [:index, :new, :create, :hrsfans]
+  before_action :require_game_admin, except: [:index, :new, :create, :signup, :hrsfans]
   layout 'print', only: [:rules]
+
+  def hrsfans
+    @game = Game.find_by(name: 'HRSFA/NS Scavenger Hunt 2017')
+    redirect_to dashboard_path(game_id: @game.id)
+  end
 
   def rules
     # TODO: force unique mission numbers before displaying for printing
