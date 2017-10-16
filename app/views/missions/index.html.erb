@@ -26,6 +26,6 @@
   </tbody>
 </table>
 
-<br>
+<p><%= link_to 'New Mission', new_mission_path(game_id: @game.id) %></p>
 
-<%= link_to 'New Mission', new_mission_path(game_id: @game.id) %>
+<p><%= link_to 'Import Missions', missions_import_path(game_id: @game.id) %></p>

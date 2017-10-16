@@ -47,6 +47,7 @@ Photoboom::Application.routes.draw do
   # game and photo management
   get '/games/:game_id/order', to: 'missions#order', as: :missions_order
   post '/games/:game_id/order', to: 'missions#change_order', as: :missions_change_order
+  match '/games/:game_id/import', to: 'missions#import', via: [:get, :post], as: :missions_import
   get '/games/:id/recent', to: 'games#recent_photos', as: :recent_photos
   get '/games/:id/admin_review', to: 'games#admin_review', as: :admin_review
   get '/games/:id/rejected', to: 'games#rejected', as: :rejected

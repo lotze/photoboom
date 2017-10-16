@@ -19,6 +19,39 @@ class MissionsController < ApplicationController
     redirect_to missions_path(game_id: @game.id)
   end
 
+  def import
+    if params["mission_list_text"]
+      error_lines = []
+      # parse and create new missions
+      params["mission_list_text"].split("\n").each do |line|
+        # TODO: would be better to not hardcode the default points here, since it's defined elsewhere
+        points = 10
+        if line =~ /^(\d+)/
+          points = $1
+          line = line.sub(/^\d+\s*/, '')
+        end
+        if line =~ /^([^:]+):\s*(.*)$/
+          name = $1
+          description = $2
+          begin
+            Mission.create!(game: @game, name: name, description: description, points: points)
+          rescue => e
+            error_lines << line + " (#{e})"
+          end
+        else
+          unless line =~ /^\s*$/
+            error_lines << line
+          end
+        end
+      end
+      unless error_lines.empty?
+        flash[:error] = "Errors processing the following lines: " + error_lines.join("----")
+      end
+      redirect_to missions_path(game_id: @game.id)
+    end
+    # otherwise, display form
+  end
+
   # GET /missions
   # GET /missions.json
   def index
