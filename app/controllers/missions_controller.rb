@@ -81,7 +81,7 @@ class MissionsController < ApplicationController
 
     respond_to do |format|
       if @mission.save
-        format.html { redirect_to missions_path(game_id: @game.id), notice: 'Mission was successfully created.' }
+        format.html { redirect_to missions_order_path(game_id: @game.id), notice: 'Mission was successfully created.' }
         format.json { render :show, status: :created, location: @mission }
       else
         format.html { render :new }
