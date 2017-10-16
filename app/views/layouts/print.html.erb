@@ -51,10 +51,17 @@ th, td {
   width: 50%;
   padding-left: 1em;
   padding-right: 1em;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
+  padding-top: 0.8em;
+  padding-bottom: 0.5em;
   line-height: 1.4em;
+  vertical-align: top;
 }
+
+table { page-break-after:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }
+td    { page-break-inside:avoid; page-break-after:auto }
+thead { display:table-header-group }
+tfoot { display:table-footer-group }
 
 .mission_name {
   font-size: 1.4em;
