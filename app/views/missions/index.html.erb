@@ -6,9 +6,8 @@
   <thead>
     <tr>
       <th>Codenum</th>
-      <th>Name</th>
-      <th>Points</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
+      <th>Points/Name/Description</th>
     </tr>
   </thead>
 
@@ -16,11 +15,9 @@
     <% @missions.each do |mission| %>
       <tr>
         <td><%= mission.codenum %></td>
-        <td><%= mission.name %></td>
-        <td><%= mission.points %></td>
-        <td><%= link_to 'Show', mission %></td>
         <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
         <td><%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>(<%= mission.points %>) <%= mission.name %>: <%= mission.description %></td>
       </tr>
     <% end %>
   </tbody>

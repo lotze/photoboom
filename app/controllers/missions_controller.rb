@@ -20,6 +20,7 @@ class MissionsController < ApplicationController
   end
 
   def import
+    codenum = (@game.missions.map(:codenum).max || 0) + 1
     if params["mission_list_text"]
       error_lines = []
       # parse and create new missions
@@ -34,7 +35,8 @@ class MissionsController < ApplicationController
           name = $1
           description = $2
           begin
-            Mission.create!(game: @game, name: name, description: description, points: points)
+            Mission.create!(game: @game, name: name, description: description, points: points, codenum: codenum)
+            codenum = codenum + 1
           rescue => e
             error_lines << line + " (#{e})"
           end
@@ -93,7 +95,7 @@ class MissionsController < ApplicationController
   def update
     respond_to do |format|
       if @mission.update(mission_params)
-        format.html { redirect_to @mission, notice: 'Mission was successfully updated.' }
+        format.html { redirect_to missions_path(game_id: @game.id), notice: 'Mission was successfully updated.' }
         format.json { render :show, status: :ok, location: @mission }
       else
         format.html { render :edit }
