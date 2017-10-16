@@ -46,6 +46,10 @@ class PhotosController < ApplicationController
           @photo.reject!('The game has ended!')
           format.html { redirect_to play_path(game_id: @photo.game_id), error: 'Error uploading photo! The game has already ended!' }
           format.json { render json: @photo.errors.merge(error: :game_over), status: :unprocessable_entity }
+        elsif !Rails.env.development? && @photo.submitted_at < @photo.game.starts_at && !(@photo.mission.name == 'Test Photo')
+          @photo.reject!('The game has not yet started!')
+          format.html { redirect_to play_path(game_id: @photo.game_id), error: 'Error uploading photo! The game has not yet started!' }
+          format.json { render json: @photo.errors.merge(error: :game_over), status: :unprocessable_entity }
         else
           format.html { redirect_to play_path(game_id: @photo.game_id), notice: 'Your photo was successfully uploaded.' }
           format.json { render :show, status: :created, location: @photo }

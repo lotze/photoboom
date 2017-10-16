@@ -115,6 +115,8 @@ class EmailUpdater < ActiveJob::Base
             photos.each do |photo|
               if photo.submitted_at > game.ends_at + 2.minutes # 2 minute grace period
                 photo.reject!('The game has ended!')
+              elsif photo.submitted_at < game.starts_at && !(mission.name == 'Test Photo')
+                photo.reject!('The game has not yet started!')
               end
             end
           rescue => e
