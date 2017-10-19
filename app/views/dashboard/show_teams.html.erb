@@ -16,7 +16,7 @@
 <p>Start a new team!
 <%= form_tag(join_team_path, method: :get) do %>
   <%= hidden_field_tag :game_id, @game.id %>
-  <%= text_field_tag :team_name %>
+  <%= text_field_tag :team_name, nil, placeholder: "your new team's name" %>
   <%= submit_tag 'Create Team' %>
 <% end %>
 </p>
