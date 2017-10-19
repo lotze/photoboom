@@ -109,7 +109,7 @@ class MissionsController < ApplicationController
   def destroy
     @mission.destroy
     respond_to do |format|
-      format.html { redirect_to missions_url, notice: 'Mission was successfully destroyed.' }
+      format.html { redirect_to missions_path(game_id: @game.id), notice: 'Mission was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
