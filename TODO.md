@@ -1,9 +1,19 @@
 == Important ==
 * Test coverage
+** emailed photos from non-registered email; (organizer is emailed, can assign person even if not registered)
 ** register
 
 == Desired ==
+* google calendar event with 1-day and 1-hour email reminder
+
+* Allow test photo uploads before the game begins
+
+* Day-before reminder for people with teams
+
+* Day-before reminder for people without teams
+
 * get rid of min/max team size
+** maybe just a warning note when the 6th-or-more person signs up for a team?
 
 * Add spec for uploading photo (form still doesn't submit in spec)
 
@@ -11,9 +21,6 @@
 
 * Add spec for reordering missions
 
-* google calendar event with 1-day and 1-hour email reminder
-
-* Allow test photo uploads before the game begins
 * Price: allow buying tickets to a game via Stripe
 
 * easier mission creation/management (including mission import from templates or other games)
@@ -33,7 +40,7 @@
 
 * Make it responsive
 
-* eventbrite registration and confirmation rather than google
+* eventbrite integration?
 
 * timezone from lat/long happens via ajax to json ednpoint and setting selector, rather than reload
 
