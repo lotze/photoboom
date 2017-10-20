@@ -1,3 +1,5 @@
+require "resque_web"
+
 Photoboom::Application.routes.draw do
   get '/dashboard', to: 'dashboard#next_game', as: :dashboard
   get '/next_game', to: 'dashboard#next_game', as: :next_game
@@ -37,7 +39,6 @@ Photoboom::Application.routes.draw do
   get "api/submit"
   get "api/delete"
 
-
   resources :games
   resources :photos
   resources :missions
@@ -60,55 +61,17 @@ Photoboom::Application.routes.draw do
 
   get '/check_email', to: 'games#check_email', as: :check_email
 
+  # reqeue web dashboard
+  resque_web_constraint = lambda do |request|
+    current_user ||= User.find_by_id(request.session[:user_id])
+    current_user.present? && current_user.respond_to?(:admin?) && current_user.admin
+  end
+
+  constraints resque_web_constraint do
+    mount ResqueWeb::Engine, at: "/resque_web"
+  end
+
+
   # automatically go to their next upcoming game; if they don't have one, will redirect to list of games
   root 'dashboard#next_game'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

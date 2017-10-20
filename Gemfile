@@ -42,6 +42,8 @@ gem 'timezone' # Google Geocoding timezone lookup for getting default timezone f
 gem 'resque'
 gem 'resque-scheduler'
 gem 'resque-heroku-signals'
+gem 'resque-web', require: 'resque_web'
+gem 'resque-scheduler-web'
 gem 'activejob-retry'
 gem 'delayed_paperclip'
 # gem for making pdf from html
