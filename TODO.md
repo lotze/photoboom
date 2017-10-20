@@ -3,6 +3,8 @@
 ** emailed photos from non-registered email; (organizer is emailed, can assign person even if not registered)
 ** register
 
+* better way to deal with unregistered emails coming in
+
 == Desired ==
 * google calendar event with 1-day and 1-hour email reminder
 
