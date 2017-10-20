@@ -22,7 +22,8 @@
 <li>Any team member can upload or email photos. You are playing as a <strong>team</strong>.</li>
 <li>It may take a few seconds for the photo to upload. It may take a few minutes for your email to be processed. This is okay.</li>
 <li>You can only receive points once for each mission. Each photo can only be used to complete one mission.</li>
-<li>All photos must be submitted by <%= game.end_time_in_zone.strftime("%l:%M %P") %>. Any photos not received by then will not count. You are welcome to finish early if you like. When you finish, you should head to <%= game.end_location_string %>.</li>
+<li>All photos must be submitted by <%= game.end_time_in_zone.strftime("%l:%M %P") %>. Any photos not received by then will not count.</li>
+<li>You are welcome to finish early if you like. When you finish, you should head to <%= game.end_location_string %>.</li>
 <li>Some photos need a team member. Some need a member of a different team. Some need a non-player (someone not on any team).</li>
 <li>Not all photos are worth the same number of points.</li>
 <li>If you have any questions or trouble, please contact the organizer at <%= game.contact_string %>.</li>

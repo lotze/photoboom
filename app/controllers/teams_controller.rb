@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy, :add_member, :remove_member, :rename]
   before_action :set_game
   before_action :require_admin, except: [:rename]
+  before_action :require_game_admin, only: [:force_add]
 
   def missing
     @missing = @game.without_team
@@ -27,6 +28,26 @@ class TeamsController < ApplicationController
       end
     end
     redirect_to manage_team_path
+  end
+
+  def force_add
+    @team = Team.find(params[:team_id])
+    begin
+      @user = User.find(params['user_id'])
+      @user.set_team(@team)
+    rescue => e
+      if e =~ /must first register/
+        Registration.create!(
+          user_id: @user.id,
+          team_id: @team.id,
+          game_id: @game.id,
+          agree_waiver: true, agree_photo: true, legal_name: 'Admin-approved Team Addition'
+        )
+      else
+        raise e
+      end
+    end
+    redirect_to action: :show, id: @team.id
   end
 
   # POST /teams/1/add_member

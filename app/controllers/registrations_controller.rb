@@ -40,7 +40,9 @@ class RegistrationsController < ApplicationController
     end
 
     sanctified_params = registration_params
-    sanctified_params = sanctified_params.merge(user_id: current_user.id)
+    unless @game.is_admin?(current_user) && registration_params[:user_id]
+      sanctified_params = sanctified_params.merge(user_id: current_user.id)
+    end
     @registration = Registration.new(sanctified_params)
 
     respond_to do |format|
