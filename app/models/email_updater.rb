@@ -38,6 +38,8 @@ class EmailUpdater < ActiveJob::Base
   end
 
   def process_photo(display_name, email, ts, subject, body, attachments, force_processing=false)
+    Rails.logger.info("Processing email from #{email} (subject: #{subject})")
+
     photos = []
     # identify game (TODO: deal with possibility of more than one game running at once)
     game = Game.running.first
@@ -136,6 +138,8 @@ class EmailUpdater < ActiveJob::Base
   end
 
   def perform
+    Resque.logger.info("Performing an email update")
+
     photos = []
 
     gmail_login = ENV['GMAIL_LOGIN']

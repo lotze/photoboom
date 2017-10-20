@@ -4,7 +4,7 @@
 ** register
 
 * better way to deal with unregistered emails coming in
-** figure out why resque job isn't processing emails at all -- ah! just needs a scheduler running?
+** figure out why resque job isn't processing emails at all in staging -- ah! just needs a scheduler running?
 
 * don't allow blank team names (and provide a good error)
 
