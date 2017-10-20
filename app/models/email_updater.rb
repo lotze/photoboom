@@ -39,8 +39,8 @@ class EmailUpdater < ActiveJob::Base
 
   def process_photo(display_name, email, ts, subject, body, attachments, force_processing=false)
     photos = []
-    # identify game (just default Game)
-    game = Game.default_game
+    # identify game (TODO: deal with possibility of more than one game running at once)
+    game = Game.running.first
 
     # find user
     user = User.find_by(email: email)

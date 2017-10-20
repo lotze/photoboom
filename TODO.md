@@ -54,6 +54,8 @@
 ** emailed when someone requests to join
 ** approve people to join team, remove people from team
 
+* email updater can deal with more than one game running simultaneously
+
 * check normalized team name on input for similarity to others, suggest "did you mean?"
 
 * Review discussion

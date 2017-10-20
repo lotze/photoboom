@@ -8,6 +8,7 @@ class Game < ActiveRecord::Base
 
   scope :publicly_available, -> { where(is_public: true) }
   scope :upcoming, -> { where('starts_at > ?', Time.now) }
+  scope :running, -> { where('? BETWEEN starts_at AND ends_at + INTERVAL \'2 minutes\'', Time.now) }
 
   after_initialize :init
 

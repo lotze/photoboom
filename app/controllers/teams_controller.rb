@@ -4,7 +4,6 @@ class TeamsController < ApplicationController
   before_action :require_admin, except: [:rename]
 
   def missing
-    @game = Game.default_game
     @missing = @game.without_team
   end
 
