@@ -154,10 +154,10 @@ class DashboardController < ApplicationController
     elsif params['order'] == 'time'
       @photos = @photos.sort_by{|p| [p.submitted_at, p.team_id]}
     elsif params['order'] == 'team'
-      @photos = @photos.sort_by{|p| [p.team.name, p.mission.codenum]}
+      @photos = @photos.sort_by{|p| [p.team.try(:name) || '', p.mission.codenum]}
     else
       # default is by mission, then team, then submission time
-      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team.try(:name), p.submitted_at]}
+      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team.try(:name) || '', p.submitted_at]}
     end
   end
 
