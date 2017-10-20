@@ -141,10 +141,10 @@ class EmailUpdater < ActiveJob::Base
     gmail_login = ENV['GMAIL_LOGIN']
     gmail_password = ENV['GMAIL_PASSWORD']
 
-    Rails.logger.info("Logging in to #{gmail_login}")
+    Resque.logger.info("Logging in to #{gmail_login}")
 
     get_with_imap(gmail_login, gmail_password) do |display_name, email, ts, subject, body, attachments|
-      Rails.logger.info("Processing email from #{email} (subject: #{subject})")
+      Resque.logger.info("Processing email from #{email} (subject: #{subject})")
       photos << process_photo(display_name, email, ts, subject, body, attachments)
     end
     return photos.flatten.compact
