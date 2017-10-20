@@ -15,13 +15,12 @@ class Photo < ActiveRecord::Base
   }
   process_in_background :photo, processing_image_url: "/images/:style/processing.jpg"
 
-  before_save :extract_dimensions
+  after_post_process :extract_dimensions
   def extract_dimensions
     tempfile = photo.queued_for_write[:slideshow]
     unless tempfile.nil?
       geometry = Paperclip::Geometry.from_file(tempfile)
-      self.width = geometry.width.to_i
-      self.height = geometry.height.to_i
+      self.update_attributes!(width: geometry.width.to_i, height: geometry.height.to_i)
     end
   end
 

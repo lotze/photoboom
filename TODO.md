@@ -1,9 +1,15 @@
 == Important ==
+* get height and width set properly; may need to remove background processing :(
+** can also see if https://github.com/jstorimer/delayed_paperclip/issues/64 works
+
 * Test coverage
 ** emailed photos from non-registered email; (organizer is emailed, can assign person even if not registered)
 ** register
 
 * better way to deal with unregistered emails coming in
+** figure out why resque job isn't processing emails at all
+
+* don't allow blank team names (and provide a good error)
 
 == Desired ==
 * google calendar event with 1-day and 1-hour email reminder
