@@ -20,7 +20,8 @@ class Photo < ActiveRecord::Base
     tempfile = photo.queued_for_write[:slideshow]
     unless tempfile.nil?
       geometry = Paperclip::Geometry.from_file(tempfile)
-      self.update_attributes!(width: geometry.width.to_i, height: geometry.height.to_i)
+      self.width = geometry.width.to_i
+      self.height = geometry.height.to_i
     end
   end
 
