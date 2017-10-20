@@ -1,10 +1,8 @@
 require 'net/imap'
 require 'mail'
 
-class EmailUpdater < ActiveJob::Base
-  queue_as :email_updater
-
-  def get_with_imap(gmail_login, gmail_password)
+class EmailUpdater < Resque::Job
+  def self.get_with_imap(gmail_login, gmail_password)
     imap = Net::IMAP.new("imap.gmail.com",993,true)
     imap.login(gmail_login, gmail_password)
     imap.select('INBOX')
@@ -37,7 +35,7 @@ class EmailUpdater < ActiveJob::Base
     end
   end
 
-  def process_photo(display_name, email, ts, subject, body, attachments, force_processing=false)
+  def self.process_photo(display_name, email, ts, subject, body, attachments, force_processing=false)
     Rails.logger.info("Processing email from #{email} (subject: #{subject})")
 
     photos = []
@@ -137,19 +135,14 @@ class EmailUpdater < ActiveJob::Base
     return photos
   end
 
-  def perform
-    puts "EmailUpdater calling out...is anyone listening?"
-    Resque.logger.info("Performing an email update")
-
+  def self.perform
     photos = []
 
     gmail_login = ENV['GMAIL_LOGIN']
     gmail_password = ENV['GMAIL_PASSWORD']
 
-    Resque.logger.info("Logging in to #{gmail_login}")
-
     get_with_imap(gmail_login, gmail_password) do |display_name, email, ts, subject, body, attachments|
-      Resque.logger.info("Processing email from #{email} (subject: #{subject})")
+      puts("Processing email from #{email} (subject: #{subject})")
       photos << process_photo(display_name, email, ts, subject, body, attachments)
     end
     return photos.flatten.compact
