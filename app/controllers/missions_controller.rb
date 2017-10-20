@@ -20,7 +20,7 @@ class MissionsController < ApplicationController
   end
 
   def import
-    codenum = (@game.missions.map(:codenum).max || 0) + 1
+    codenum = (@game.missions.empty? ? 0 : @game.missions.map(:codenum).max) + 1
     if params["mission_list_text"]
       error_lines = []
       # parse and create new missions
