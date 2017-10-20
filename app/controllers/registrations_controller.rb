@@ -16,7 +16,7 @@ class RegistrationsController < ApplicationController
 
   # GET /registrations/new
   def new
-    if !@game.upcoming?
+    if @game.over?
       flash[:notice] = "That game is over."
       return redirect_to games_path
     end
@@ -34,7 +34,7 @@ class RegistrationsController < ApplicationController
   # POST /registrations
   # POST /registrations.json
   def create
-    if !@game.upcoming?
+    if @game.over? && !@game.is_admin?(current_user)
       flash[:notice] = "That game is over."
       return redirect_to games_path
     end
