@@ -2,7 +2,7 @@ require 'net/imap'
 require 'mail'
 
 class EmailUpdater < ActiveJob::Base
-  queue_as :email_checker
+  queue_as :email_updater
 
   def get_with_imap(gmail_login, gmail_password)
     imap = Net::IMAP.new("imap.gmail.com",993,true)
