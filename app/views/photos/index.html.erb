@@ -5,6 +5,7 @@
 <li><%= link_to 'Review', admin_review_path(id: @game.id) %></li>
 <li><%= link_to 'Rejected', rejected_path(id: @game.id) %></li>
 <li><%= link_to 'Recent', recent_path(id: @game.id) %></li>
+<li><%= link_to 'Missing Team', missing_path(game_id: @game.id) %></li>
 </p></ul>
 <% end %>
 
