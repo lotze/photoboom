@@ -5,7 +5,8 @@ class TeamsController < ApplicationController
   before_action :require_game_admin, only: [:force_add]
 
   def missing
-    @missing = @game.without_team
+    photo_missing_user_ids = Photo.where(game_id: @game.id, team_id: nil).distinct.pluck(:user_id)
+    @missing_users = photo_missing_user_ids.map{|user_id| User.find_by(id: user_id)}
   end
 
   # GET /teams
@@ -36,7 +37,7 @@ class TeamsController < ApplicationController
       @user = User.find(params['user_id'])
       @user.set_team(@team)
     rescue => e
-      if e =~ /must first register/
+      if e.to_s =~ /must first register/
         Registration.create!(
           user_id: @user.id,
           team_id: @team.id,
