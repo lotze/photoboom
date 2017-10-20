@@ -138,6 +138,7 @@ class EmailUpdater < ActiveJob::Base
   end
 
   def perform
+    puts "EmailUpdater calling out...is anyone listening?"
     Resque.logger.info("Performing an email update")
 
     photos = []
