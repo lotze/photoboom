@@ -7,7 +7,7 @@
   <% @total_by_team.sort_by {|_team, score| -score}.each do |team, score| %>
   <li><%= team.try(:name) %>: <%= score %> points (<%= @missions_by_team[team].length %> missions)!<ul>
     <% @missions_by_team[team].sort_by(&:codenum).each do |mission| %>
-      <li><%= mission.name %></li>
+      <li><%= mission.codenum %>. <%= mission.name %></li>
     <% end %>
   </ul></li>
   <% end %>
