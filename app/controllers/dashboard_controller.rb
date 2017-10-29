@@ -20,9 +20,9 @@ class DashboardController < ApplicationController
     @team = current_user.team(@game)
 
     unless @team
-      if @game.upcoming?
+      if @game.is_admin?(current_user) || !@game.over?
         return redirect_to show_teams_path(game_id: @game.id)
-      elsif !@game.is_admin?(current_user)
+      else
         flash[:notice] = "Registration for that game is over."
         return redirect_to games_path
       end
@@ -55,7 +55,7 @@ class DashboardController < ApplicationController
   end
 
   def join_team
-    if !@game.upcoming?
+    if @game.over?
       flash[:notice] = "That game is over."
       return redirect_to games_path
     end
