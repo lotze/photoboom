@@ -25,6 +25,14 @@ class Photo < ActiveRecord::Base
     end
   end
 
+  def update_dimensions
+    tempfile = Rails.root.join('tmp').to_s + "/" + self.photo_file_name
+    self.photo.copy_to_local_file(nil, tempfile)
+    geometry = Paperclip::Geometry.from_file(tempfile)
+    self.update_attributes(width: geometry.width.to_i, height: geometry.height.to_i)
+    File.delete(tempfile)
+  end
+
   def scale_factor(max_width, max_height)
     width_factor = max_width / width.to_f
     height_factor = max_height / height.to_f
