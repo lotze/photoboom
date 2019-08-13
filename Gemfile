@@ -36,7 +36,7 @@ gem 'turbolinks'
 gem 'postmark-rails'
 
 gem 'paperclip'
-gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk-s3'
 gem 'rubyzip'
 gem 'timezone' # Google Geocoding timezone lookup for getting default timezone for new games
 gem 'resque'
