@@ -1,4 +1,4 @@
-ruby '2.4.1'
+ruby '2.6.3'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -6,7 +6,7 @@ gem 'rails', '>= 4.0.0'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 4.0.0'
+gem 'sassc'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -91,7 +91,7 @@ gem 'omniauth-google-oauth2'
 gem 'thin'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '>= 3.0.0'
+gem 'bcrypt', '>= 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
