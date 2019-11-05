@@ -53,7 +53,6 @@ gem 'wicked_pdf'
 gem 'jbuilder', '>= 1.2'
 
 group :production do
-  gem 'rails_12factor'
   # gem for making pdf from html
   gem 'wkhtmltopdf-heroku'
 end
