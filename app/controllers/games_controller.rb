@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, except: [:index, :new, :create, :hrsfans]
+  # TODO: figure out a more secure way of allowing people to see the rules (incl lists) before the game starts (with a secret link provided by the organizer)
   before_action :require_game_admin, except: [:index, :new, :create, :signup, :hrsfans, :rules]
   layout 'print', only: [:rules]
 
