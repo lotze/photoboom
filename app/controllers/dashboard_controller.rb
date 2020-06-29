@@ -69,8 +69,13 @@ class DashboardController < ApplicationController
       end
     end
     if @team
-      current_user.set_team(@team)
-      redirect_to next_game_path
+      begin
+        current_user.set_team(@team)
+        redirect_to next_game_path
+      rescue => e
+        flash[:error] = "Error; you must first register for the game."
+        redirect_to show_teams_path(game_id: @game.id)
+      end
     else
       flash[:error] = "Error; no such team."
       redirect_to show_teams_path(game_id: @game.id)
