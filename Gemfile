@@ -2,7 +2,7 @@ ruby '2.6.5'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 4.0.0'
+gem 'rails', '>= 6.0.3.2'
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -82,7 +82,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'omniauth'
+gem 'omniauth', ">= 1.9.1"
 # gem 'omniauth-facebook'
 # gem 'omniauth-identity'
 gem 'omniauth-google-oauth2'
