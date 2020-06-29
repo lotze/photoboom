@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   layout 'print', only: [:rules]
 
   def hrsfans
-    @game = Game.find_by(name: 'HRSFA/NS Scavenger Hunt 2017')
+    @game = Game.find_by(name: 'HRSFANS Summer 2020 Scavenger Hunt')
     redirect_to dashboard_path(game_id: @game.id)
   end
 
