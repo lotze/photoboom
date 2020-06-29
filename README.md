@@ -30,3 +30,16 @@ To load up seed data
 rake db:seed
 (or to overwrite the seed data using the current db data, RAILS4=true WITHOUT_PROTECTION=false rake db:seed:dump)
 
+Instructions For Users
+======================
+Create event
+Get people to sign up and make teams
+(maybe export past missions)
+Add missions
+Start game
+Review photos as they come in: /games/:id/admin_review
+Finish the game
+* Leaderboard
+* Slideshow
+You can see all the photos as a slideshow (with mission and team) at https://play.photoscavenger.com/slideshow?game_id=2
+The leaderboard and a link to download all the photos from the hunt is at https://play.photoscavenger.com/leaderboard?game_id=2
