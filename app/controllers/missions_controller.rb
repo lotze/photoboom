@@ -20,7 +20,7 @@ class MissionsController < ApplicationController
   end
 
   def export
-    mission_list = @game.missions.map |mission| do
+    mission_list = @game.missions.map do |mission|
       "#{mission.points} #{mission.name}: #{mission.description}"
     end
     render text: mission_list.join("\n")
