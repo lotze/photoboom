@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, except: [:index, :new, :create, :hrsfans]
-  before_action :require_game_admin, except: [:index, :new, :create, :signup, :hrsfans]
+  before_action :require_game_admin, except: [:index, :new, :create, :signup, :hrsfans, :rules]
   layout 'print', only: [:rules]
 
   def hrsfans
