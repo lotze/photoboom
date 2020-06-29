@@ -19,6 +19,13 @@ class MissionsController < ApplicationController
     redirect_to missions_path(game_id: @game.id)
   end
 
+  def export
+    mission_list = @game.missions.map |mission| do
+      "#{mission.points} #{mission.name}: #{mission.description}"
+    end
+    render text: mission_list.join("\n")
+  end
+
   def import
     codenum = (@game.missions.empty? ? 0 : @game.missions.map(:codenum).max) + 1
     if params["mission_list_text"]

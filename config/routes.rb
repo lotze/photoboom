@@ -50,6 +50,7 @@ Photoboom::Application.routes.draw do
   get '/games/:game_id/order', to: 'missions#order', as: :missions_order
   post '/games/:game_id/order', to: 'missions#change_order', as: :missions_change_order
   match '/games/:game_id/import', to: 'missions#import', via: [:get, :post], as: :missions_import
+  match '/games/:game_id/export', to: 'missions#export', via: [:get, :post], as: :missions_export
   get '/games/:id/recent', to: 'games#recent_photos', as: :recent_photos
   get '/games/:id/admin_review', to: 'games#admin_review', as: :admin_review
   get '/games/:id/rejected', to: 'games#rejected', as: :rejected
@@ -71,7 +72,6 @@ Photoboom::Application.routes.draw do
   constraints resque_web_constraint do
     mount ResqueWeb::Engine, at: "/resque_web"
   end
-
 
   # automatically go to their next upcoming game; if they don't have one, will redirect to list of games
   root 'dashboard#next_game'
