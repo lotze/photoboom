@@ -40,11 +40,21 @@ class Photo < ActiveRecord::Base
   end
 
   def slideshow_width(max_width, max_height)
-    (width * scale_factor(max_width, max_height)).round
+    begin
+      (width * scale_factor(max_width, max_height)).round
+    rescue => e
+      Rails.logger.warn("Couldn't get a good slideshow width for photo #{self.id}, using 480")
+      return 640
+    end
   end
 
   def slideshow_height(max_width, max_height)
-    (height * scale_factor(max_width, max_height)).round
+    begin
+      (height * scale_factor(max_width, max_height)).round
+    rescue => e
+      Rails.logger.warn("Couldn't get a good slideshow height for photo #{self.id}, using 480")
+      return 480
+    end
   end
 
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
