@@ -1,7 +1,9 @@
 class DashboardController < ApplicationController
   before_action :set_team, only: [:join_team]
   before_action :get_game
-  before_action :require_registration, except: [:register]
+  # TODO: hack right now for HRSFANS photos
+  # before_action :require_registration, except: [:register]
+  before_action :require_registration, except: [:register, :slideshow]
 
   # get next game this player is signed up for, or redirect to list of games
   def get_game
