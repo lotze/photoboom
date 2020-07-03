@@ -1,7 +1,21 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy, :reject, :accept]
   before_action :set_game
-  before_action :require_game_admin, except: [:create]
+  before_action :require_game_admin, except: [:create, :review]
+
+  def review
+    @photos = @game.photos.where(rejected: false).includes(:mission).includes(:user)
+    if params['order'] == 'random'
+      @photos = @photos.shuffle
+    elsif params['order'] == 'time'
+      @photos = @photos.sort_by{|p| [p.submitted_at, p.team_id || 0]}
+    elsif params['order'] == 'team'
+      @photos = @photos.sort_by{|p| [p.team_id || 0, p.mission.codenum]}
+    else
+      # default is by mission, then team, then submission time
+      @photos = @photos.sort_by{|p| [p.mission.codenum, p.team_id || 0, p.submitted_at]}
+    end
+  end
 
   # GET /photos
   # GET /photos.json

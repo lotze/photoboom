@@ -1,0 +1,23 @@
+<h1>Photos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Mission</th>
+      <th>Team</th>
+      <th>Submitted At</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @photos.each do |photo| %>
+      <tr>
+        <td><%= link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url) %></td>
+        <td><%= photo.mission.codenum %>: <%= photo.mission.name %><br /><%= photo.mission.description %></td>
+        <td><%= photo.team.try(:name) %></td>
+        <td><%= photo.submitted_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
