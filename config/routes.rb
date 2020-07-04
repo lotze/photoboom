@@ -47,7 +47,7 @@ Photoboom::Application.routes.draw do
   resources :teams
 
   # temporary route for review
-  get '/photos/review', to: 'photos#review'
+  get '/game_review', to: 'photos#review'
 
   # game and photo management
   get '/games/:game_id/order', to: 'missions#order', as: :missions_order
