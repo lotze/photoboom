@@ -52,6 +52,10 @@ gem 'wicked_pdf'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '>= 1.2'
 
+# Security ensuring
+gem "kramdown", ">= 2.3.0"
+gem "json", ">= 2.3.0"
+
 group :production do
   # gem for making pdf from html
   gem 'wkhtmltopdf-heroku'

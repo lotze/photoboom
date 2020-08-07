@@ -151,10 +151,11 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-slick-rails (1.9.0)
       railties (>= 3.1)
-    json (2.2.0)
+    json (2.3.1)
     json-schema (1.2.1)
     jwt (2.2.1)
-    kramdown (2.1.0)
+    kramdown (2.3.0)
+      rexml
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (4.0.0)
@@ -282,6 +283,7 @@ GEM
       resque
       sass-rails
       twitter-bootstrap-rails
+    rexml (3.2.4)
     rspec-core (3.9.0)
       rspec-support (~> 3.9.0)
     rspec-expectations (3.9.0)
@@ -395,6 +397,8 @@ DEPENDENCIES
   jbuilder (>= 1.2)
   jquery-rails
   jquery-slick-rails
+  json (>= 2.3.0)
+  kramdown (>= 2.3.0)
   momentjs-rails (>= 2.9.0)
   omniauth (>= 1.9.1)
   omniauth-google-oauth2
