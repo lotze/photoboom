@@ -25,7 +25,7 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url) %></td>
+        <td><%= link_to(image_tag(photo.photo.url(:thumb).gsub("%2F", "/").gsub("%2F", "/")), photo.photo.url.gsub("%2F", "/")) %></td>
         <td><%= photo.mission.codenum %>: <%= photo.mission.name %></td>
         <td><%= photo.team.try(:name) %></td>
         <td><%= photo.submitted_at %></td>

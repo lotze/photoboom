@@ -12,7 +12,7 @@ class MissionsController < ApplicationController
     params["mission_ids"].each_with_index do |mission_id, new_codenum|
       mission = Mission.find(mission_id)
       if mission.codenum != new_codenum + 1
-        mission.update_attributes!(codenum: new_codenum + 1)
+        mission.update!(codenum: new_codenum + 1)
       end
     end
     flash[:notice] = "Successfully reordered!"

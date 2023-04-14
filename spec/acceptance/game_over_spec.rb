@@ -9,7 +9,7 @@ RSpec.describe 'viewing a finished game' do
     @active_team = @game.teams.first
     @active_user = @active_team.users.first
     @photo = FactoryGirl.create(:photo, mission: @mission, user: @active_user, team: @active_team, game: @game, photo_type: :vertical)
-    @game.update_attributes!(ends_at: Time.now - 1.hour)
+    @game.update!(ends_at: Time.now - 1.hour)
     @game.make_zip_file
   end
 

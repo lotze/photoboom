@@ -14,7 +14,7 @@
 </p>
 
 <p>
-<%= link_to(image_tag(@photo.photo.url(:thumb)), @photo.photo.url) %>
+<%= link_to(image_tag(@photo.photo.url(:thumb).gsub("%2F", "/").gsub("%2F", "/")), @photo.photo.url.gsub("%2F", "/")) %>
 </p>
 
 <p>

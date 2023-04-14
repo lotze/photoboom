@@ -29,7 +29,7 @@ class Photo < ActiveRecord::Base
     tempfile = Rails.root.join('tmp').to_s + "/" + self.photo_file_name
     self.photo.copy_to_local_file(nil, tempfile)
     geometry = Paperclip::Geometry.from_file(tempfile)
-    self.update_attributes(width: geometry.width.to_i, height: geometry.height.to_i)
+    self.update(width: geometry.width.to_i, height: geometry.height.to_i)
     File.delete(tempfile)
   end
 
@@ -60,7 +60,7 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   def reject!(notes)
-    self.update_attributes!(rejected: true, reviewed: true)
+    self.update!(rejected: true, reviewed: true)
     # email user to notify
     begin
       NoticeMailer.rejected_photo(self, notes).deliver_later
@@ -79,6 +79,6 @@ class Photo < ActiveRecord::Base
       end
     end
 
-    self.update_attributes!(rejected: false, reviewed: true)
+    self.update!(rejected: false, reviewed: true)
   end
 end

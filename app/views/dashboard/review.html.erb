@@ -13,7 +13,7 @@ The game has ended! Please head to the end location to see everyone's photos and
   <li>
     <%= mission.name %>: <%= mission.description %>
     <% @team_photos.find_all {|p| p.mission_id == mission.id}.each do |photo| %>
-      <br /><%= link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url) %>
+      <br /><%= link_to(image_tag(photo.photo.url(:thumb).gsub("%2F", "/")), photo.photo.url.gsub("%2F", "/")) %>
     <% end %>
   </li>
   <% end %>

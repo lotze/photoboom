@@ -16,7 +16,7 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= image_tag photo.photo.url(:thumb) %></td>
+        <td><%= image_tag photo.photo.url(:thumb).gsub("%2F", "/") %></td>
         <td><%= photo.mission.name %></td>
         <td><%= photo.team.try(:name) %></td>
         <td><%= photo.rejected ? 'X' : '' %></td>
