@@ -8,7 +8,7 @@ RSpec.describe 'playing a game in progress', js: true do
     @mission = @game.missions.first
     @active_team = @game.teams.first
     @active_user = @active_team.users.first
-    @game.update_attributes!(starts_at: Time.now - 1.hour, ends_at: Time.now + 1.hour)
+    @game.update!(starts_at: Time.now - 1.hour, ends_at: Time.now + 1.hour)
   end
 
   it 'allows viewing missions and submitting photos' do

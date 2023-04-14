@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
     game = team.game
     current_membership = membership(game)
     if current_membership
-      current_membership.update_attributes!(team_id: team.id)
+      current_membership.update!(team_id: team.id)
     else
       raise "User #{self.name} must first register for #{game.name}"
     end

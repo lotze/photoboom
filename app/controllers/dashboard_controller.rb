@@ -96,7 +96,7 @@ class DashboardController < ApplicationController
     @team = @current_user.team(@game)
     membership = @current_user.registrations.find_by(game_id: @game.id)
     if membership.team == @team
-      membership.update_attributes!(team_id: nil)
+      membership.update!(team_id: nil)
     end
     redirect_to next_game_path
   end
