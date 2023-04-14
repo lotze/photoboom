@@ -466,6 +466,7 @@ DEPENDENCIES
   sdoc
   seed_dump
   simplecov
+  sprockets-rails
   therubyrhino
   thin
   timezone
