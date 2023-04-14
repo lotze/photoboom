@@ -1,4 +1,4 @@
-ruby '2.6.5'
+ruby '3.1.3'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -17,7 +17,7 @@ gem 'coffee-rails', '>= 4.0.0'
 gem 'twitter-bootstrap-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails'
-gem 'mini_racer'
+gem 'therubyrhino'
 gem 'font-awesome-rails'
 
 # use the slick jquery carousel
