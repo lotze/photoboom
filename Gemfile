@@ -91,7 +91,7 @@ gem 'omniauth', ">= 1.9.1"
 # gem 'omniauth-facebook'
 # gem 'omniauth-identity'
 gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection', '~> 0.1'
+# gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
 gem 'thin'
 
