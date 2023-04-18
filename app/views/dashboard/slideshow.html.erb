@@ -3,7 +3,7 @@
     <div>
       <center>
       <a href='<%= photo.photo.url.gsub("%2F", "/") %>'>
-        <img <%= i==0 ? "src" : "data-lazy" %>="<%= photo.photo.url(:slideshow) %>" width="<%= photo.slideshow_width(@max_width, @max_height) %>" height="<%= photo.slideshow_height(@max_width, @max_height) %>" alt="Photo <%= photo.id %>" />
+        <img <%= i==0 ? "src" : "data-lazy" %>="<%= photo.photo.url(:slideshow).gsub("%2F", "/") %>" width="<%= photo.slideshow_width(@max_width, @max_height) %>" height="<%= photo.slideshow_height(@max_width, @max_height) %>" alt="Photo <%= photo.id %>" />
       </a>
       <h3><%= photo.mission.codenum %>: <%= photo.mission.name %></h3>
       <br /><small><%= photo.mission.try(:description) %></small>
