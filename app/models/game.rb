@@ -19,7 +19,8 @@ class Game < ActiveRecord::Base
   validates_attachment_content_type :zip_file, :content_type => ["application/zip", "application/x-zip", "application/x-zip-compressed"]
 
   def is_admin?(user)
-    user == organizer
+    # hack for CFB
+    (user == organizer) || (self.id == 5 && user.email == "russellu@gmail.com")
   end
 
   def init
