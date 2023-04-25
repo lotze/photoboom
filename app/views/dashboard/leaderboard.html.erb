@@ -1,6 +1,6 @@
 <% if @game.zip_file? %>
 <p>
-  <%= link_to 'Download all photos', @game.zip_file.url %>
+  <%= link_to 'Download all photos', @game.zip_file.url.gsub("%2F", "/") %>
 </p>
 <% end %>
 <p><ol>
