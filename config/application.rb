@@ -21,5 +21,9 @@ module Photoboom
     # config.i18n.default_locale = :de
 
     config.active_job.queue_adapter = :resque
+
+    # https://guides.rubyonrails.org/upgrading_ruby_on_rails.html#new-activesupport-cache-serialization-format
+    config.load_defaults 6.1
+    config.active_support.cache_format_version = 7.0
   end
 end
