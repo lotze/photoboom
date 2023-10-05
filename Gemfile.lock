@@ -481,7 +481,7 @@ DEPENDENCIES
   pg
   poltergeist
   postmark-rails
-  rails (>= 6.0.3.2)
+  rails (>= 7.1)
   resque
   resque-heroku-signals
   resque-scheduler
