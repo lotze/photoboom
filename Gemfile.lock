@@ -499,6 +499,7 @@ DEPENDENCIES
   sdoc
   seed_dump
   simplecov
+  sprockets-rails
   terser
   therubyrhino
   thin

@@ -10,6 +10,7 @@ gem 'sassc'
 
 # Use terser as compressor for JavaScript assets
 gem 'terser'
+gem 'sprockets-rails'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '>= 4.0.0'
