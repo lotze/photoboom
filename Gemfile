@@ -8,9 +8,8 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'sassc'
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-gem 'sprockets-rails'
+# Use terser as compressor for JavaScript assets
+gem 'terser'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '>= 4.0.0'
@@ -56,6 +55,8 @@ gem 'jbuilder', '>= 1.2'
 # Security ensuring
 gem "kramdown", ">= 2.3.0"
 gem "json", ">= 2.3.0"
+
+gem 'dotenv-rails'
 
 group :production do
   # gem for making pdf from html
