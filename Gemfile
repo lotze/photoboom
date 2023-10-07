@@ -37,14 +37,10 @@ gem 'turbolinks'
 gem 'postmark-rails'
 
 gem 'paperclip'
+gem 'delayed_paperclip'
 gem 'aws-sdk-s3'
 gem 'rubyzip'
 gem 'timezone' # Google Geocoding timezone lookup for getting default timezone for new games
-gem 'resque'
-gem 'resque-scheduler'
-gem 'resque-heroku-signals'
-gem 'resque-web', require: 'resque_web'
-gem 'resque-scheduler-web'
 gem 'activejob-retry'
 gem 'delayed_paperclip'
 # gem for making pdf from html

@@ -144,7 +144,7 @@ class DashboardController < ApplicationController
     else
       # game has ended; make sure we have made a zip file -- if not, queue a job to do so
       unless @game.zip_file?
-        Resque.enqueue(GameFinisher, @game.id)
+        GameFinisher.perform_later(@game.id)
       end
     end
 

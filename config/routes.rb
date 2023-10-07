@@ -1,5 +1,3 @@
-require "resque_web"
-
 Photoboom::Application.routes.draw do
   get '/dashboard', to: 'dashboard#next_game', as: :dashboard
   get '/next_game', to: 'dashboard#next_game', as: :next_game
@@ -65,16 +63,6 @@ Photoboom::Application.routes.draw do
   get '/missing', to: 'teams#missing', as: :missing
 
   get '/check_email', to: 'games#check_email', as: :check_email
-
-  # reqeue web dashboard
-  resque_web_constraint = lambda do |request|
-    current_user ||= User.find_by_id(request.session[:user_id])
-    current_user.present? && current_user.respond_to?(:admin?) && current_user.admin
-  end
-
-  constraints resque_web_constraint do
-    mount ResqueWeb::Engine, at: "/resque_web"
-  end
 
   # automatically go to their next upcoming game; if they don't have one, will redirect to list of games
   root 'dashboard#next_game'

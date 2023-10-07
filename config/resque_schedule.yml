@@ -1,7 +1,0 @@
-check_emailed_photos:
-  # using rufus format: https://github.com/jmettraux/rufus-scheduler
-  every: 1m
-  class: "EmailUpdater"
-  queue: :email_updater
-  args:
-  description: "This job checks for recent emailed photos"

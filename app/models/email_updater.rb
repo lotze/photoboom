@@ -1,7 +1,9 @@
 require 'net/imap'
 require 'mail'
 
-class EmailUpdater < Resque::Job
+class EmailUpdater < ActiveJob::Base
+  queue_as :default
+
   def self.get_with_imap(gmail_login, gmail_password)
     imap = Net::IMAP.new("imap.gmail.com",993,true)
     imap.login(gmail_login, gmail_password)
@@ -135,7 +137,7 @@ class EmailUpdater < Resque::Job
     return photos
   end
 
-  def self.perform
+  def perform
     photos = []
 
     gmail_login = ENV['GMAIL_LOGIN']
