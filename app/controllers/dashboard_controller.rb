@@ -11,6 +11,8 @@ class DashboardController < ApplicationController
       @game = Game.find_by(id: params['game_id'])
     elsif current_user.next_game
       @game ||= current_user.next_game
+    elsif current_user.last_game
+      @game ||= current_user.last_game
     end
     if !@game
       redirect_to games_path

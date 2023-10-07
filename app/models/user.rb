@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
     games.where('ends_at > ?', Time.now).order(:starts_at).first
   end
 
+  def last_game
+    games.where('ends_at < ?', Time.now).order(ends_at: :desc).first
+  end
+
   def add_provider(auth_hash)
     # Check if the provider already exists, so we don't add it twice
     unless authorizations.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
