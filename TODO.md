@@ -1,4 +1,6 @@
 == Important ==
+* move from paperclip to ActiveStorage
+
 * Test coverage
 ** emailed photos from non-registered email; (organizer is emailed, can assign person even if not registered)
 ** register

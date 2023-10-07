@@ -136,9 +136,16 @@ class DashboardController < ApplicationController
   ##################################################################
 
   def leaderboard
-    if @game.ends_at > Time.now && !@game.is_admin?(current_user)
-      flash[:error] = "Game has not yet ended!"
-      return redirect_to next_game_path
+    if @game.ends_at > Time.now
+      if !@game.is_admin?(current_user)
+        flash[:error] = "Game has not yet ended!"
+        return redirect_to next_game_path
+      end
+    else
+      # game has ended; make sure we have made a zip file -- if not, queue a job to do so
+      unless @game.zip_file?
+        Resque.enqueue(GameFinisher, @game.id)
+      end
     end
 
     @photos = Photo.where(game: @game, rejected: false).includes(:team).includes(:mission)

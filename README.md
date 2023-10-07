@@ -30,9 +30,17 @@ To load up seed data
 rake db:seed
 (or to overwrite the seed data using the current db data, RAILS4=true WITHOUT_PROTECTION=false rake db:seed:dump)
 
+Instructions For Thomas to Restart
+======================
+Turn on heroku servers
+re-enable SQL
+heroku run -e=DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rake db:schema:load
+
+
 Instructions For Users
 ======================
 Create event
+* https://play.photoscavenger.com/games/new
 Get people to sign up and make teams
 (maybe export past missions)
 Add missions
