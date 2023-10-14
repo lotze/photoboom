@@ -8,6 +8,7 @@ class Game < ActiveRecord::Base
 
   scope :publicly_available, -> { where(is_public: true) }
   scope :upcoming, -> { where('starts_at > ?', Time.now) }
+  scope :not_yet_ended, -> { where('ends_at > ?', Time.now) }
   scope :running, -> { where('? BETWEEN starts_at AND ends_at + INTERVAL \'2 minutes\'', Time.now) }
 
   after_initialize :init
@@ -72,6 +73,10 @@ class Game < ActiveRecord::Base
 
   def upcoming?
     Time.now < self.starts_at
+  end
+
+  def in_progress?
+    Time.now >= self.starts_at && Time.now < self.ends_at
   end
 
   def in_progress?

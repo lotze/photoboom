@@ -64,8 +64,7 @@ class GamesController < ApplicationController
     if current_user.admin?
       @games = Game.all
     else
-      # hack for Denise birthday; in future, show currently running games as well
-      @games = Game.where(id:4) # Game.upcoming.publicly_available
+      Game.not_yet_ended.publicly_available
     end
   end
 

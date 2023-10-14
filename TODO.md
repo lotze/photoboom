@@ -1,4 +1,7 @@
 == Important ==
+* post-game directions better: for organizer, zip file and leaderboard and slideshow
+(still allowing for future games)
+
 * move from paperclip to ActiveStorage
 
 * Test coverage
