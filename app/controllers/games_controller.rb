@@ -64,7 +64,7 @@ class GamesController < ApplicationController
     if current_user.admin?
       @games = Game.all
     else
-      Game.not_yet_ended.publicly_available
+      @games = Game.not_yet_ended.publicly_available
     end
   end
 
