@@ -42,7 +42,6 @@ gem 'aws-sdk-s3'
 gem 'rubyzip'
 gem 'timezone' # Google Geocoding timezone lookup for getting default timezone for new games
 gem 'activejob-retry'
-gem 'delayed_paperclip'
 # gem for making pdf from html
 gem 'wicked_pdf'
 
