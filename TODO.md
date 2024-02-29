@@ -6,12 +6,15 @@
 
 * Test coverage
 ** emailed photos from non-registered email; (organizer is emailed, can assign person even if not registered)
-** register
+** register before a game starts
+** register while a game is in progress
 
 * better way to deal with unregistered emails coming in
 ** figure out why resque job isn't processing emails at all in staging -- ah! just needs a scheduler running?
 
 * don't allow blank team names (and provide a good error)
+
+* remove old games (more than a month old) and/or back up to cold storage
 
 == Desired ==
 * google calendar event with 1-day and 1-hour email reminder

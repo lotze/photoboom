@@ -5,6 +5,11 @@ class DashboardController < ApplicationController
   # before_action :require_registration, except: [:register]
   before_action :require_registration, except: [:register, :slideshow]
 
+  # be able to display your past and current games, and also look for future games, and also start hosting a new game (maybe at a cost)
+  def personal
+  end
+
+
   # get next game this player is signed up for, or redirect to list of games
   def get_game
     if params['game_id']
