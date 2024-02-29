@@ -99,8 +99,7 @@ GEM
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.6)
-    bootstrap3-datetimepicker-rails (4.17.47)
-      momentjs-rails (>= 2.8.1)
+    bootstrap-datetimepicker-rails (0.0.11)
     builder (3.2.4)
     capybara (3.40.0)
       addressable
@@ -414,7 +413,7 @@ DEPENDENCIES
   activejob-retry
   aws-sdk-s3
   bcrypt (>= 3.0.0)
-  bootstrap3-datetimepicker-rails
+  bootstrap-datetimepicker-rails
   capybara
   coffee-rails (>= 4.0.0)
   database_cleaner

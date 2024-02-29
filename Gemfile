@@ -17,7 +17,7 @@ gem 'coffee-rails', '>= 4.0.0'
 
 gem 'twitter-bootstrap-rails'
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails'
+gem 'bootstrap-datetimepicker-rails'
 gem 'therubyrhino'
 gem 'font-awesome-rails'
 
