@@ -1,17 +1,17 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :photo do
     transient do
-      photo_type nil
+      photo_type { nil }
     end
 
-    game { FactoryGirl.create(:game) }
-    user { FactoryGirl.create(:user) }
-    team { FactoryGirl.create(:team) }
-    mission { FactoryGirl.create(:mission) }
-    width 1480
-    height 760
-    rejected false
-    reviewed false
+    game { FactoryBot.create(:game) }
+    user { FactoryBot.create(:user) }
+    team { FactoryBot.create(:team) }
+    mission { FactoryBot.create(:mission) }
+    width { 1480 }
+    height { 760 }
+    rejected { false }
+    reviewed { false }
 
     after(:create) do |photo, factory|
       if factory.photo_type == :vertical

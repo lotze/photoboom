@@ -2,7 +2,7 @@ require 'acceptance_helper'
 
 RSpec.describe 'creating a game' do
   before do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryBot.create(:user)
   end
 
   it 'allows creating a game which apepars on the list of games, and adding missions' do
@@ -15,6 +15,9 @@ RSpec.describe 'creating a game' do
     #select 'game_timezone', text: 'Hawaii'
     find('input[value="Create Game"]').click
     expect(page.body).to include(game_name)
+    # games aren't publicly listed until launched
+    click_on 'Launch Game'
+    click_on 'Launch with Free'
     visit '/games'
     expect(page.body).to include(game_name)
     click_on game_name

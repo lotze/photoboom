@@ -4,8 +4,17 @@ require 'rails_helper'
 
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist
+require 'selenium-webdriver'
+
+Capybara.register_driver :selenium_chrome_headless do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--headless=new')
+  options.add_argument('--disable-gpu')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--window-size=1400,1400')
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+Capybara.javascript_driver = :selenium_chrome_headless
 
 require 'database_cleaner'
 
@@ -17,9 +26,9 @@ WebMock.disable_net_connect!(allow_localhost: true, allow: [
 
 SimpleCov.command_name 'spec:acceptance' if RUBY_PLATFORM != 'java'
 
+Capybara.server = :webrick
 Capybara.server_port = 3001
 Capybara.default_max_wait_time = 5
-Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
   config.include Capybara::DSL
@@ -44,7 +53,7 @@ RSpec.configure do |config|
   end
 end
 
-def log_in_as_oauth_user(user = FactoryGirl.create(:user))
+def log_in_as_oauth_user(user = FactoryBot.create(:user))
     # mock omniauth responses from SSO server
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new

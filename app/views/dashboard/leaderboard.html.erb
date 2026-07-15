@@ -1,4 +1,4 @@
-<% if @game.zip_file? %>
+<% if @game.zip_file.attached? %>
 <p>
   <%= link_to 'Download all photos', url_for(@game.zip_file) %>
 </p>

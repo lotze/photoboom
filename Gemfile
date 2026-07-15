@@ -73,12 +73,13 @@ group :test do
   gem 'simplecov'
   gem 'fdoc'
   gem 'capybara'
-  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'webrick'
 end
 
 group :development, :test do
-  gem 'factory_girl_rails', require: false
-  gem 'observer' # factory_girl requires this; no longer a Ruby default gem as of 3.4
+  gem 'factory_bot_rails', require: false
+  gem 'observer' # factory_bot requires this; no longer a Ruby default gem as of 3.4
 end
 
 group :doc do

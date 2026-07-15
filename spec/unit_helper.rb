@@ -13,10 +13,10 @@ RSpec.configure do |config|
   # end
 end
 
-require 'factory_girl'
-FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
-#FactoryGirl.find_definitions
-include FactoryGirl::Syntax::Methods
-FactoryGirl::SyntaxRunner.class_eval do
+require 'factory_bot'
+FactoryBot.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
+#FactoryBot.find_definitions
+include FactoryBot::Syntax::Methods
+FactoryBot::SyntaxRunner.class_eval do
   include RSpec::Mocks::ExampleMethods
 end

@@ -3,8 +3,8 @@ require 'acceptance_helper'
 RSpec.describe 'signing up for a game' do
   before do
     # create game
-    @organizer_user = FactoryGirl.create(:user)
-    @game = FactoryGirl.create(:game, organizer: @organizer_user, num_missions: 30)
+    @organizer_user = FactoryBot.create(:user)
+    @game = FactoryBot.create(:game, organizer: @organizer_user, num_missions: 30)
   end
 
   it 'allows signup and registration and creating a team' do
@@ -39,8 +39,8 @@ RSpec.describe 'signing up for a game' do
   end
 
   it 'allows joining a team' do
-    team = FactoryGirl.create(:team, game: @game, num_players: 2)
-    test_user = FactoryGirl.create(:user)
+    team = FactoryBot.create(:team, game: @game, num_players: 2)
+    test_user = FactoryBot.create(:user)
     log_in_as_oauth_user(test_user) # defined in aceptance_helper
     visit '/'
     click_on(@game.name)

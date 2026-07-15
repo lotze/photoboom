@@ -3,8 +3,8 @@ require 'acceptance_helper'
 RSpec.describe 'playing a game in progress', js: true do
   before do
     # create game, some teams and photos
-    @organizer_user = FactoryGirl.create(:user)
-    @game = FactoryGirl.create(:game, organizer: @organizer_user, num_missions: 30, num_teams: 4)
+    @organizer_user = FactoryBot.create(:user)
+    @game = FactoryBot.create(:game, organizer: @organizer_user, num_missions: 30, num_teams: 4)
     @mission = @game.missions.first
     @active_team = @game.teams.first
     @active_user = @active_team.users.first

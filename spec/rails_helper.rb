@@ -1,7 +1,8 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
-require 'factory_girl_rails'
+require 'rspec/mocks'
+require 'factory_bot_rails'
 
 RSpec.configure do |config|
   # From rspec/rails/example
@@ -14,9 +15,9 @@ RSpec.configure do |config|
 
   config.disable_monkey_patching!
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 end
 
-FactoryGirl::SyntaxRunner.class_eval do
+FactoryBot::SyntaxRunner.class_eval do
   include RSpec::Mocks::ExampleMethods
 end

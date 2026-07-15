@@ -3,12 +3,12 @@ require 'acceptance_helper'
 RSpec.describe 'managing a game in progress' do
   before do
     # create game, some teams and photos
-    @organizer_user = FactoryGirl.create(:user)
-    @game = FactoryGirl.create(:game, organizer: @organizer_user, num_missions: 30, num_teams: 4)
+    @organizer_user = FactoryBot.create(:user)
+    @game = FactoryBot.create(:game, organizer: @organizer_user, num_missions: 30, num_teams: 4)
     @mission = @game.missions.first
     @active_team = @game.teams.first
     @active_user = @active_team.users.first
-    @photo = FactoryGirl.create(:photo, mission: @mission, user: @active_user, team: @active_team, game: @game)
+    @photo = FactoryBot.create(:photo, mission: @mission, user: @active_user, team: @active_team, game: @game, photo_type: :horizontal)
   end
 
   it 'allows review and rejection and unrejection of photos' do
