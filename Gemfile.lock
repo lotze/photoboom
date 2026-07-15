@@ -433,7 +433,6 @@ PLATFORMS
 
 DEPENDENCIES
   activejob-retry
-  activestorage (>= 7.2.3.1)
   aws-sdk-s3
   bcrypt (>= 3.0.0)
   bootstrap-datetimepicker-rails
