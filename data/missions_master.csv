@@ -1,0 +1,313 @@
+name,description,points,status,tags,notes
+Test Photo,Literally anything. Use this to test uploading photos.,1,active,meta family,In every hunt since 2017; keep as mission 1.
+Team Photo,All team members. Make sure this reflects your team's identity.,100,active,meta family all-team pose,Points ranged 20–1000 across hunts; always the finale mission.
+Suggestion Box,A legible list of three suggested missions for the next photo scavenger hunt.,20,active,meta family make wordplay,Feeds the master list; harvest submissions after each game.
+Create Your Own,A blank mission slot: teams propose a mission and the organizer sets its points on the spot.,20,active,meta standard,Flags Day reserved 5 slots for these.
+Flight,Multiple team members mid-air.,50,active,family all-team pose sporty,Classic closer; 20–70 pts across hunts.
+Hats,All team members wearing hats or other head coverings.,50,active,family all-team pose wear silly,
+Nearly Ninjas,"All team members, with only heads visible, poking out from behind an object.",70,active,family all-team pose silly,
+Yoga,Multiple team members performing yoga poses.,10,active,family multi-member pose sporty,Pairs with Yoda.
+Yoda,Multiple team members performing Yoda poses.,10,active,family multi-member pose geeky silly,Pairs with Yoga.
+Human Pyramid,Team human pyramid; get a non-player to take the photo. Bonus for combining with another team.,30,active,family all-team pose sporty non-player,Burning Man + Mission Hipster; 2008 scored per level.
+Cyclical,"From above, photo of team members holding hands in a circle and looking up.",20,active,family all-team pose arty,
+Reflection,"All team members, reflected in something.",20,active,family all-team pose arty,
+Postcard Masking,"Team member holding postcards in front of their face, only eyes visible.",30,active,family pose arty,
+Twins on Twins,Two people wearing the same outfit.,20,active,family pose find,
+Excited and Scared,"One team member looking excited, one team member looking nervous.",10,active,family multi-member pose silly,
+But Soft What Light,"One team member on ground level, another on a second story or higher, reaching towards each other.",30,active,family multi-member pose arty,
+Betrayal,"One team member with an evil grin, framed in a window or mirror.",10,active,family pose spooky,
+Et Tu Brute,One team member stabbing another in the back.,10,active,family multi-member pose wordplay,
+With The Wrench,One team member using a wrench on another team member.,10,active,family multi-member pose silly,Clue trio w/ Colonel Mustard + Billiard Room.
+Colonel Mustard,Team member making a face at mustard.,10,active,family pose silly foodie,
+In The Billiard Room,Team member on top of a pool table.,10,active,standard pose bar,
+Codename Spymaster,"Team member wearing sunglasses and hat, hand on ear as if listening to secret instructions.",20,active,family pose silly wear,
+Magritte,Team members recreating a Magritte painting.,10,active,family pose arty,
+Masterpiece Reenactment,Recreate a famous painting on location; title the photo after the painting.,30,active,family multi-member pose arty,Generalizes the Burning Man UN-Plaza fountain mission.
+Abbey Road,People crossing a crosswalk like the Beatles.,10,active,family multi-member pose musical urban,
+Evolution of Man,Team members recreating the evolution-of-man diagram.,30,active,family multi-member pose science silly,
+Three Wise Monkeys,"Team members seeing no evil, hearing no evil, speaking no evil, on a pedestal or raised platform.",10,active,family multi-member pose silly,
+Awkward Prom,Awkward prom-style photo.,10,active,family multi-member pose silly home-ok,
+Live Long And Prosper,"Multiple team members, all giving the Vulcan salute.",20,active,family multi-member pose geeky,
+Heroes,"All team members in a comic book store, in superhero poses.",100,active,family all-team pose geeky store,Instance of the local-business template.
+Gendo,Team member doing their best Gendo Ikari pose.,10,active,family pose geeky home-ok,
+Not Appearing In This Film,Team member posing with someone who isn't actually there.,10,active,family pose silly home-ok,
+Statue,Team member hugging or interacting with a statue.,10,active,family pose urban interact,Risque variant: making out with it (+10).
+Street Performer,Team member posing with (bonus: joining) a street performer.,30,active,family non-player interact musical urban,
+Lookalike,Team member with a non-player lookalike.,20,active,family non-player find,
+Piggyback,Non-player giving a team member a piggyback ride.,20,active,standard non-player interact stranger-help,
+High Five,Team member high-fiving a non-player. Epic variant: an ultimate high five.,10,active,family non-player interact,
+Simul-Five,All team members high-fiving strangers simultaneously.,30,active,family all-team non-player interact,
+Hug a Stranger,Give a hug to a stranger.,10,active,standard non-player interact,
+Heart of Gold,Team member doing something nice for someone else.,20,active,family non-player interact wholesome reflective,Burning Man 'Gifting' version adds a written reflection.
+Dream,"Written description of a non-player's dream, held up by that non-player.",20,active,family non-player interact wholesome reflective,
+Golden Anniversary,Find a couple that has been married for 40+ years; snap a pic of them kissing.,30,active,family non-player find wholesome,
+Baby,Team member holding a non-player's baby (with permission). Bonus if twins.,30,active,standard non-player baby interact,
+Do They Bite,Team member holding a live (non-human) animal.,30,active,family animal interact,
+Puppies,"Find a real puppy, hold it, love it (non-puppies do not count).",20,active,family animal interact wholesome,
+Dog Walker,Person walking a dog. Bonus if it's a cat.,10,active,family animal find urban,
+Dressed-Up Dog,Team member holding a dog that's dressed up in clothing.,30,active,standard animal find silly,Toned-down Pug Lyfe.
+Lucky Mustache,Team member admiring a non-player's great moustache.,10,active,family non-player find silly,
+Mullet Hunter,Team photo with a person with a mullet.,10,active,standard non-player find silly,
+Z,"Any non-player with a 'z' in their name, holding a piece of paper with their name on it.",10,active,family non-player find wordplay,
+Uniformed,Someone in uniform. Bonus if they are chasing a team member.,20,active,standard non-player find urban,
+The Fuzz,Team member or group photo with a police officer.,30,active,standard non-player interact urban,The Chase (being chased) is the 70-pt variant.
+Mounted Police,A mounted police officer.,10,active,family non-player animal find urban,
+Celebrity,"A celebrity (actual person required, no pictures of pictures).",50,active,standard non-player find,
+Street Sign Twin,Find a street sign that personifies a team member or stranger; photograph them together.,30,active,family find wordplay urban,
+Juggler,Someone juggling at least three objects.,30,active,family find perform sporty,Stranger or team member; team version is harder than it looks.
+Limerick,Create a limerick about a stranger. Photograph the limerick together with the person.,30,active,standard non-player make wordplay,
+Dueling Duo,A team member dueling a non-team-member with makeshift swords.,20,active,family non-player perform geeky sporty,How Do LARP + Duel merged.
+Dance Partner,A team member dancing with a non-team-member.,30,active,family non-player perform musical,
+Dance Party,Initiate a spontaneous dance party in a public space; must include non-players.,50,active,standard non-player perform musical urban,Burning Man Radical Inclusion + 'celebrate life' missions.
+Rock Paper Scissors,"Team member and member of another team, engaging in a rock-paper-scissors showdown.",20,active,family other-team interact,
+Tug of War,Tug of war battle against another team. Winner gets a bonus.,40,active,standard other-team sporty interact,Original was inside a store's kids dept (mischief).
+Human Tunnel,"Create a human tunnel with another team, have non-players enter and exit it.",40,active,family other-team non-player pose,
+Photobomb,Photo bomb another team's group shot. Points for each team you photo bomb.,30,active,family other-team interact points-per-unit,
+Serenade Drive-By,Your team serenading another unsuspecting team in passing (from a vehicle or across a street).,50,active,standard other-team perform musical,Generalizes LDB cable-car drive-by.
+Three-Legged Race,Have a 3-legged race in the park (all team members).,30,active,family all-team sporty perform,
+Parkour,"Team member vaulting over or off of an object, with style.",20,active,family perform sporty daring,
+Go Climb a Tree,"Team member, up in a tree.",10,active,family perform sporty,
+Table Flip,Team member literally in the act of flipping a table (table must be visibly mid-flip).,30,active,standard perform silly geeky,
+Oh Yeah,Team member breaking through something.,30,active,standard perform silly daring,Kool-Aid Man homage; use a paper banner.
+Escape,Team member celebrating as they escape a room.,10,active,family perform silly,
+Breakdance Tutor,Teach a stranger how to do a breakdance move.,30,active,standard non-player perform musical,
+Limbo,Limbo under a stranger's belt.,30,active,cheeky non-player perform sporty,
+Karaoke Pyro,"Sing a song with ""Burn"" or ""Fire"" in the title as a group in a karaoke bar.",30,active,standard all-team perform musical bar video,
+Musical Micro-Play,Write a 5-minute musical play with a role for everyone; perform it at the finish.,40,active,family all-team perform musical make video,
+Mock Protest,Photograph the team having a mock protest — e.g. Just Say No to Plaid!,20,active,family all-team perform silly wordplay,
+Ice Skating,Team member ice skating.,30,active,family perform sporty seasonal-winter,
+Snow Angels,Team member making angels in snow (fake or real).,30,active,family perform seasonal-winter,
+Bell Ringer,Team member ringing a Salvation Army donation bell.,20,active,family non-player interact seasonal-winter wholesome,
+Santa's Lap,Team member whispering into Santa's ear.,30,active,standard non-player interact seasonal-winter,
+Pumpkin King,Team member holding a jack o'lantern in front of their face.,20,active,family pose seasonal-fall spooky,
+Leaf Pile,"Team member, covered in leaves (face visible).",20,active,family pose seasonal-fall,
+Head in Bucket,Team member with their head in a bucket.,30,active,family pose silly home-ok,Ran at 2–70 pts; reliably hilarious.
+Fountaining,A team member inside a fountain. Bonus if it's turned on.,20,active,cheeky perform daring urban,
+Get High,"Team member on a roof, excited about the view.",20,active,standard perform daring urban,
+The Tunnel,Team member in a tunnel.,20,active,family find urban,
+Higher,"Picture of the ground from at least 5 stories up, not through a glass window.",30,active,family find urban,Even Higher (20 stories) is the 70-pt escalation.
+On Fire,Something on fire not intended to be on fire.,20,active,standard find daring,Fake fire/lighters/matches don't count.
+Sparkler,A sparkler being used.,10,active,family find daring,
+Twelve Seconds,Crossing the street with 12 seconds left on the electronic crosswalk sign.,10,active,family find urban,
+Phone Booth,Team photo in a phone booth.,20,active,family all-team pose urban find,Increasingly rare; consider points inflation.
+Call Mom,Team member making a call on a public corded phone to a family member.,30,active,family interact urban,
+Fire Truck,A fire truck. Bonus if you are riding it.,10,active,family find urban,
+Stretch Limo,A stretch SUV or limo.,10,active,family find urban,
+License Math,A license plate whose numbers sum to exactly 11.,30,active,family find science wordplay,
+Leet,"A building number, license plate, or other found label containing '1337'.",10,active,family find geeky wordplay,
+Thirteenth Floor,An elevator with no 13th floor.,10,active,family find urban spooky,
+Anagram Hunter,Longest anagram on a printed sign (not hand-written).,30,active,family find wordplay points-per-unit,Judge comparatively at the finish.
+Answer to Life,Find the answer to life — on a store sign or billboard.,30,active,family find geeky wordplay,
+First World Anarchy,Find and photograph first world anarchy.,30,active,standard find silly,
+Engrish,Find some Engrish.,20,active,cheeky find wordplay,
+Pax Romana,Team member pointing to an engraved Latin inscription.,10,active,family find wordplay urban,
+Waldo,Find Waldo.,20,active,family find geeky,
+Pikachu,Pikachu. Interpret that as you will.,10,active,family find geeky,
+Pokemon,Team member with a Pokemon.,10,active,family find geeky,
+Dragon,A dragon.,10,active,family find geeky,Vericon mascot.
+Hexagon,"A hexagon, found in the wild.",10,active,family find science,
+Anomaly,An outlier.,10,active,family find science,
+Broken Mirror,A broken mirror.,10,active,family find spooky,
+Church,A church.,10,active,family find urban,
+Street Art,Street art your team likes.,10,active,family find arty urban,
+Political Street Art,What makes art political? Team photo with found political street art.,20,active,standard find arty urban,
+Made in Sweden,Anything that visibly came from Sweden.,10,active,family find,Instance of the country-of-origin template.
+All Your Base,A base.,10,active,family find geeky wordplay,Pairs with All Your Bass.
+All Your Bass,A bass.,10,active,family find geeky wordplay musical,Fish or instrument both count.
+Carthago Delenda Est,Two things that hate each other.,10,active,family find silly wordplay,aka Rubin Hates It.
+Chaser,Something red chasing something blue.,20,active,family find arty silly,
+Portal,"Find a portal, jump through it.",10,active,family find geeky perform,
+Metal Frisbee,There is no such thing as a metal frisbee. Find one.,50,active,family find silly,
+Eureka,"Team member underneath a light bulb, as though having a great idea.",10,active,family pose science silly,
+Talk Nerdy To Me,"Team member showing off a science fact they think people should know, written on a napkin.",10,active,family make science wordplay,
+Napkin Math,Solve a complex math equation on a cocktail napkin in a bar.,20,active,standard make science bar,
+Wild Math,Do math in the wild — no paper or pens allowed. Creativity highly encouraged.,30,active,family make science perform,
+Semaphore,Something encoded in semaphore.,20,active,family make science geeky,
+Resonance,Team member with a tuning fork.,30,active,family find science,
+Innovation,"One team member showing off more crowns, light bulbs, or leaves than another team member.",20,active,family pose science wordplay,Corona/incandescence/foliage joke — let players puzzle it out.
+PPE Fashion,Team member wearing at least 3 items of personal protective equipment.,30,active,family wear science,
+Human Scale,Compare the weight of two objects by holding them in each palm.,10,active,family pose science home-ok,
+Sorting Algorithm,Re-sort a store shelf or toy section by color.,40,active,cheeky make science store mischief,Leave it tidier than you found it.
+Eye of the Hurricane,The eye of a hurricane.,10,active,family find science wordplay home-ok,Template: eye of the {tiger|hurricane|needle}.
+Magnets,How the fuck do they work?,10,active,cheeky find science silly,
+Stress Test,How many Thetans do you contain? Take a stress test and find out.,30,active,cheeky interact silly urban,
+MtG Avatar,Each team member holding a Magic: the Gathering card which represents them.,20,active,family multi-member pose geeky,
+Color Pie,Something that represents one of the five colors of Magic.,10,active,family find geeky,Enemies variant: two colors that hate each other.
+Legacy,"Team member tearing up a card that they own, or writing on it with permanent marker.",10,active,family perform geeky,
+Tarot,A Tarot card that exemplifies your team.,20,active,family find geeky spooky,
+Time Traveler Gift,A suitable gift for a time traveler.,10,active,family find geeky,Clerk variant: ask a shop for gift recommendations for your time-traveling friend.
+Rollin' In It,"Team member's cupped hands, full of dice.",20,active,family pose geeky,
+Board Gamers,Team members playing a card or board game.,10,active,family multi-member perform geeky home-ok,
+Comic Relief,Any comic book. Bonus for a favorite author.,10,active,family find geeky store,
+Crystal Gems,"A Garnet, Amethyst, and Pearl.",20,active,family find geeky wordplay,Steven Universe; stones or cosplayers both count.
+DDR,Team members playing Dance Dance Revolution.,20,active,family perform geeky musical sporty,
+Hogwarts Colors,"Multiple team members, each wearing the colors of their Hogwarts house.",20,active,family multi-member wear geeky,
+Sword Brandish,Team member brandishing a sword (or other object longer than it is wide).,10,active,family pose geeky home-ok,I Am Not Left-Handed.
+Locutus,Team member with at least 5 cables appearing to naturally connect to them.,10,active,family pose geeky home-ok,
+Neverending Story,"At least three team members, each reading a copy of the same book.",20,active,family multi-member pose geeky store,
+Library,Team members in a library.,20,active,family find urban geeky,
+Literature Prize,Team member with a book authored by a member of your community.,20,active,family find geeky honoree,In-group template: swap in your club/company.
+Group Colors,Someone wearing your group's t-shirt.,30,active,family wear honoree,Geek Flag generalized.
+Masq,Someone wearing a mask.,10,active,family wear spooky,
+Fabulous Suit,Someone wearing a truly fabulous suit.,10,active,family wear find,Ice & Ash pair.
+Fabulous Gown,Someone wearing a truly fabulous gown.,10,active,family wear find,
+Formalwear,Someone wearing excellent-looking formalwear.,10,active,family wear find,Myld; pairs with Wyld.
+Wyld,Someone wearing some form of blue makeup on their face.,20,active,family wear silly,
+Face Paint,Team member wearing face paint or other face markings.,20,active,family wear make home-ok,
+Roy G Biv,Team member wearing at least 7 different colors.,20,active,family wear silly home-ok,
+Matching Heads,All team members wearing something of the same color on their heads.,20,active,family all-team wear,
+Non-Hat Hat,"Wear a ""hat"" made out of non-hat materials.",20,active,family wear make silly home-ok,
+Antlers,"Team member, wearing makeshift antlers.",20,active,family wear make silly,
+Kid Shoe Crown,A child's shoe on each team member's head.,20,active,family all-team wear silly,
+Hard Hats,At least two team members wearing hard hats.,10,active,family multi-member wear,
+Five Watches,"Team member wearing 5 watches on one arm, looking bad ass.",30,active,family wear silly,Escalation: 10 watches.
+Kilt,Someone wearing a kilt.,20,active,standard wear find,Bonus tiers in source get risque; keep base version standard.
+Tie Fighters,All team members wearing ties.,40,active,family all-team wear geeky wordplay,
+Rainbow Band Photo,"All team members, each wearing a shirt with a solid color of the rainbow, in order.",40,active,family all-team wear musical pose,
+Bird On It,Team members decked out in bird paraphernalia.,40,active,family wear silly,
+Winter Bundle,Team member bundled up for winter.,10,active,family wear home-ok seasonal-winter,
+Unicorn Stampede,"All team members wearing unicorn head (or similar animal) masks, running around yelling CHARLIE.",50,active,cheeky all-team wear perform silly mischief,Do it in a plaza rather than a store to drop the mischief tag.
+Wings and Wishes,"Find a pair of wings, wear them, grant a non-player a wish, magical.",30,active,family wear non-player interact wholesome,
+Angel Investor,Distribute fake money to passersby.,40,active,cheeky non-player interact silly,
+Beggar's Banquet,Team member offering passersby cash — and someone actually accepting.,50,active,standard non-player interact,Change Spare Please; harder than it sounds.
+Spare Change,Team member asking passersby for cash and receiving.,50,active,cheeky non-player interact,
+Gummi Diorama,"Gummi bears, arranged in a scene.",20,active,family make silly foodie home-ok,Escalation: a bear violently eating the diorama.
+String Web,"A web of string, made by team members.",20,active,family make spooky home-ok,
+Pillow Fort,A human-size fort (pillow or otherwise).,20,active,family make home-ok,
+Newspaper Pirate Hat,Construct and wear a pirate hat made of newspaper.,30,active,family make wear silly home-ok,
+TP Mummy,Toilet paper mummy.,20,active,family make spooky silly home-ok,
+Object Pyramid,"At least 10 objects, stacked in a pyramid.",10,active,family make home-ok,
+Rope Theory,Rope tied into a useful knot other than a square knot.,10,active,family make science,
+Pasta Portrait,"Team member portrait made of pasta, along with team member.",20,active,family make arty foodie home-ok,
+Homemade Instrument,Team member playing a homemade string instrument.,20,active,family make musical perform home-ok,
+Found-Art Collab,Collaboratively create a piece of interactive art using at least five kinds of found materials.,50,active,family all-team make arty burner,
+Public Art Plaque,"Create a plaque for something that isn't public art, install the plaque.",40,active,cheeky make arty urban mischief,Remove it afterward.
+Kintsugi,Something repaired with gold.,10,active,family make arty home-ok,
+Word in Food,Your team or event name written in food.,10,active,family make foodie wordplay home-ok points-per-unit,Template: word × medium (food / game pieces / bodies).
+Body Spelling,Non-players spelling out a word with their bodies (30 points per letter).,30,active,standard non-player pose wordplay points-per-unit,Word = honoree or group name.
+Haiku Drop,Leave a (kind) haiku on a restaurant napkin.,10,active,family make wordplay,
+Milk and Cookies,Milk. And cookies.,10,active,family find foodie home-ok,
+I Scream,Team member enjoying ice cream.,20,active,family eat foodie wholesome,
+Something Fried,"Team member with something fried, other than potatoes or chicken.",10,active,family eat foodie,
+Bakery Favorites,"Multiple team members, each pointing to their favorite item in a baked goods display case.",20,active,family multi-member pose foodie store,
+Burrito Challenge,"Consume a whole burrito, all of it. Three photos: before, during, after.",30,active,standard eat foodie multi-photo,
+Weird Foodz,Team member eating something they've never eaten before.,30,active,family eat foodie,
+Hunger Games,A race between two or more team members to see who can consume a food item most quickly.,30,active,standard eat foodie sporty,
+Rocket Food,Food in the shape of a rocket.,10,active,family find foodie science home-ok,
+Marshmallow Mouth,Team member with mouth stuffed full of marshmallows or another item.,10,active,family eat silly home-ok,
+Condiment Collector,Collect as many varieties of condiment packets as you can (points per packet).,10,active,family find foodie points-per-unit,
+Silverware Smile,At least six pieces of silverware in a team member's mouth.,10,active,family pose silly home-ok,
+Get Stuffed,Team member expressing joy or surprise to a stuffed animal.,20,active,family pose silly store,
+Makeover,Team member having make-up applied to them by a store employee.,50,active,standard non-player store interact,
+Window Shopping,One shot of multiple department store windows with one team member in each window.,50,active,standard all-team pose store urban,
+Clown Car,Whole team crammed into a child-sized car.,50,active,cheeky all-team pose store silly,
+Cardboard Explorers,Two team members in a cardboard box. Goggles optional.,10,active,family multi-member pose silly home-ok,Calvin & Hobbes energy.
+Try-On Luxury,Team member wearing store clothing or jewelry worth $250+ (include photo of price tag).,50,active,cheeky store wear mischief,Queens Jewels / Emperor Has No Clothes merged.
+Honest Opinion,A retail clerk giving their honest negative opinion about something they sell.,40,active,cheeky non-player store interact,
+Clerk's Finger,Retail store clerk giving you the finger.,20,active,cheeky non-player store interact,
+Carmen Sandiego,Get a travel-agency quote for a trip to wherever the clerk thinks Carmen Sandiego is hiding.,50,active,family non-player store interact geeky,Travel agencies are endangered; accept any travel desk.
+Crayon,Find a Crayola crayon.,10,active,family find store home-ok,
+Lame Gift,A gift card with $0.01 on it (provide receipt).,20,active,cheeky store bring-back,
+Escalator Salmon,"Go down the up escalator, all the way (transit stations do not count).",40,active,cheeky perform urban mischief daring,
+Elevator Ballroom,"Ballroom dancing, with music, inside a moving elevator, with non-players.",50,active,standard non-player perform musical,
+Stranger's Home,Team photo inside a stranger's home.,50,active,standard non-player interact,
+Open Doorway,Take a picture of yourself in the doorway of someone else's house. The door must be open.,30,active,cheeky pose urban,
+Car Dance Party,"Dance party in a stranger's car (not a cab or ride-hail), music chosen by the car owner.",50,active,cheeky non-player interact musical,
+Motorcycle Diaries,Convince a stranger to give you a (stationary is fine) ride on their motorcycle.,70,active,cheeky non-player interact daring,
+Twister,A game of Twister (or a good approximation) including at least one non-player.,20,active,standard non-player perform sporty,
+Fake Employee,Photograph a team member 'working' at a service job they're not actually employed at.,30,active,cheeky perform store mischief,
+Where's the Beach,Recreate a beach scene in a bathtub or sink.,10,active,family make silly home-ok,
+Racing Stripes,"Two things that roll, racing each other. Cheer them on.",10,active,family perform silly home-ok,
+Bad Luck,An open umbrella under a ladder.,10,active,family make spooky home-ok,
+L'oeuf,One monocolored thing inside another monocolored thing.,10,active,family make arty home-ok,Color-stack series: Snowman (3 stacked) and Seasons (4 colors of Magic).
+Destroyed Calendar,Time has no meaning: a destroyed calendar.,10,active,family make silly home-ok,
+Quarantine Novel,The first sentence of your (quarantine) novel.,10,active,family make wordplay home-ok reflective,
+Window Sign,A sign or art in a window.,10,active,family find home-ok,
+Childhood Photo,Team member with a childhood photo of themself.,10,active,family pose wholesome home-ok reflective,
+Youth Approved,Something your younger self would have liked that you still like.,10,active,family find wholesome home-ok reflective,From the two-player prompt list; great for family hunts.
+Hoard,Team member with something they hoard. Revel in it.,20,active,family pose silly home-ok reflective,
+Compact,Team member in the smallest space they can fit in.,10,active,family pose silly home-ok,Bonsai Kitten.
+Under the Bed,Team member hiding under a bed.,10,active,family pose spooky home-ok,
+Redrum,Team member in a mirror with creepy words written on it.,10,active,standard make spooky home-ok,
+Plant Parent,A live plant.,10,active,family find wholesome home-ok reflective,Trio: It Lives / It Dies (dead plant) / It Lives Again (ghost plant).
+Fridge Archaeology,The oldest thing in your fridge.,10,active,family find foodie silly home-ok reflective,
+Handwritten,"A handwritten postcard or letter, to a team member.",10,active,family make wholesome wordplay home-ok reflective,
+Precious,Your favorite thing in your house.,10,active,family find wholesome home-ok reflective,
+Memories,Something you loved as a child.,10,active,family find wholesome reflective home-ok,0% in the 2020 competitive hunt; re-homed to reflective/family packs (see past_game_stats.md Finding 4).
+We Don't Talk,Something that was given to you by someone you don't talk to any more.,10,active,standard find reflective home-ok,"0% in the 2020 competitive hunt; genre fits prompt-exchange games, not races."
+Guidebook,A novel that serves as an appropriate guidebook for these times.,10,active,family find geeky wordplay home-ok reflective,
+Virtual Background,Team member with their favorite virtual background.,10,active,family pose geeky home-ok,
+Amazon Explorer,Demonstrate use of an Amazon box in a way that would help you explore the Amazon.,20,active,family make silly wordplay home-ok,
+Chip Ninja,"A ninja, stealing a chip.",20,active,family perform silly home-ok,
+Liquid Suspense,Liquid falling toward someone's face but not yet reaching it.,20,active,family perform silly daring multi-photo,
+Makeshift Golf,"Makeshift golf club and ball, in use.",10,active,family make perform sporty home-ok,
+Home Gym,"Obviously home-made exercise equipment, in use.",10,active,family make perform sporty home-ok,
+Ice Sculpture,Ice sculpture.,10,active,family make arty home-ok,Trio: Frozen (ice) / Life (spice) / Fly (space).
+Good Stick,A good stick.,10,active,family find wholesome reflective,From the prompt-exchange list; kids love this one.
+Good Sticker,A good sticker.,10,active,family find,
+Spider-like,"Something that is like a spider, but not a spider.",10,active,family find silly wordplay,Template: like-a-{animal}; Bunny-like is the pair.
+Silly Face,Team member making a silly face. This is just my face.,10,active,family pose silly home-ok,
+Last Photo,The last photo on your phone before this game.,10,active,family meta home-ok,
+Same Sex Kiss,Same sex kiss. Bonus if male.,20,active,risque pose,2008-era framing; consider retiring or rewording as 'a kiss between any two willing players'.
+Make it Real,A kiss with a non-player.,30,active,risque non-player interact,
+Forbidden Love,Team member making out with a member of another team.,30,active,risque other-team interact,Dressing-room variants escalate to 45–50 pts.
+Spanking,Someone being spanked.,10,active,risque perform,Naughty (a non-player being spanked) is the 45-pt escalation.
+Applied Rope,Someone tied up.,30,active,risque make perform,
+Granny Panties,"Find some granny panties in a store, try them on (over clothes).",20,active,risque store wear mischief,
+Mannequin Romance,Manhandle (or dry hump) a mannequin.,20,active,risque store perform mischief,Trigger Warning / Love Doll merged.
+Magic Wand,"Hitachi Magic Wand, used as a back massager.",30,active,risque store find,
+Mile High Club,All team members in a single public restroom stall.,40,active,risque all-team pose,
+Underwear Party,Most people in only undergarments.,40,active,risque all-team pose,Comparative scoring at the finish.
+Washboard Abs,A stranger's rock-hard abs.,10,active,risque non-player find,
+Pole Artist,Pole dancing is an ancient art. Try your luck.,30,active,risque perform sporty,
+Sharpie Tattoo,A tattoo artist giving a team member a 'tramp stamp' with a Sharpie.,70,active,risque non-player interact,
+Leopard Print Chest,"Chest hair, wig, and leopard print. You can make this happen.",30,active,risque wear make silly,
+Honey Buns,Photograph 'honey buns' — creativity encouraged.,30,active,risque find foodie wordplay,
+Phallic Harvest,"Find phallic things, fill a bucket with them.",40,active,risque find make silly,
+Fetish Discovery,Find a new fetish.,20,active,risque find silly,
+Missed Connection,"In a public restroom, write a Craigslist missed-connection post on toilet paper, roll it back in.",20,active,cheeky make wordplay mischief,
+hello.jpg,Browse to an embarrassing (SFW) website on an Apple Store computer and walk away.,20,active,cheeky store perform mischief,Softened from source; keep it legal.
+Sticker Bomb,"Install a joke sticker ('Voice Activated', 'Citation Needed', emoji reply) somewhere it improves the world.",30,active,cheeky make mischief points-per-unit,Flags Day sticker/emoji packet missions generalized; bring your own packet.
+Bucket of Ice,Team member with their head in a bucket full of cold water.,30,active,standard perform daring silly,Sober Up escalation of Head in Bucket.
+Haircut,Team member getting an extreme haircut (before-and-after pictures).,100,active,standard perform multi-photo,The all-time commitment mission.
+Clothes Swap,Exchange clothes with a teammate and photograph everyone wearing each other's clothes.,30,active,standard all-team wear multi-photo,
+Fog Bridge,Cross a fog-covered bridge.,20,active,family find urban sf,
+Art Car,Team photo with an art car.,20,active,family find burner urban,
+MOOP Patrol,Take a photo of your team cleaning up MOOP (or just pick up some trash).,10,active,family all-team perform wholesome burner,
+Radical Expression,Photograph your team radically expressing itself.,20,active,family all-team perform burner,
+Decommodified,Photograph evidence of visible logo or brand-name removal (without breaking the law).,40,active,standard find burner,
+Mythical Creature,Take a team photo with a mythical creature.,10,active,family find burner geeky,
+Burner Haiku,Write a witty haiku about what you love most about your community's culture.,30,active,family make wordplay burner honoree,
+Sutro Pose,One team member posing with Sutro Tower.,10,active,family find landmark sf,City template: pose-with-{landmark}.
+Tiny Sutro,"A tiny model of Sutro Tower, constructed by team members.",30,active,family make landmark sf,City template: tiny-{landmark}.
+Sutro Summit Flag,Put up a flag on top of the Sutro Tower....,100,active,cheeky landmark sf daring,The eternal high-score task; nobody has done it.
+Frank Chu,Photo with the man himself.,30,active,standard non-player find sf,City template: local-legend.
+Cable Car Mini,Bring back a miniature and accurate cable car.,10,active,family bring-back landmark sf store,
+Noisebridge,"Multiple team members inside Noisebridge, working on tech.",30,active,family multi-member landmark sf geeky science,City template: local-business + themed action.
+Borderlands,"All team members inside Borderlands Books, reading books.",50,active,family all-team landmark sf store geeky,
+826 Valencia,"Team members inside 826 Valencia, threatening to fight (like pirates).",30,active,family multi-member landmark sf store silly,
+Dragon's Gate,Find Dragon's Gate. You'll know what to do.,20,active,family landmark sf find,
+Grace Labyrinth,Find your way out of the labyrinth at Grace Cathedral. Time it!,20,active,family landmark sf perform,
+Dolores Pyramid,Find the Miguel Hidalgo statue in Dolores Park and construct a human pyramid.,50,active,family all-team landmark sf pose sporty,
+Clarion Zombies,Find the zombies in Clarion Alley and channel your inner undead.,30,active,family landmark sf pose spooky arty,
+Golden Hydrant Howl,Howl at the moon around the Golden Fire Hydrant (Church & 20th).,20,active,family landmark sf perform silly,
+Penny Mission,Make a tower of pennies at least 30 high on the steps of Mission Dolores.,50,active,family landmark sf make,
+City Lights Story,Find a book at City Lights Bookstore that tells a story of San Francisco.,20,active,family landmark sf store geeky,
+Tourist Exchange,Team photo with tourists: tell them 3 things you love about your city; ask 3 about theirs.,50,active,family non-player interact wholesome urban,From the Burning Man hunt (SF) but works anywhere.
+Harvard Gate,"A locked Harvard gate other than Johnston, with a team member inside (happy) or outside (unhappy).",10,active,family landmark boston find,
+Lampoon Ibis,One team member posing with the Harvard Lampoon Ibis.,10,active,family landmark boston find,
+Brattle Gold,Multiple team members posing with the tiny gold statue near One Brattle Square.,30,active,family multi-member landmark boston find,
+Noch's,"Team members in front of Pinocchio's Pizza, hands in front of faces to make long noses.",20,active,family multi-member landmark boston pose foodie,
+Ducklings,Team members in single file behind the Make Way for Ducklings statues.,20,playtest,family multi-member landmark boston pose wholesome,Proposed new; no source hunt had it.
+Citgo Sign,Team member 'holding up' the Citgo sign like a barbell.,20,playtest,family landmark boston pose sporty,Proposed new.
+Campanile Pose,Team member posing with the Campanile (Sather Tower).,10,active,family landmark berkeley find,Proposed Berkeley pack — generated from city templates.
+Tiny Campanile,"A tiny model of the Campanile, constructed by team members.",30,playtest,family make landmark berkeley,Proposed new.
+Sather Gate Serenade,Team members singing under Sather Gate to non-players.,30,playtest,family landmark berkeley perform musical non-player,Proposed new.
+Telegraph Treasure,Team member with the weirdest item they can find (not buy) on Telegraph Ave.,20,playtest,family landmark berkeley find,Proposed new.
+Moe's Stack,"All team members inside Moe's Books, each reading on a different floor (one photo per floor).",50,playtest,family all-team landmark berkeley store geeky multi-photo,Proposed new.
+Campus Squirrel,A UC Berkeley squirrel accepting your team's admiration (no feeding).,20,playtest,family landmark berkeley animal find,Proposed new.
+Indian Rock Summit,"All team members atop Indian Rock, triumphant.",30,playtest,family all-team landmark berkeley pose sporty,Proposed new.
+Big C,Team photo at the Big C with the Bay in the background.,50,playtest,family all-team landmark berkeley pose sporty,Proposed new.
+Capitol Corner,"Corner of Pennsylvania and 10th, with Capitol Building.",20,active,family landmark dc find urban,
+Sculpture Garden,A sculpture in the sculpture garden. Bonus for being in the fountain (they will chase you out).,20,active,family landmark dc find arty,
+Lincoln,"Lincoln: the monument or another statue of Lincoln; no pictures of pictures, no pennies.",20,active,family landmark dc find,
