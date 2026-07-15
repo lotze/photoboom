@@ -17,11 +17,6 @@
 <%= link_to(image_tag(url_for(@photo.photo.variant(:thumb))), url_for(@photo.photo)) %>
 </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @photo.notes %>
-</p>
-
 <p>Reject photo?
 <br /><%= form_tag(reject_photo_path) do %>
   <%= hidden_field_tag :id, @photo.id %>

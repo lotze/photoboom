@@ -15,6 +15,7 @@ test:
   adapter: postgresql
   host: localhost
   database: photoboom-test
+  pool: 10
 
 # production is all taken care of heroku -- neat!
 # production:

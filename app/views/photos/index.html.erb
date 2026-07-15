@@ -17,7 +17,6 @@
       <th>Team</th>
       <th>Submitted At</th>
       <th>Rejected?</th>
-      <th>Notes</th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -30,7 +29,6 @@
         <td><%= photo.team.try(:name) %></td>
         <td><%= photo.submitted_at %></td>
         <td><%= photo.rejected ? 'X' : '' %></td>
-        <td><%= photo.notes %></td>
         <td><%= link_to 'Show', photo %></td>
         <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
         <td><%= link_to 'Accept', accept_photo_path(id: photo.id), method: :post %></td>

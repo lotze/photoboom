@@ -14,14 +14,16 @@ AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_REGION
 
-To run the rake task to check a gmail account and download emailed photos, you will need to set
+In development, outgoing notification email (photo accept/reject notices) is sent via Gmail SMTP, so set
 GMAIL_LOGIN
 GMAIL_PASSWORD
 
-To specify the email game players should send their photos to, you should set
+To set the "from" address used for outgoing notification email, set
 PHOTO_SUBMIT_EMAIL
 and to specify the email for admin issues, set
 ADMIN_EMAIL
+
+(Players submit photos directly from their phones at /play; there is no longer an email-in submission path.)
 
 To run using the same method as will be run on heroku (including environment settings), run:
 RACK_ENV=development PORT=3000 foreman start

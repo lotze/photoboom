@@ -16,9 +16,7 @@ class GamesController < ApplicationController
   def rules_pdf
     filename = "./tmp/game_#{@game.id}.pdf"
     namespace = OpenStruct.new(
-      :game => @game,
-      :hostname => request.base_url,
-      :photo_email => ENV['PHOTO_SUBMIT_EMAIL']
+      :game => @game
     )
     layout = ERB.new(File.open(Rails.root.join('app','views','layouts','print.html.erb')).read.gsub!('<%= content_for?(:content) ? yield(:content) : yield %>', '<%= content %>'))
     template = layout.result(OpenStruct.new(
@@ -50,12 +48,6 @@ class GamesController < ApplicationController
   def rejected
     @photos = @game.photos.where(rejected: true).order(:team_id, :mission_id).includes(:team).includes(:mission).limit(params['n'] || 40)
     render 'photos/index'
-  end
-
-  def check_email
-    @time_checked = Time.now
-    email_updater = EmailUpdater.new
-    @photos = email_updater.update
   end
 
   # GET /games

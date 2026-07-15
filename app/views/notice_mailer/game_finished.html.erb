@@ -1,0 +1,11 @@
+<p>
+<%= @game.name %> has ended! Thanks for playing.
+</p>
+
+<% if @game.zip_file.attached? %>
+<p>
+<%= link_to 'Download all photos', url_for(@game.zip_file) %>
+</p>
+<% end %>
+
+<p><small>Run your own hunt at <%= link_to 'photoscavenger.com', 'https://photoscavenger.com' %></small></p>

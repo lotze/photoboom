@@ -69,8 +69,6 @@ Photoboom::Application.routes.draw do
   get '/recent', to: 'games#recent_photos'
   get '/missing', to: 'teams#missing', as: :missing
 
-  get '/check_email', to: 'games#check_email', as: :check_email
-
   # automatically go to their next upcoming game; if they don't have one, will redirect to list of games
   root 'dashboard#next_game'
 end

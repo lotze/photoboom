@@ -2,15 +2,9 @@
 * post-game directions better: for organizer, zip file and leaderboard and slideshow
 (still allowing for future games)
 
-* move from paperclip to ActiveStorage
-
 * Test coverage
-** emailed photos from non-registered email; (organizer is emailed, can assign person even if not registered)
 ** register before a game starts
 ** register while a game is in progress
-
-* better way to deal with unregistered emails coming in
-** figure out why resque job isn't processing emails at all in staging -- ah! just needs a scheduler running?
 
 * don't allow blank team names (and provide a good error)
 
@@ -30,14 +24,10 @@
 
 * Add spec for uploading photo (form still doesn't submit in spec)
 
-* Add spec for emailed photos
-
 * Add spec for reordering missions
 
-* Price: allow buying tickets to a game via Stripe
-
 * easier mission creation/management (including mission import from templates or other games)
-** template categories: standard, risque, geeky, sporty, science, non-players, boston, san francisco, etc.
+** template categories: standard, risque, geeky, sporty, science, non-players, boston, san francisco, families, etc.
 
 * Select icons for missions from the noun project
 ** https://github.com/TailorBrands/noun-project-api
@@ -96,7 +86,7 @@
 
 * Product prep needed before charging money
 ** Always-on hosting -- can't keep asking Thomas to manually restart heroku once customers are paying
-** Direct phone-browser photo upload as the primary path; keep email-in as fallback only (email polling via resque is fragile per existing TODO items above)
+** DONE: Direct phone-browser photo upload is now the only submission path; the fragile email-in/resque polling path has been removed
 ** Paperclip -> ActiveStorage migration (already on TODO above) -- unmaintained gem, fine for hobby, not for paid product
 ** Mission template packs (already on TODO above: standard, risque, geeky, sporty, science, city-specific, etc.) -- biggest value-add, since the real organizer cost is writing 20 good missions, not money
 

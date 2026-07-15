@@ -74,7 +74,7 @@ group :test do
   gem 'fdoc'
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'webrick'
+  gem 'puma'
 end
 
 group :development, :test do
