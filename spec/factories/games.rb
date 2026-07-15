@@ -15,6 +15,8 @@ FactoryGirl.define do
     max_team_size 10
     timezone 'US/Eastern'
     start_location 'the traditional start location'
+    tier 'team'
+    launched_at Time.now
 
     after(:create) do |game, factory|
       FactoryGirl.create_list(:mission, factory.num_missions, game: game)

@@ -1,15 +1,23 @@
 class Game < ActiveRecord::Base
+  TIERS = {
+    'free' => { name: 'Free', price_cents: 0, max_players: 10, custom_branding: false },
+    'party' => { name: 'Party', price_cents: 3900, max_players: 30, custom_branding: false },
+    'team' => { name: 'Team', price_cents: 19900, max_players: nil, custom_branding: true },
+  }.freeze
+
   belongs_to :organizer, :class_name => 'User'
   has_many :teams, dependent: :destroy
   has_many :registrations
   has_many :users, :through => :registrations
   has_many :missions, dependent: :destroy
   has_many :photos
+  has_many :payments
 
   scope :publicly_available, -> { where(is_public: true) }
   scope :upcoming, -> { where('starts_at > ?', Time.now) }
   scope :not_yet_ended, -> { where('ends_at > ?', Time.now) }
   scope :running, -> { where('? BETWEEN starts_at AND ends_at + INTERVAL \'2 minutes\'', Time.now) }
+  scope :launched, -> { where.not(launched_at: nil) }
 
   after_initialize :init
 
@@ -21,6 +29,30 @@ class Game < ActiveRecord::Base
 
   def is_admin?(user)
     user == organizer
+  end
+
+  def launched?
+    launched_at.present?
+  end
+
+  def tier_info
+    TIERS.fetch(tier, TIERS['free'])
+  end
+
+  def tier_name
+    tier_info[:name]
+  end
+
+  def max_players
+    tier_info[:max_players]
+  end
+
+  def custom_branding?
+    tier_info[:custom_branding]
+  end
+
+  def player_count
+    users.count
   end
 
   def init

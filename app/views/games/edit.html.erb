@@ -2,5 +2,12 @@
 
 <%= link_to 'Edit Missions', missions_path(game_id: @game.id) %>
 <%= link_to 'Print Rules', rules_path(game_id: @game.id) %>
+<%= link_to 'Launch Game', launch_game_path(@game) %>
+
+<% if @game.launched? %>
+  <p><span class="label label-success">Launched — <%= @game.tier_name %> tier</span></p>
+<% else %>
+  <p><span class="label label-default">Not launched yet — players can't see or join this game</span></p>
+<% end %>
 
 <%= render 'form' %>

@@ -86,6 +86,29 @@
 * developer auth method for development
 * eventual archiving of games (only store the zip file, redirect people looking for that game)
 
+== Monetization ==
+* Pricing: per-event, not subscription (organizers run 1-2 hunts/year; high intent + budget at organize time, but a subscription would just churn)
+** Free tier: up to ~10 players, branded/watermarked experience -- this is the marketing engine, not lost revenue
+** Party tier, ~$39/event: up to ~30 players, for bachelorette/birthday/reunion use cases
+** Team tier, ~$199/event: unlimited players, custom branding on slideshow/leaderboard, mission template packs -- corporate HR is the buyer, don't underprice
+** Let organizers build the whole game for free (teams, missions, invites) and only pay to launch -- highest conversion point, since they've already invested effort and invited people
+** Implement with Stripe Checkout gate on "start game" (ties into existing "Price: allow buying tickets to a game via Stripe" item above)
+
+* Product prep needed before charging money
+** Always-on hosting -- can't keep asking Thomas to manually restart heroku once customers are paying
+** Direct phone-browser photo upload as the primary path; keep email-in as fallback only (email polling via resque is fragile per existing TODO items above)
+** Paperclip -> ActiveStorage migration (already on TODO above) -- unmaintained gem, fine for hobby, not for paid product
+** Mission template packs (already on TODO above: standard, risque, geeky, sporty, science, city-specific, etc.) -- biggest value-add, since the real organizer cost is writing 20 good missions, not money
+
+* Marketing, ranked by return per hour of effort
+** Built-in viral loop: add "Run your own hunt" CTA to slideshow, leaderboard, and post-game photo-zip email -- one-time product change, compounds forever since every game exposes it to 10-50 people at the most fun moment
+** Evergreen SEO pages: publish mission template lists as free public pages ("50 office scavenger hunt missions", "bachelorette photo hunt ideas") with a "run this hunt automatically" button -- weekend of writing, then unattended; likely source of corporate buyers
+** Directory listings: team-building tool roundups/listicles, Capterra -- a few hours, one-time
+** One launch spike: Show HN / Product Hunt post to seed first cohort
+** Skip: paid ads, social media presence, cold outreach, custom enterprise deals -- all require ongoing effort to not lose money/time
+
+* Realistic expectations: $199 corporate tier at 3-8 sales/month = $600-1,600/month, plausible within 6-12 months if SEO pages rank and viral loop is in place. $39 party tier alone won't get there (needs 30+/month) -- treat B2C as viral seed, corporate as the actual revenue.
+
 ==Future==
 * write to Google spreadsheet? read from Google spreadsheet? https://github.com/gimite/google-drive-ruby
 * group missions into sections/themes

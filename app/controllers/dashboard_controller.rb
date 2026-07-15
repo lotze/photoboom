@@ -119,7 +119,7 @@ class DashboardController < ApplicationController
   end
 
   def play
-    if !@game.in_progress? && !current_user.admin
+    if (!@game.in_progress? || !@game.launched?) && !current_user.admin
       flash[:error] = "Game is not in progress!"
       return redirect_to next_game_path
     end

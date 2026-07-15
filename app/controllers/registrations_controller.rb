@@ -20,7 +20,12 @@ class RegistrationsController < ApplicationController
       flash[:notice] = "That game is over."
       return redirect_to games_path
     end
-    
+
+    if !@game.launched? && !@game.is_admin?(current_user)
+      flash[:notice] = "This game hasn't been launched yet."
+      return redirect_to games_path
+    end
+
     @registration = Registration.new
     @registration.game = @game
     @event_name = "the photo scavenger hunt \"#{@game.name}\""
@@ -36,6 +41,16 @@ class RegistrationsController < ApplicationController
   def create
     if @game.over? && !@game.is_admin?(current_user)
       flash[:notice] = "That game is over."
+      return redirect_to games_path
+    end
+
+    if !@game.launched? && !@game.is_admin?(current_user)
+      flash[:notice] = "This game hasn't been launched yet."
+      return redirect_to games_path
+    end
+
+    if @game.max_players && @game.player_count >= @game.max_players && !@game.is_admin?(current_user)
+      flash[:notice] = "This game has reached its player limit."
       return redirect_to games_path
     end
 

@@ -1,0 +1,35 @@
+<h1>Launch <%= @game.name %></h1>
+
+<% if @game.launched? %>
+  <div class="alert alert-success">
+    This game is launched on the <strong><%= @game.tier_name %></strong> tier.
+  </div>
+<% end %>
+
+<% if params[:checkout] == 'cancelled' %>
+  <div class="alert alert-warning">Checkout was cancelled. No charge was made.</div>
+<% end %>
+
+<div class="row">
+  <% Game::TIERS.each do |tier_key, tier| %>
+    <div class="col-sm-4">
+      <div class="well">
+        <h3><%= tier[:name] %></h3>
+        <p>
+          <% if tier[:price_cents].zero? %>
+            Free
+          <% else %>
+            $<%= "%.2f" % (tier[:price_cents] / 100.0) %> / event
+          <% end %>
+        </p>
+        <p>
+          <%= tier[:max_players] ? "Up to #{tier[:max_players]} players" : "Unlimited players" %><br>
+          <%= tier[:custom_branding] ? "Custom branding" : "Branded/watermarked experience" %>
+        </p>
+        <%= button_to (@game.tier == tier_key && @game.launched? ? 'Current tier' : "Launch with #{tier[:name]}"),
+              checkout_game_path(@game, tier: tier_key), method: :post,
+              class: 'btn btn-primary', disabled: (@game.tier == tier_key && @game.launched?) %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -53,6 +53,7 @@ gem "kramdown", ">= 2.3.0"
 gem "json", ">= 2.3.0"
 
 gem 'dotenv-rails'
+gem 'stripe'
 
 group :production do
   # gem for making pdf from html

@@ -38,11 +38,18 @@ Photoboom::Application.routes.draw do
   get "api/submit"
   get "api/delete"
 
-  resources :games
+  resources :games do
+    member do
+      get :launch
+      post :checkout
+    end
+  end
   resources :photos
   resources :missions
   resources :registrations
   resources :teams
+
+  post '/stripe/webhook', to: 'stripe_webhooks#create'
 
   # temporary route for review
   get '/game_review', to: 'photos#review'

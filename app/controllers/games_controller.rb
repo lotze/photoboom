@@ -64,8 +64,45 @@ class GamesController < ApplicationController
     if current_user.admin?
       @games = Game.all
     else
-      @games = Game.not_yet_ended.publicly_available
+      @games = Game.not_yet_ended.publicly_available.launched
     end
+  end
+
+  def launch
+  end
+
+  def checkout
+    tier = params[:tier].to_s
+    unless Game::TIERS.key?(tier)
+      flash[:error] = "Not a valid pricing tier."
+      return redirect_to launch_game_path(@game)
+    end
+
+    if tier == 'free'
+      @game.update!(tier: tier, launched_at: Time.current)
+      return redirect_to edit_game_path(@game), notice: 'Game launched!'
+    end
+
+    amount_cents = Game::TIERS[tier][:price_cents]
+    payment = @game.payments.create!(tier: tier, amount_cents: amount_cents, status: 'pending')
+
+    session = Stripe::Checkout::Session.create(
+      mode: 'payment',
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          unit_amount: amount_cents,
+          product_data: { name: "#{Game::TIERS[tier][:name]} tier - #{@game.name}" },
+        },
+        quantity: 1,
+      }],
+      success_url: launch_game_url(@game, checkout: 'success'),
+      cancel_url: launch_game_url(@game, checkout: 'cancelled'),
+      metadata: { game_id: @game.id, tier: tier, payment_id: payment.id },
+    )
+    payment.update!(stripe_checkout_session_id: session.id)
+
+    redirect_to session.url, allow_other_host: true
   end
 
   def signup
