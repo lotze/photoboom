@@ -36,9 +36,9 @@ gem 'turbolinks'
 # use postmark for sending emails
 gem 'postmark-rails'
 
-gem 'paperclip'
-gem 'delayed_paperclip'
 gem 'aws-sdk-s3'
+gem 'image_processing'
+gem 'mini_magick'
 gem 'rubyzip'
 gem 'timezone' # Google Geocoding timezone lookup for getting default timezone for new games
 gem 'activejob-retry'
@@ -78,6 +78,7 @@ end
 
 group :development, :test do
   gem 'factory_girl_rails', require: false
+  gem 'observer' # factory_girl requires this; no longer a Ruby default gem as of 3.4
 end
 
 group :doc do

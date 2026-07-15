@@ -4,33 +4,24 @@ class Photo < ActiveRecord::Base
   belongs_to :user
   belongs_to :team
 
-  has_attached_file :photo, preserve_files: false,
-  styles: {
-    thumb: "100x100#",
-    slideshow: "2000x2000>" # Make slideshow photos have maximum size of 2000 pixels in any dimension; main use is actually to deal with rotation
-  },
-  convert_options: {
-    thumb: "-quality 75",
-    all: "-auto-orient -strip"
-  }
-  process_in_background :photo, processing_image_url: "/images/:style/processing.jpg"
-
-  after_post_process :extract_dimensions
-  def extract_dimensions
-    tempfile = photo.queued_for_write[:slideshow]
-    unless tempfile.nil?
-      geometry = Paperclip::Geometry.from_file(tempfile)
-      self.width = geometry.width.to_i
-      self.height = geometry.height.to_i
-    end
+  # "slideshow" is capped at 2000px on its longest side; its main purpose is
+  # actually to deal with EXIF rotation via auto_orient, not resizing.
+  has_one_attached :photo do |attachable|
+    attachable.variant :thumb, auto_orient: true, resize_to_fill: [100, 100], strip: true, quality: 75, preprocessed: true
+    attachable.variant :slideshow, auto_orient: true, resize_to_limit: [2000, 2000], strip: true, preprocessed: true
   end
 
+  after_create_commit :extract_dimensions, if: -> { photo.attached? }
+
+  def extract_dimensions
+    ExtractPhotoDimensionsJob.perform_later(self)
+  end
+
+  # Width/height are read off the processed "slideshow" variant (rather than
+  # the original blob) so they reflect the size after EXIF auto-orientation.
   def update_dimensions
-    tempfile = Rails.root.join('tmp').to_s + "/" + self.photo_file_name
-    self.photo.copy_to_local_file(nil, tempfile)
-    geometry = Paperclip::Geometry.from_file(tempfile)
-    self.update(width: geometry.width.to_i, height: geometry.height.to_i)
-    File.delete(tempfile)
+    image = MiniMagick::Image.read(photo.variant(:slideshow).processed.download)
+    self.update(width: image.width, height: image.height)
   end
 
   def scale_factor(max_width, max_height)
@@ -57,7 +48,16 @@ class Photo < ActiveRecord::Base
     end
   end
 
-  validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  ACCEPTABLE_CONTENT_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
+  validate :acceptable_photo_content_type
+
+  def acceptable_photo_content_type
+    return unless photo.attached?
+    unless ACCEPTABLE_CONTENT_TYPES.include?(photo.content_type)
+      errors.add(:photo, "must be a JPEG, PNG, or GIF image")
+    end
+  end
 
   def reject!(notes)
     self.update!(rejected: true, reviewed: true)

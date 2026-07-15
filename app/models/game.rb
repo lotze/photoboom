@@ -24,8 +24,18 @@ class Game < ActiveRecord::Base
   validates :name, :presence => true
   validates :start_location, :presence => true
 
-  has_attached_file :zip_file
-  validates_attachment_content_type :zip_file, :content_type => ["application/zip", "application/x-zip", "application/x-zip-compressed"]
+  has_one_attached :zip_file
+
+  ACCEPTABLE_ZIP_CONTENT_TYPES = ["application/zip", "application/x-zip", "application/x-zip-compressed"]
+
+  validate :acceptable_zip_file_content_type
+
+  def acceptable_zip_file_content_type
+    return unless zip_file.attached?
+    unless ACCEPTABLE_ZIP_CONTENT_TYPES.include?(zip_file.content_type)
+      errors.add(:zip_file, "must be a zip file")
+    end
+  end
 
   def is_admin?(user)
     user == organizer
@@ -124,7 +134,6 @@ class Game < ActiveRecord::Base
   end
 
   def make_zip_file
-    require 'open-uri'
     photos = Photo.where(game: self, rejected: false).includes(:user).includes(:mission).includes(:team)
     photo_dir = Dir.mktmpdir('photos')
 
@@ -132,30 +141,22 @@ class Game < ActiveRecord::Base
     photos.each do |photo|
       mission = photo.mission
       # download the photo into photo_dir
-      filename = "#{photo_dir}/#{photo.team.normalized_name}_#{mission.codenum}_#{mission.normalized_name}_#{photo.created_at.strftime('%Y%m%d%H%M%S')}_#{photo.id}.#{MIME::Types[photo.photo_content_type].first.extensions.first}"
-      if photo.photo.options[:storage] == :filesystem
-        FileUtils.copy(photo.photo.path, filename)
-      else
-        url = photo.photo.url.gsub("%2F", "/")
-        unless url =~ /^http/
-          url = "http:#{url}"
-        end
-        IO.copy_stream(URI.open(url, 'rb'), filename)
-      end
+      extension = photo.photo.filename.extension_with_delimiter
+      filename = "#{photo_dir}/#{photo.team.normalized_name}_#{mission.codenum}_#{mission.normalized_name}_#{photo.created_at.strftime('%Y%m%d%H%M%S')}_#{photo.id}#{extension}"
+      File.open(filename, 'wb') { |file| file.write(photo.photo.download) }
       files << filename
     end
     # make zip file
     require 'zip'
     zip_dir = Dir.mktmpdir('zip')
     zip_file_name = "#{zip_dir}/game_#{self.id}.zip"
-    Zip::File.open(zip_file_name, Zip::File::CREATE) do |zipfile|
+    Zip::File.open(zip_file_name, create: true) do |zipfile|
       files.each do |filename|
        # Add the file to the zip
         zipfile.add("game_#{self.id}/#{File.basename(filename)}", filename)
       end
     end
     # upload zip file
-    self.zip_file = File.open(zip_file_name, 'r')
-    save
+    zip_file.attach(io: File.open(zip_file_name), filename: "game_#{self.id}.zip", content_type: "application/zip")
   end
 end
